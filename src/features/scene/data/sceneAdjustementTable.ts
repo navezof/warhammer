@@ -1,0 +1,18 @@
+import { Table } from '../../../type';
+
+const sceneAdjustementTable: Table = {
+  name: 'Scene Adjustement Table',
+  description: 'A table to determine how a scene was adjusted.',
+  dice: '1d10',
+  content: [
+    '1; Remove a Character',
+    '2; Add a Character',
+    '3; Reduce/Remove an Activity',
+    '4; Increase an Activity',
+    '5; Remove an Object',
+    '6; Add an Object',
+    '7-10; Make 2 Adjustements',
+  ],
+};
+
+export default sceneAdjustementTable;
