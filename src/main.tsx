@@ -4,12 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import CreatureDisplay from './features/creatureGenerator/CreatureDisplay';
 import NPCHandler from './features/npcConversation/NPCConversationHandler';
-import SceneAlterationDisplay from './features/scene/SceneAlterationDisplay';
-import SceneAdjustement from './features/scene/SceneAdjustement';
-import RandomEventFocus from './features/scene/RandomEventFocus';
-import ChaosHandler from './features/chaos/ChaosHandler';
-import ChaosDisplay from './features/chaos/ChaosDisplay';
-//import Root from './routes/root';
+import FateInput from './features/fate/FateInput';
+import { FateQuestionV1Page } from './pages/FateQuestionV1Page';
 
 const router = createBrowserRouter([
   {
@@ -17,12 +13,20 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        path: 'v1/fates',
+        element: <FateQuestionV1Page />,
+      },
+      {
         path: 'creature',
         element: <CreatureDisplay />,
       },
       {
         path: 'npc',
         element: <NPCHandler />,
+      },
+      {
+        path: 'fate',
+        element: <FateInput chaos={0} />,
       },
     ],
   },

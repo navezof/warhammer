@@ -1,11 +1,9 @@
 import React from 'react';
+import { useChaos } from './useChaos';
 
-type ChaosHandlerProps = {
-  chaos: number;
-  setChaos: (chaos: number) => void;
-};
+const ChaosInput = () => {
+  const { chaos, setChaos } = useChaos();
 
-const ChaosHandler = ({ chaos, setChaos }: ChaosHandlerProps) => {
   const handleClick = (change: string) => {
     if (change.includes('+')) {
       const number = parseInt(change.replace('+', ''));
@@ -46,4 +44,4 @@ const ChaosHandler = ({ chaos, setChaos }: ChaosHandlerProps) => {
   );
 };
 
-export default ChaosHandler;
+export default ChaosInput;

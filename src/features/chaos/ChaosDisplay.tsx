@@ -1,10 +1,10 @@
 import React from 'react';
+import { useChaos } from './useChaos';
 
-type ChaosDisplayProps = {
-  chaos: number;
-};
+const ChaosDisplay = () => {
+  // const { chaos } = useSoloRPGContext()
+  const { chaos } = useChaos();
 
-const ChaosDisplay = ({ chaos }: ChaosDisplayProps) => {
   return <div>{chaos && <p>Chaos : {chaos}</p>}</div>;
 };
 

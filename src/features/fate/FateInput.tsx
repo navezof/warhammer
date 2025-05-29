@@ -1,21 +1,28 @@
 import React from 'react';
 import { FateOdds } from './data/fateOdds';
 import { rollOnFateTable } from './rollOnFateTable';
+import { useChaos } from '../chaos/useChaos';
+import { useFateAnswer } from './useFateAnswer';
 
-type ChaosProps = {
-  chaos: number;
-};
-
-const FateDisplay = ({ chaos }: ChaosProps) => {
-  const [fate, setFate] = React.useState<string>('...');
+const FateInput = () => {
+  const { chaos } = useChaos();
+  const { fateAnswer, setFateAnswer } = useFateAnswer();
+  const [fateQuestion, setFateQuestion] = React.useState<string>('...');
 
   const handleClick = (odds: FateOdds) => {
     const fate = rollOnFateTable(odds, chaos);
-    setFate(fate);
+    setFateAnswer(fate);
   };
 
   return (
     <>
+      <div>
+        <input
+          type='text'
+          value={fateQuestion}
+          onChange={(e) => setFateQuestion(e.target.value)}
+        />
+      </div>
       <div>
         <button onClick={() => handleClick(FateOdds.Certain)}>Certain</button>
         <button onClick={() => handleClick(FateOdds.NearlyCertain)}>
@@ -39,9 +46,9 @@ const FateDisplay = ({ chaos }: ChaosProps) => {
           Impossible
         </button>
       </div>
-      {fate && <p>{fate}</p>}
+      <div>{fateAnswer && <p>{fateAnswer}</p>}</div>
     </>
   );
 };
 
-export default FateDisplay;
+export default FateInput;
