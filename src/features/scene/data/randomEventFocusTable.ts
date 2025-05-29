@@ -1,4 +1,4 @@
-import { Table } from '../../../type';
+import { Table } from '../../../types/type';
 
 const randomEventFocusTable: Table = {
   name: 'Random Event Focus',

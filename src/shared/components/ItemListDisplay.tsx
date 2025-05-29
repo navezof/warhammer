@@ -1,5 +1,5 @@
 import React from 'react';
-import { ItemList } from '../../type';
+import { ItemList } from '../../types/type';
 
 type ItemListDisplayProps = {
   name: string;

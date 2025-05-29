@@ -1,4 +1,4 @@
-import { Table } from '../../../type';
+import { Table } from '../../../types/type';
 
 export const npcConversationFocusTable: Table = {
   name: 'NPC Conversation Focus Table',

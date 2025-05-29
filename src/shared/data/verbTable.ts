@@ -1,4 +1,4 @@
-import { Table } from '../../type';
+import { Table } from '../../types/type';
 
 const verbTable: Table = {
   name: 'Verbs Table',

@@ -5,7 +5,7 @@ type ChaosDisplayProps = {
 };
 
 const ChaosDisplay = ({ chaos }: ChaosDisplayProps) => {
-  return <div>{chaos && <p>Chaos: {chaos}</p>}</div>;
+  return <div>{chaos && <p>Chaos : {chaos}</p>}</div>;
 };
 
 export default ChaosDisplay;

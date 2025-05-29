@@ -1,5 +1,5 @@
 import React from 'react';
-import { Creature } from '../../type';
+import { Creature } from '../../types/type';
 import { generateCreature } from './generateCreature';
 import { creatureTypes } from './data/creatureType';
 

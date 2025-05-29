@@ -1,4 +1,4 @@
-import { Creature, Trait } from '../../../type';
+import { Creature, Trait } from '../../../types/type';
 
 export const hardy: Trait = {
   name: 'Hardy',

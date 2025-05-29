@@ -1,4 +1,4 @@
-import { Table } from '../../../type';
+import { Table } from '../../../types/type';
 import { npcConversationMoodTable } from './npcConversationMoodTable';
 
 export enum NPCRelationship {

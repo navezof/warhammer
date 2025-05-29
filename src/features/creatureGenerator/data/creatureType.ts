@@ -1,4 +1,4 @@
-import { CreatureTypeDefinition } from '../../../type';
+import { CreatureTypeDefinition } from '../../../types/type';
 import { armour, hardy } from './creatureTraits';
 
 export const creatureTypeDefinition: CreatureTypeDefinition[] = [

@@ -1,5 +1,5 @@
 import { creatureTypeDefinition } from './data/creatureType';
-import { Creature, CreatureTypeDefinition } from '../../type';
+import { Creature, CreatureTypeDefinition } from '../../types/type';
 import { rollDie } from '../../utils/rolls';
 import { randomNumber } from '../../utils/utils';
 

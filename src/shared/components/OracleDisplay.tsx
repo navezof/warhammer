@@ -1,6 +1,6 @@
 import React from 'react';
 import { rollOnTable } from '../../utils/rolls';
-import { Table } from '../../type';
+import { Table } from '../../types/type';
 
 type OracleProps = {
   oracle: Table;
