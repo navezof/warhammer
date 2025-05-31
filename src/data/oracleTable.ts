@@ -1,4 +1,4 @@
-import { Table } from '../../types/type';
+import { Table } from '../types/type';
 
 export const ageTable: Table = {
   name: 'Age Table',
@@ -16,6 +16,7 @@ export const ageTable: Table = {
 
 export const npcQualities: Table = {
   name: 'NPC Qualities',
+  description: 'A table to determine the qualities of an NPC.',
   dice: '1d20',
   content: [
     '1;Balding;Spits;Hiding a fugitive',
