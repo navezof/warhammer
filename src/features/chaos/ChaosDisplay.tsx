@@ -6,13 +6,13 @@ const ChaosDisplay = () => {
   const { chaos } = useChaos();
 
   return (
-    <div className='flex flex-col items-center justify-center text-center'>
+    <div className='flex flex-col justify-center items-center text-center'>
       {chaos && (
         <>
           <p className='text-6xl' font-bold mb-2>
             {chaos}
           </p>
-          <p className='text-xl font-semibold uppercase tracking-wider'>
+          <p className='text-xl font-semibold tracking-wider uppercase'>
             chaos
           </p>
         </>
