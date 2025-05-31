@@ -2,6 +2,7 @@ import React from 'react';
 import { ItemList } from './types/type';
 import { Link, Outlet } from 'react-router-dom';
 import { RPGToolboxProvider } from './RPGToolboxContext';
+import './app.css';
 
 function App() {
   const [characterList, setCharacterList] = React.useState<ItemList[]>([]);
