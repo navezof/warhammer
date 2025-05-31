@@ -3,6 +3,8 @@ import { FateOdds } from './data/fateOdds';
 import { rollOnFateTable } from './rollOnFateTable';
 import { useChaos } from '../chaos/useChaos';
 import { useFateAnswer } from './useFateAnswer';
+import Button from '../../components/CustomButton';
+import TextArea from '../../components/CustomTextArea';
 
 const FateInput = () => {
   const { chaos } = useChaos();
@@ -23,69 +25,34 @@ const FateInput = () => {
         >
           Ask...
         </label>
-        <input
-          type='text'
+        <TextArea
           id='fateQuestion'
           value={fateQuestion}
           onChange={(e) => setFateQuestion(e.target.value)}
-          className='block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
         />
       </div>
       <div className='grid grid-cols-9 gap-4'>
-        <button
-          onClick={() => handleClick(FateOdds.Certain)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
-          Certain
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.NearlyCertain)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
+        <Button onClick={() => handleClick(FateOdds.Certain)}>Certain</Button>
+        <Button onClick={() => handleClick(FateOdds.NearlyCertain)}>
           Nearly Certain
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.VeryLikely)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
+        </Button>
+        <Button onClick={() => handleClick(FateOdds.VeryLikely)}>
           Very Likely
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.Likely)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
-          Likely
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.FiftyFifty)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
+        </Button>
+        <Button onClick={() => handleClick(FateOdds.Likely)}>Likely</Button>
+        <Button onClick={() => handleClick(FateOdds.FiftyFifty)}>
           Fifty-Fifty
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.Unlikely)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
-          Unlikely
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.VeryUnlikely)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
+        </Button>
+        <Button onClick={() => handleClick(FateOdds.Unlikely)}>Unlikely</Button>
+        <Button onClick={() => handleClick(FateOdds.VeryUnlikely)}>
           Very Unlikely
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.NearlyImpossible)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
+        </Button>
+        <Button onClick={() => handleClick(FateOdds.NearlyImpossible)}>
           Nearly Impossible
-        </button>
-        <button
-          onClick={() => handleClick(FateOdds.Impossible)}
-          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
-        >
+        </Button>
+        <Button onClick={() => handleClick(FateOdds.Impossible)}>
           Impossible
-        </button>
+        </Button>
       </div>
       <div>
         {fateAnswer && (

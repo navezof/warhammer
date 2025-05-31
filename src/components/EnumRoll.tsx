@@ -1,5 +1,5 @@
 import React from 'react';
-import { randomNumber } from '../../utils/utils';
+import { randomNumber } from '../utils/utils';
 
 type EnumRollProps<T extends string> = {
   enumObject: { [key in T]: string };

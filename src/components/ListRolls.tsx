@@ -1,6 +1,6 @@
 import React from 'react';
-import { ItemList } from '../../types/type';
-import { randomNumber } from '../../utils/utils';
+import { ItemList } from '../types/type';
+import { randomNumber } from '../utils/utils';
 
 type ListRollProps = {
   name: string;

@@ -33,48 +33,9 @@ function App() {
         <main>
           <Outlet context={{ characterList, setCharacterList }} />
         </main>
-
-        <aside>
-          {/* <ItemListDisplay
-          name='Character List'
-          itemList={characterList}
-          setItemList={setCharacterList}
-        />
-        <OracleDisplay oracle={ageTable} />
-        <OracleDisplay oracle={npcQualities} />
-        <FateDisplay chaos={chaos} />
-        <ChaosHandler chaos={chaos} setChaos={setChaos} />
-        <ChaosDisplay chaos={chaos} />
-        <SceneAlterationDisplay chaos={chaos} />
-        <SceneAdjustement />
-        <RandomEventFocus /> 
-              <ListRoll name='Character List' itemList={characterList} />
-              */}
-        </aside>
       </div>
     </RPGToolboxProvider>
   );
 }
-
-/**
- import { useOutletContext } from 'react-router-dom';
-
-type ContextType = {
-  chaos: number;
-  setChaos: (value: number) => void;
-  characterList: ItemList[];
-  setCharacterList: (value: ItemList[]) => void;
-};
-
-function ChildComponent() {
-  const { chaos, setChaos } = useOutletContext<ContextType>();
-  
-  return <div>Chaos Level: {chaos}</div>;
-}
- 
-
-
-
- */
 
 export default App;
