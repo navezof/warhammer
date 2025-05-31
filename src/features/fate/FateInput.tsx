@@ -19,7 +19,7 @@ const FateInput = () => {
       <div>
         <label
           htmlFor='fateQuestion'
-          className='flex flex-col items-center justify-center text-center italic'
+          className='flex flex-col justify-center items-center italic text-center'
         >
           Ask...
         </label>
@@ -28,68 +28,68 @@ const FateInput = () => {
           id='fateQuestion'
           value={fateQuestion}
           onChange={(e) => setFateQuestion(e.target.value)}
-          className='block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50  focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+          className='block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
         />
       </div>
       <div className='grid grid-cols-9 gap-4'>
         <button
           onClick={() => handleClick(FateOdds.Certain)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Certain
         </button>
         <button
           onClick={() => handleClick(FateOdds.NearlyCertain)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Nearly Certain
         </button>
         <button
           onClick={() => handleClick(FateOdds.VeryLikely)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Very Likely
         </button>
         <button
           onClick={() => handleClick(FateOdds.Likely)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Likely
         </button>
         <button
           onClick={() => handleClick(FateOdds.FiftyFifty)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Fifty-Fifty
         </button>
         <button
           onClick={() => handleClick(FateOdds.Unlikely)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Unlikely
         </button>
         <button
           onClick={() => handleClick(FateOdds.VeryUnlikely)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Very Unlikely
         </button>
         <button
           onClick={() => handleClick(FateOdds.NearlyImpossible)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Nearly Impossible
         </button>
         <button
           onClick={() => handleClick(FateOdds.Impossible)}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+          className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700'
         >
           Impossible
         </button>
       </div>
       <div>
         {fateAnswer && (
-          <p className='flex flex-col items-center justify-center text-center h-25 border-2 border-solid font-bold rounded'>
+          <p className='flex flex-col justify-center items-center font-bold text-center rounded border-2 border-solid h-25'>
             {fateAnswer}
           </p>
         )}

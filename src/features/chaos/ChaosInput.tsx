@@ -36,22 +36,22 @@ const ChaosInput = () => {
   };
 
   return (
-    <div className='flex items-center justify-center gap-4'>
+    <div className='flex gap-4 justify-center items-center'>
       <button
         onClick={() => handleClick('-1')}
-        className='w-10 h-10 flex items-center justify-center rounded bg-gray-200 hover:bg-gray-300 transition-colors'
+        className='flex justify-center items-center w-10 h-10 bg-gray-200 rounded transition-colors hover:bg-gray-300'
       >
         <span className='text-2xl'>&larr;</span>
       </button>
       <button
         onClick={() => handleClick('5')}
-        className='bg-gray-200 hover:bg-gray-300 font-bold py-1 px-4 rounded transition-colors'
+        className='px-4 py-1 font-bold bg-gray-200 rounded transition-colors hover:bg-gray-300'
       >
         Reset
       </button>
       <button
         onClick={() => handleClick('+1')}
-        className='w-10 h-10 flex items-center justify-center rounded bg-gray-200 hover:bg-gray-300 transition-colors'
+        className='flex justify-center items-center w-10 h-10 bg-gray-200 rounded transition-colors hover:bg-gray-300'
       >
         <span className='text-2xl'>&rarr;</span>
       </button>
