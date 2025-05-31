@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'fate',
-        element: <FateInput chaos={0} />,
+        element: <FateInput />,
       },
     ],
   },
