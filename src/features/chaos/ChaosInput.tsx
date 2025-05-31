@@ -36,10 +36,25 @@ const ChaosInput = () => {
   };
 
   return (
-    <div>
-      <button onClick={() => handleClick('+1')}>Increase Chaos</button>
-      <button onClick={() => handleClick('-1')}>Decrease Chaos</button>
-      <button onClick={() => handleClick('5')}>Reset Chaos to 5</button>
+    <div className='flex gap-4 justify-center items-center'>
+      <button
+        onClick={() => handleClick('-1')}
+        className='flex justify-center items-center w-10 h-10 bg-gray-200 rounded transition-colors hover:bg-gray-300'
+      >
+        <span className='text-2xl'>&larr;</span>
+      </button>
+      <button
+        onClick={() => handleClick('5')}
+        className='px-4 py-1 font-bold bg-gray-200 rounded transition-colors hover:bg-gray-300'
+      >
+        Reset
+      </button>
+      <button
+        onClick={() => handleClick('+1')}
+        className='flex justify-center items-center w-10 h-10 bg-gray-200 rounded transition-colors hover:bg-gray-300'
+      >
+        <span className='text-2xl'>&rarr;</span>
+      </button>
     </div>
   );
 };
