@@ -1,5 +1,6 @@
 import React from 'react';
 import { useChaos } from './useChaos';
+import Button from '../../components/CustomButton';
 
 const ChaosInput = () => {
   const { chaos, setChaos } = useChaos();
@@ -37,24 +38,27 @@ const ChaosInput = () => {
 
   return (
     <div className='flex gap-4 justify-center items-center'>
-      <button
+      <Button
         onClick={() => handleClick('-1')}
-        className='flex justify-center items-center w-10 h-10 bg-gray-200 rounded transition-colors hover:bg-gray-300'
+        variant='secondary'
+        className='font-bold'
       >
-        <span className='text-2xl'>&larr;</span>
-      </button>
-      <button
+        <span>&larr;</span>
+      </Button>
+      <Button
         onClick={() => handleClick('5')}
-        className='px-4 py-1 font-bold bg-gray-200 rounded transition-colors hover:bg-gray-300'
+        variant='secondary'
+        className='font-bold'
       >
         Reset
-      </button>
-      <button
+      </Button>
+      <Button
         onClick={() => handleClick('+1')}
-        className='flex justify-center items-center w-10 h-10 bg-gray-200 rounded transition-colors hover:bg-gray-300'
+        variant='secondary'
+        className='font-bold'
       >
-        <span className='text-2xl'>&rarr;</span>
-      </button>
+        <span>&rarr;</span>
+      </Button>
     </div>
   );
 };

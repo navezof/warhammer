@@ -1,9 +1,9 @@
 import React from 'react';
-import EnumSelector from '../../shared/components/EnumSelector';
+import EnumSelector from '../../components/EnumSelector';
 import { NPCRelationship, relationshipTableMap } from './data/npcRelationship';
 import { dispositionTableMap, NpcDisposition } from './data/npcDisposition';
-import EnumRoll from '../../shared/components/EnumRoll';
-import OracleDisplay from '../../shared/components/OracleDisplay';
+import EnumRoll from '../../components/EnumRoll';
+import OracleDisplay from '../oracle/OracleDisplay';
 import { npcConversationFocusTable } from './data/npcConversationFocusTable';
 
 const NPCHandler = () => {
