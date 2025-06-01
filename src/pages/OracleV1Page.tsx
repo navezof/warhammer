@@ -5,7 +5,6 @@ import TableDropdown from '../components/TableDropdown';
 import themeTable from '../data/themeTable';
 import verbTable from '../data/verbTable';
 import { Table } from '../types/type';
-import Div from '../components/CustomDiv';
 
 const tableOptions: Table[] = [ageTable, npcQualities, themeTable, verbTable];
 

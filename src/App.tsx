@@ -30,6 +30,9 @@ function App() {
             <li>
               <Link to='/v1/oracles'>Oracle V1</Link>
             </li>
+            <li>
+              <Link to='/v1/dashboard'>Dashboard</Link>
+            </li>
           </ul>
         </nav>
 

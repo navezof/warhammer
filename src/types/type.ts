@@ -1,3 +1,10 @@
+export type WidgetType = 'fate' | 'oracle';
+
+export interface Widget {
+  id: string;
+  type: WidgetType;
+}
+
 export interface Trait {
   name: string;
   description: string;

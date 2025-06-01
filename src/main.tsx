@@ -7,6 +7,7 @@ import NPCHandler from './features/npcConversation/NPCConversationHandler';
 import FateInput from './features/fate/FateInput';
 import { FateQuestionV1Page } from './pages/FateQuestionV1Page';
 import { OracleV1Page } from './pages/OracleV1Page';
+import { DashboardV1Page } from './pages/DashboardV1Page';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: 'v1/oracles',
         element: <OracleV1Page />,
+      },
+      {
+        path: '/v1/dashboard',
+        element: <DashboardV1Page />,
       },
       {
         path: 'creature',
