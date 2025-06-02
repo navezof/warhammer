@@ -33,7 +33,7 @@ const Dashboard: React.FC = () => {
   const renderWidget = (widget: Widget) => {
     switch (widget.type) {
       case 'oracle':
-        return <OracleV1Page />;
+        return <OracleV1Page widgetId={widget.id} />;
       case 'fate':
         return <FateQuestionV1Page />;
       default:
