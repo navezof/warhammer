@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { OracleV1Page } from '../../pages/OracleV1Page';
 import { FateQuestionV1Page } from '../../pages/FateQuestionV1Page';
 import { WidgetItem } from './WidgetItem';
 import { Widget, WidgetType } from '../../types/type';
 
+const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
+
+const loadWidgetsFromLocalStorage = () => {
+  try {
+    const storedWidgets = localStorage.getItem(DASHBOARD_WIDGET_STORAGE_KEY);
+    return storedWidgets ? JSON.parse(storedWidgets) : [];
+  } catch (error) {
+    console.error('Error loading widgets from local storage:', error);
+    return [];
+  }
+};
+
+const storeWidgetsInLocalStorage = (widgets: Widget[]) => {
+  try {
+    localStorage.setItem(DASHBOARD_WIDGET_STORAGE_KEY, JSON.stringify(widgets));
+  } catch (error) {
+    console.error('Error storing widgets in local storage:', error);
+  }
+};
+
 const Dashboard: React.FC = () => {
-  const [widgets, setWidgets] = useState<Widget[]>([]);
+  const [widgets, setWidgets] = useState<Widget[]>(loadWidgetsFromLocalStorage);
 
   const addWidget = (type: WidgetType) => {
     const newWidget: Widget = {
@@ -33,7 +53,7 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  // TODO : hook local storagen, passer le useState en json stringify
+  useEffect(() => storeWidgetsInLocalStorage(widgets), [widgets]);
 
   return (
     <div>
