@@ -10,9 +10,13 @@ type WidgetItemProps = PropsWithChildren & {
 // Allows to add additional functionality to a component without modifying its structure
 export const WidgetItem = ({ children, id, removeWidget }: WidgetItemProps) => {
   return (
-    <div>
-      {children}
-      <Button onClick={() => removeWidget(id)}>Remove</Button>
+    <div className='relative p-4 bg-gray-800 rounded-lg'>
+      <div className='pt-8'>{children}</div>
+      <div className='absolute top-2 right-2'>
+        <Button onClick={() => removeWidget(id)} className='!p-2'>
+          X
+        </Button>
+      </div>
     </div>
   );
 };

@@ -47,7 +47,7 @@ const Dashboard: React.FC = () => {
   );
 
   return (
-    <div>
+    <div className='p-4'>
       <select
         className='p-2 text-gray-700 rounded border cursor-pointer hover:border-gray-400'
         defaultValue=''
@@ -62,7 +62,7 @@ const Dashboard: React.FC = () => {
         <option value='oracle'>Oracle</option>
         <option value='fate'>Fate</option>
       </select>
-      <div>
+      <div className='grid grid-cols-3 auto-rows-fr gap-4 md:auto-cols-fr'>
         {widgets.map((widget: Widget) => (
           <WidgetItem
             key={widget.id}
