@@ -35,6 +35,7 @@ const Dashboard: React.FC = () => {
           <WidgetItem
             key={widget.id}
             id={widget.id}
+            type={widget.type}
             removeWidget={removeWidget}
           >
             {renderWidget(widget)}
