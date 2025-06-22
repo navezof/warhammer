@@ -22,7 +22,7 @@ const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
 export function RPGToolboxProvider({ children }: PropsWithChildren) {
   const [chaos, setChaos] = React.useState<number>(5);
-  const [fateAnswer, setFateAnswer] = React.useState<string>('');
+  const [fateAnswer, setFateAnswer] = React.useState<string>('-');
   const [widgets, setWidgets] = React.useState<Widget[]>(
     loadFromLocalStorage(DASHBOARD_WIDGET_STORAGE_KEY) || []
   );
@@ -43,7 +43,7 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
 
   useEffect(() => {
     storeItemsInLocalStorage(widgets, DASHBOARD_WIDGET_STORAGE_KEY);
-  }, [widgets]); // eslint-disable-line react-hooks/exhaustive-deps // TODO: Fix this lint issu
+  }, [widgets]);
 
   return (
     <RPGToolBoxContext.Provider

@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
 import { OracleV1Page } from '../../pages/OracleV1Page';
 import { FateQuestionV1Page } from '../../pages/FateQuestionV1Page';
 import { WidgetItem } from './WidgetItem';
-import { Widget, WidgetType } from '../../types/type';
-import {
-  loadFromLocalStorage,
-  storeItemsInLocalStorage,
-} from '../../utils/localStorageState';
+import { Widget } from '../../types/type';
+import { storeItemsInLocalStorage } from '../../utils/localStorageState';
 import { useRPGToolboxContext } from '../../RPGToolboxContext';
 import { AddWidgetV1Page } from '../../pages/AddWidgetV1Page';
 
