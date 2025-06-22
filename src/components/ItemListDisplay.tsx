@@ -1,14 +1,15 @@
 import React from 'react';
 import { ItemList } from '../types/type';
+import Button from './CustomButton';
 
 type ItemListDisplayProps = {
-  name: string;
+  title: string;
   itemList: ItemList[];
   setItemList: (newItemList: ItemList[]) => void;
 };
 
 const ItemListDisplay = ({
-  name,
+  title,
   itemList,
   setItemList,
 }: ItemListDisplayProps) => {
@@ -37,24 +38,35 @@ const ItemListDisplay = ({
   };
 
   return (
-    <>
-      <div>
-        <h2>{name}</h2>
-        {itemList.map((item) => (
-          <div key={item.id}>
-            <input
-              type='text'
-              value={item.value}
-              onChange={(e) => handleChange(item.id, e.target.value)}
-            />
-            <button onClick={() => handleRemoveCharacter(item.id)}>
-              Remove
-            </button>
-          </div>
-        ))}
-        <button onClick={handleAddCharacter}>Add Character</button>
-      </div>
-    </>
+    <div className='w-full'>
+      <h2 className='text-lg font-bold mb-2'>{title}</h2>
+      <table className='table-auto w-full border border-gray-300'>
+        <tbody>
+          {itemList.map((item) => (
+            <tr key={item.id}>
+              <td className='px-2 py-1 border-b'>
+                <div className='flex justify-between items-center'>
+                  <input
+                    type='text'
+                    value={item.value}
+                    onChange={(e) => handleChange(item.id, e.target.value)}
+                  />
+                  <Button
+                    variant='danger'
+                    onClick={() => handleRemoveCharacter(item.id)}
+                  >
+                    X
+                  </Button>
+                </div>
+              </td>
+            </tr>
+          ))}
+          <td className='px-2 py-1 border-b'>
+            <Button onClick={handleAddCharacter}>+</Button>
+          </td>
+        </tbody>
+      </table>
+    </div>
   );
 };
 

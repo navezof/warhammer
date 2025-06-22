@@ -6,6 +6,7 @@ import { Widget } from '../../types/type';
 import { storeItemsInLocalStorage } from '../../utils/localStorageState';
 import { useRPGToolboxContext } from '../../RPGToolboxContext';
 import { AddWidgetV1Page } from '../../pages/AddWidgetV1Page';
+import { ActorPage } from '../../pages/ActorPage';
 
 const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
 
@@ -18,6 +19,8 @@ const Dashboard: React.FC = () => {
         return <OracleV1Page widgetId={widget.id} />;
       case 'fate':
         return <FateQuestionV1Page />;
+      case 'actor':
+        return <ActorPage />;
       default:
         return null;
     }

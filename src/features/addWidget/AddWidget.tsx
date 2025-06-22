@@ -19,6 +19,7 @@ export const AddWidget = () => {
       </option>
       <option value='oracle'>Oracle</option>
       <option value='fate'>Destin</option>
+      <option value='actor'>Acteur</option>
     </select>
   ); //return <Button onClick={() => addWidget}>Add</Button>;
 };
