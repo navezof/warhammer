@@ -20,10 +20,6 @@ const router = createBrowserRouter([
         element: <FateQuestionV1Page />,
       },
       {
-        path: 'v1/oracles',
-        element: <OracleV1Page />,
-      },
-      {
         path: '/v1/dashboard',
         element: <DashboardV1Page />,
       },
@@ -34,14 +30,6 @@ const router = createBrowserRouter([
       {
         path: 'npc',
         element: <NPCHandler />,
-      },
-      {
-        path: 'fate',
-        element: <FateInput />,
-      },
-      {
-        path: 'v1/addWidget',
-        element: <AddWidgetV1Page />,
       },
     ],
   },
