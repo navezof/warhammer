@@ -33,6 +33,9 @@ function App() {
             <li>
               <Link to='/v1/dashboard'>Dashboard</Link>
             </li>
+            <li>
+              <Link to='/v1/addWidget'>Add Widget</Link>
+            </li>
           </ul>
         </nav>
 

@@ -8,6 +8,7 @@ import FateInput from './features/fate/FateInput';
 import { FateQuestionV1Page } from './pages/FateQuestionV1Page';
 import { OracleV1Page } from './pages/OracleV1Page';
 import { DashboardV1Page } from './pages/DashboardV1Page';
+import { AddWidgetV1Page } from './pages/AddWidgetV1Page';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'fate',
         element: <FateInput />,
+      },
+      {
+        path: 'v1/addWidget',
+        element: <AddWidgetV1Page />,
       },
     ],
   },

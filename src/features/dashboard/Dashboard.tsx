@@ -8,27 +8,13 @@ import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
 } from '../../utils/localStorageState';
+import { useRPGToolboxContext } from '../../RPGToolboxContext';
+import { AddWidgetV1Page } from '../../pages/AddWidgetV1Page';
 
 const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
 
 const Dashboard: React.FC = () => {
-  const [widgets, setWidgets] = useState<Widget[]>(
-    loadFromLocalStorage(DASHBOARD_WIDGET_STORAGE_KEY) || []
-  );
-
-  const addWidget = (type: WidgetType) => {
-    const newWidget: Widget = {
-      id: crypto.randomUUID(),
-      type,
-    };
-    setWidgets((prev: Widget[]) => [...prev, newWidget]);
-  };
-
-  const removeWidget = (id: string) => {
-    setWidgets((prev: Widget[]) =>
-      prev.filter((widget: Widget) => widget.id !== id)
-    );
-  };
+  const { widgets, removeWidget } = useRPGToolboxContext();
 
   const renderWidget = (widget: Widget) => {
     switch (widget.type) {
@@ -48,20 +34,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className='p-4'>
-      <select
-        className='p-2 text-gray-700 rounded border cursor-pointer hover:border-gray-400'
-        defaultValue=''
-        onChange={(e) => {
-          addWidget(e.target.value as WidgetType);
-          e.target.value = '';
-        }}
-      >
-        <option value='' disabled hidden>
-          Add a Widget...
-        </option>
-        <option value='oracle'>Oracle</option>
-        <option value='fate'>Fate</option>
-      </select>
       <div className='grid grid-cols-3 auto-rows-fr gap-4 md:auto-cols-fr'>
         {widgets.map((widget: Widget) => (
           <WidgetItem
@@ -73,6 +45,7 @@ const Dashboard: React.FC = () => {
           </WidgetItem>
         ))}
       </div>
+      <AddWidgetV1Page />
     </div>
   );
 };
