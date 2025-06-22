@@ -4,12 +4,10 @@ import { rollOnFateTable } from './rollOnFateTable';
 import { useChaos } from '../chaos/useChaos';
 import { useFateAnswer } from './useFateAnswer';
 import Button from '../../components/CustomButton';
-import TextArea from '../../components/CustomTextArea';
 
 const FateInput = () => {
   const { chaos } = useChaos();
   const { fateAnswer, setFateAnswer } = useFateAnswer();
-  const [fateQuestion, setFateQuestion] = React.useState<string>('');
 
   const handleClick = (odds: FateOdds) => {
     const fate = rollOnFateTable(odds, chaos);
@@ -17,51 +15,45 @@ const FateInput = () => {
   };
 
   return (
-    <>
-      <div>
-        <label
-          htmlFor='fateQuestion'
-          className='flex flex-col justify-center items-center italic text-center'
+    <div className='flex flex-col items-center p-1 space-y-2'>
+      <div className='grid grid-cols-3 gap-2 w-full'>
+        <Button size='sm' onClick={() => handleClick(FateOdds.Certain)}>
+          Certainement
+        </Button>
+        <Button size='sm' onClick={() => handleClick(FateOdds.NearlyCertain)}>
+          Presque certain
+        </Button>
+        <Button size='sm' onClick={() => handleClick(FateOdds.VeryLikely)}>
+          Très probable
+        </Button>
+        <Button size='sm' onClick={() => handleClick(FateOdds.Likely)}>
+          Probable
+        </Button>
+        <Button size='sm' onClick={() => handleClick(FateOdds.FiftyFifty)}>
+          50/50
+        </Button>
+        <Button size='sm' onClick={() => handleClick(FateOdds.Unlikely)}>
+          Peu probable
+        </Button>
+        <Button size='sm' onClick={() => handleClick(FateOdds.VeryUnlikely)}>
+          Très improbable
+        </Button>
+        <Button
+          size='sm'
+          onClick={() => handleClick(FateOdds.NearlyImpossible)}
         >
-          Ask...
-        </label>
-        <TextArea
-          id='fateQuestion'
-          value={fateQuestion}
-          onChange={(e) => setFateQuestion(e.target.value)}
-        />
-      </div>
-      <div className='grid grid-cols-9 gap-4'>
-        <Button onClick={() => handleClick(FateOdds.Certain)}>Certain</Button>
-        <Button onClick={() => handleClick(FateOdds.NearlyCertain)}>
-          Nearly Certain
+          Quasi impossible
         </Button>
-        <Button onClick={() => handleClick(FateOdds.VeryLikely)}>
-          Very Likely
-        </Button>
-        <Button onClick={() => handleClick(FateOdds.Likely)}>Likely</Button>
-        <Button onClick={() => handleClick(FateOdds.FiftyFifty)}>
-          Fifty-Fifty
-        </Button>
-        <Button onClick={() => handleClick(FateOdds.Unlikely)}>Unlikely</Button>
-        <Button onClick={() => handleClick(FateOdds.VeryUnlikely)}>
-          Very Unlikely
-        </Button>
-        <Button onClick={() => handleClick(FateOdds.NearlyImpossible)}>
-          Nearly Impossible
-        </Button>
-        <Button onClick={() => handleClick(FateOdds.Impossible)}>
+        <Button size='sm' onClick={() => handleClick(FateOdds.Impossible)}>
           Impossible
         </Button>
       </div>
-      <div>
-        {fateAnswer && (
-          <p className='flex flex-col justify-center items-center font-bold text-center rounded border-2 border-solid h-25'>
-            {fateAnswer}
-          </p>
-        )}
-      </div>
-    </>
+      {fateAnswer && (
+        <p className='text-m font-bold text-center border rounded p-2 w-full bg-gray-50'>
+          {fateAnswer}
+        </p>
+      )}
+    </div>
   );
 };
 

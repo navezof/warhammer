@@ -5,14 +5,14 @@ import fateTable from './data/fateTable';
 export const rollOnFateTable = (odds: FateOdds, chaos: number): string => {
   const randomNumber = rollDie('1d100');
   if (randomNumber <= fateTable[odds][chaos - 1].low) {
-    return `Extreme Yes! (${randomNumber})`;
+    return `Oui Extrême! (${randomNumber})`;
   }
   if (randomNumber <= fateTable[odds][chaos - 1].mid) {
-    return `Yes (${randomNumber})`;
+    return `Oui (${randomNumber})`;
   }
   if (randomNumber <= fateTable[odds][chaos - 1].high) {
-    return `No (${randomNumber})`;
+    return `Non (${randomNumber})`;
   } else {
-    return `Exceptional No!(${randomNumber})`;
+    return `Non Extrême! (${randomNumber})`;
   }
 };
