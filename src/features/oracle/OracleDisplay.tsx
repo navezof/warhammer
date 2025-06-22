@@ -22,19 +22,15 @@ const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
   }, [oracle]);
 
   return (
-    <>
-      <Div>
-        <Button onClick={handleClick} className='font-bold'>
-          {oracle.name}
-        </Button>
-        {oracle.description && <p>{oracle.description}</p>}
-        {oracleAnswer && (
-          <div className='mt-6 max-w-xs text-lg font-medium text-center'>
-            {oracleAnswer}
-          </div>
-        )}
-      </Div>
-    </>
+    <div className='flex flex-col items-center p-1 space-y-2'>
+      {oracle.description && <p>{oracle.description}</p>}
+      <Button onClick={handleClick}>Roll</Button>
+      {oracleAnswer && (
+        <div className='text-m font-bold text-center border rounded p-2 w-full bg-gray-50'>
+          {oracleAnswer}
+        </div>
+      )}
+    </div>
   );
 };
 

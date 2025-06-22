@@ -32,15 +32,17 @@ export const OracleV1Page = ({ widgetId }: OracleV1PageProps) => {
   }, [selected]);
 
   return (
-    <div className='flex flex-col justify-center items-center p-4 text-white bg-gray-900'>
-      <div>
-        <TableDropdown
-          tableOptions={tableOptions}
-          selected={selected}
-          setSelected={setSelected}
-        />
+    <div className='flex justify-center items-center bg-gray-50'>
+      <div className='p-1 mx-auto space-y-1 w-full'>
+        <div className='flex flex-row justify-center items-center p-1 space-x-2'>
+          <TableDropdown
+            tableOptions={tableOptions}
+            selected={selected}
+            setSelected={setSelected}
+          />
+        </div>
+        <div>{selected && <OracleDisplay oracle={selected} />}</div>
       </div>
-      <div>{selected && <OracleDisplay oracle={selected} />}</div>
     </div>
   );
 };
