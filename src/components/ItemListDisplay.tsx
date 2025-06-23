@@ -45,7 +45,7 @@ const ItemListDisplay = ({
           <tbody>
             {itemList.map((item) => (
               <tr key={item.id}>
-                <td className="px-2 py-1 border-b">
+                <td className="px-2 py-1 border-b text-sm">
                   <div className="flex justify-between items-center">
                     <input
                       type="text"
@@ -54,6 +54,7 @@ const ItemListDisplay = ({
                     />
                     <Button
                       variant="danger"
+                      size="sm"
                       onClick={() => handleRemoveCharacter(item.id)}
                     >
                       X
