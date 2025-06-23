@@ -1,6 +1,6 @@
-import React from 'react';
-import { ItemList } from '../types/type';
-import Button from './CustomButton';
+import React from "react";
+import { ItemList } from "../types/type";
+import Button from "./CustomButton";
 
 type ItemListDisplayProps = {
   title: string;
@@ -27,7 +27,7 @@ const ItemListDisplay = ({
   const handleAddCharacter = () => {
     const newItem: ItemList = {
       id: itemList.length > 0 ? itemList[itemList.length - 1].id + 1 : 1,
-      value: '',
+      value: "",
     };
 
     setItemList([...itemList, newItem]);
@@ -38,34 +38,36 @@ const ItemListDisplay = ({
   };
 
   return (
-    <div className='w-full'>
-      <h2 className='text-lg font-bold mb-2'>{title}</h2>
-      <table className='table-auto w-full border border-gray-300'>
-        <tbody>
-          {itemList.map((item) => (
-            <tr key={item.id}>
-              <td className='px-2 py-1 border-b'>
-                <div className='flex justify-between items-center'>
-                  <input
-                    type='text'
-                    value={item.value}
-                    onChange={(e) => handleChange(item.id, e.target.value)}
-                  />
-                  <Button
-                    variant='danger'
-                    onClick={() => handleRemoveCharacter(item.id)}
-                  >
-                    X
-                  </Button>
-                </div>
-              </td>
-            </tr>
-          ))}
-          <td className='px-2 py-1 border-b'>
-            <Button onClick={handleAddCharacter}>+</Button>
-          </td>
-        </tbody>
-      </table>
+    <div className="w-full ">
+      <h2 className="text-lg font-bold mb-2">{title}</h2>
+      <div className="overflow-y-auto max-h-[200px]">
+        <table className="table-auto w-full border border-gray-300">
+          <tbody>
+            {itemList.map((item) => (
+              <tr key={item.id}>
+                <td className="px-2 py-1 border-b">
+                  <div className="flex justify-between items-center">
+                    <input
+                      type="text"
+                      value={item.value}
+                      onChange={(e) => handleChange(item.id, e.target.value)}
+                    />
+                    <Button
+                      variant="danger"
+                      onClick={() => handleRemoveCharacter(item.id)}
+                    >
+                      X
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+            <td className="px-2 py-1 border-b">
+              <Button onClick={handleAddCharacter}>+</Button>
+            </td>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
