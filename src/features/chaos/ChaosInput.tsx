@@ -43,7 +43,7 @@ const ChaosInput = () => {
         variant='secondary'
         className='font-bold'
       >
-        <span>&larr;</span>
+        <span>-</span>
       </Button>
       <Button
         onClick={() => handleClick('5')}
@@ -57,7 +57,7 @@ const ChaosInput = () => {
         variant='secondary'
         className='font-bold'
       >
-        <span>&rarr;</span>
+        <span>+</span>
       </Button>
     </div>
   );

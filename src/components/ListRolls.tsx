@@ -1,25 +1,30 @@
-import React from 'react';
-import { ItemList } from '../types/type';
-import { randomNumber } from '../utils/utils';
+import React from "react";
+import { ItemList } from "../types/type";
+import { randomNumber } from "../utils/utils";
+import Button from "./CustomButton";
 
 type ListRollProps = {
-  name: string;
   itemList: ItemList[];
 };
 
-const ListRoll = ({ name, itemList }: ListRollProps) => {
-  const [character, setCharacter] = React.useState<string>('');
+const ListRoll = ({ itemList }: ListRollProps) => {
+  const [item, setItem] = React.useState<string>("-");
 
   const onHandleClick = () => {
     const number: number = randomNumber(0, itemList.length - 1);
-    setCharacter(itemList[number]?.value || 'No character found');
+    setItem(itemList[number]?.value || "No character found");
   };
 
   return (
     <>
-      <h2>{name}</h2>
-      <button onClick={onHandleClick}>Roll on Character List</button>
-      {character && <p>{character}</p>}
+      <Button size="md" onClick={onHandleClick}>
+        Roll
+      </Button>
+      {item && (
+        <div className="text-m font-bold text-center border rounded p-2 w-full bg-gray-50">
+          {item}
+        </div>
+      )}
     </>
   );
 };
