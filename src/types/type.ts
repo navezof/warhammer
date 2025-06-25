@@ -1,4 +1,4 @@
-export type WidgetType = 'fate' | 'oracle' | 'actor';
+export type WidgetType = 'fate' | 'oracle' | 'actor' | 'npcInteraction';
 
 export interface Widget {
   id: string;
