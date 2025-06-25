@@ -7,6 +7,7 @@ import { storeItemsInLocalStorage } from '../../utils/localStorageState';
 import { useRPGToolboxContext } from '../../RPGToolboxContext';
 import { AddWidgetV1Page } from '../../pages/AddWidgetV1Page';
 import { ActorPage } from '../../pages/ActorPage';
+import { NpcInteractionWidget } from '../../pages/NpcConversationWidget';
 
 const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
 
@@ -21,6 +22,8 @@ const Dashboard: React.FC = () => {
         return <FateQuestionV1Page />;
       case 'actor':
         return <ActorPage />;
+      case 'npcInteraction':
+        return <NpcInteractionWidget />;
       default:
         return null;
     }

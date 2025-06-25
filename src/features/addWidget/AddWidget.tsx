@@ -20,6 +20,7 @@ export const AddWidget = () => {
       <option value='oracle'>Oracle</option>
       <option value='fate'>Destin</option>
       <option value='actor'>Acteur</option>
+      <option value='npcInteraction'>Interaction PNJ</option>
     </select>
-  ); //return <Button onClick={() => addWidget}>Add</Button>;
+  );
 };
