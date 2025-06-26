@@ -61,10 +61,10 @@ const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
 
   return (
     <div className="flex flex-col items-center p-1 space-y-2">
-      {oracle.description && <p>{oracle.description}</p>}
       <Button size="sm" onClick={handleShowDetails}>
         {showDetails ? "Hide" : "Show"}
       </Button>
+      {showDetails && oracle.description && <p>{oracle.description}</p>}
       {showDetails && displayOracleContent(oracle)}
       <Button onClick={handleClick}>Roll</Button>
       {oracleAnswer && (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type EnumSelectorProps<T extends string> = {
   enumObject: { [key in T]: string };
@@ -18,7 +18,7 @@ function EnumSelector<T extends string>({
   return (
     <>
       <div>
-        {label && <label>{label}</label>}
+        {label && <label>{label} </label>}
         <select value={value} onChange={(e) => onChange(e.target.value as T)}>
           {options.map((option) => (
             <option key={option} value={option}>
