@@ -1,9 +1,9 @@
 import React from 'react';
-import ChaosDisplay from '../features/chaos/ChaosDisplay';
-import ChaosInput from '../features/chaos/ChaosInput';
-import FateInput from '../features/fate/FateInput';
+import ChaosDisplay from '../chaos/ChaosDisplay';
+import ChaosInput from '../chaos/ChaosInput';
+import FateInput from './FateInput';
 
-export const FateQuestionV1Page = () => {
+export const FateQuestionWidget = () => {
   return (
     <div className='flex justify-center items-center bg-gray-50'>
       <div className='p-1 mx-auto space-y-1 w-full'>

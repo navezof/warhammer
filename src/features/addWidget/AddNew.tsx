@@ -2,15 +2,15 @@ import React from 'react';
 import { useRPGToolboxContext } from '../../RPGToolboxContext';
 import { WidgetType } from '../../types/type';
 
-export const AddWidget = () => {
-  const { addWidget } = useRPGToolboxContext();
+export const AddNew = () => {
+  const { addNew } = useRPGToolboxContext();
 
   return (
     <select
       className='p-2 text-gray-700 rounded border cursor-pointer hover:border-gray-400'
       defaultValue=''
       onChange={(e) => {
-        addWidget(e.target.value as WidgetType);
+        addNew(e.target.value as WidgetType);
         e.target.value = '';
       }}
     >
@@ -21,6 +21,7 @@ export const AddWidget = () => {
       <option value='fate'>Destin</option>
       <option value='actor'>Acteur</option>
       <option value='npcInteraction'>Interaction PNJ</option>
+      <option value='sceneAdjustement'>Ajustement de Scène</option>
     </select>
   );
 };

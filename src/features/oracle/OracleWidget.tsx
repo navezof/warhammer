@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
-import { ageTable, npcQualities } from '../data/oracleTable';
-import OracleDisplay from '../features/oracle/OracleDisplay';
-import TableDropdown from '../components/TableDropdown';
-import themeTable from '../data/themeTable';
-import verbTable from '../data/verbTable';
-import { Table } from '../types/type';
+import { ageTable, npcQualities } from '../../data/oracleTable';
+import OracleDisplay from './OracleDisplay';
+import TableDropdown from '../../components/TableDropdown';
+import themeTable from '../../data/themeTable';
+import verbTable from '../../data/verbTable';
+import { Table } from '../../types/type';
 import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
-} from '../utils/localStorageState';
+} from '../../utils/localStorageState';
 
 const tableOptions: Table[] = [ageTable, npcQualities, themeTable, verbTable];
 
-type OracleV1PageProps = {
+type OracleWidgetProps = {
   widgetId: string;
 };
 
-export const OracleV1Page = ({ widgetId }: OracleV1PageProps) => {
+export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
   const ORACLE_STORAGE_KEY_SUFFIX = 'ORACLE_STORAGE_KEY_SUFFIX';
   const [selected, setSelected] = React.useState<Table | null>(
     loadFromLocalStorage(`${widgetId}_${ORACLE_STORAGE_KEY_SUFFIX}`) || null

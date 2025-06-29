@@ -13,7 +13,7 @@ type RPGToolboxState = {
   setFateAnswer: (value: string) => void;
 
   widgets: Widget[];
-  addWidget: (type: WidgetType) => void;
+  addNew: (type: WidgetType) => void;
   removeWidget: (id: string) => void;
 };
 
@@ -27,7 +27,7 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
     loadFromLocalStorage(DASHBOARD_WIDGET_STORAGE_KEY) || []
   );
 
-  const addWidget = (type: WidgetType) => {
+  const addNew = (type: WidgetType) => {
     const newWidget: Widget = {
       id: crypto.randomUUID(),
       type,
@@ -53,7 +53,7 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
         fateAnswer,
         setFateAnswer,
         widgets,
-        addWidget,
+        addNew,
         removeWidget,
       }}
     >

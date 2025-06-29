@@ -1,13 +1,17 @@
 import React, { useEffect } from 'react';
-import { OracleV1Page } from '../../pages/OracleV1Page';
-import { FateQuestionV1Page } from '../../pages/FateQuestionV1Page';
+import { OracleWidget } from '../oracle/OracleWidget';
+import { FateQuestionWidget } from '../fate/FateQuestionWidget';
 import { WidgetItem } from './WidgetItem';
 import { Widget } from '../../types/type';
 import { storeItemsInLocalStorage } from '../../utils/localStorageState';
-import { useRPGToolboxContext } from '../../RPGToolboxContext';
-import { AddWidgetV1Page } from '../../pages/AddWidgetV1Page';
-import { ActorPage } from '../../pages/ActorPage';
-import { NpcInteractionWidget } from '../../pages/NpcConversationWidget';
+import {
+  RPGToolboxProvider,
+  useRPGToolboxContext,
+} from '../../RPGToolboxContext';
+import { AddNewWidget } from '../addWidget/AddNewWidget';
+import { NpcInteractionWidget } from '../npcConversation/NpcConversationWidget';
+import { ActorWidget } from '../../actor/ActorWidget';
+import { Outlet } from 'react-router-dom';
 
 const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
 
@@ -17,11 +21,11 @@ const Dashboard: React.FC = () => {
   const renderWidget = (widget: Widget) => {
     switch (widget.type) {
       case 'oracle':
-        return <OracleV1Page widgetId={widget.id} />;
+        return <OracleWidget widgetId={widget.id} />;
       case 'fate':
-        return <FateQuestionV1Page />;
+        return <FateQuestionWidget />;
       case 'actor':
-        return <ActorPage />;
+        return <ActorWidget />;
       case 'npcInteraction':
         return <NpcInteractionWidget />;
       default:
@@ -35,21 +39,28 @@ const Dashboard: React.FC = () => {
   );
 
   return (
-    <div className='p-4'>
-      <div className='grid grid-cols-3 auto-rows-fr gap-4 md:auto-cols-fr'>
-        {widgets.map((widget: Widget) => (
-          <WidgetItem
-            key={widget.id}
-            id={widget.id}
-            type={widget.type}
-            removeWidget={removeWidget}
-          >
-            {renderWidget(widget)}
-          </WidgetItem>
-        ))}
+    <RPGToolboxProvider>
+      <div>
+        <main>
+          <Outlet />
+          <div className='p-4'>
+            <div className='grid grid-cols-3 auto-rows-fr gap-4 md:auto-cols-fr'>
+              {widgets.map((widget: Widget) => (
+                <WidgetItem
+                  key={widget.id}
+                  id={widget.id}
+                  type={widget.type}
+                  removeWidget={removeWidget}
+                >
+                  {renderWidget(widget)}
+                </WidgetItem>
+              ))}
+            </div>
+            <AddNewWidget />
+          </div>
+        </main>
       </div>
-      <AddWidgetV1Page />
-    </div>
+    </RPGToolboxProvider>
   );
 };
 
