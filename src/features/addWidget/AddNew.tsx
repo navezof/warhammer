@@ -21,7 +21,7 @@ export const AddNew = () => {
       <option value='fate'>Destin</option>
       <option value='actor'>Acteur</option>
       <option value='npcInteraction'>Interaction PNJ</option>
-      <option value='sceneAdjustement'>Ajustement de Scène</option>
+      <option value='scene'>Scène</option>
     </select>
   );
 };

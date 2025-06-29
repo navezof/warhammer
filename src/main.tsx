@@ -4,11 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import CreatureDisplay from './features/creatureGenerator/CreatureDisplay';
 import NPCHandler from './features/npcConversation/NPCConversationHandler';
-import FateInput from './features/fate/FateInput';
 import { FateQuestionWidget } from './features/fate/FateQuestionWidget';
-import { OracleWidget } from './features/oracle/OracleWidget';
-import { DashboardPage } from './features/dashboard/DashboardPage';
-import { AddNewWidget } from './features/addWidget/AddNewWidget';
+import { Scene } from './features/scene/Scene';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: 'npc',
         element: <NPCHandler />,
+      },
+      {
+        path: 'scene',
+        element: <Scene />,
       },
     ],
   },

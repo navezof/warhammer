@@ -10,8 +10,10 @@ import {
 } from '../../RPGToolboxContext';
 import { AddNewWidget } from '../addWidget/AddNewWidget';
 import { NpcInteractionWidget } from '../npcConversation/NpcConversationWidget';
-import { ActorWidget } from '../../actor/ActorWidget';
+import { ActorWidget } from '../actor/ActorWidget';
 import { Outlet } from 'react-router-dom';
+import { Scene } from '../scene/Scene';
+import { ThreadWidget } from '../thread/ThreadWidget';
 
 const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
 
@@ -28,6 +30,8 @@ const Dashboard: React.FC = () => {
         return <ActorWidget />;
       case 'npcInteraction':
         return <NpcInteractionWidget />;
+      case 'scene':
+        return <Scene />;
       default:
         return null;
     }
