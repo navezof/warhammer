@@ -2,6 +2,7 @@ export type WidgetType =
   | 'fate'
   | 'oracle'
   | 'actor'
+  | 'thread'
   | 'npcInteraction'
   | 'scene';
 

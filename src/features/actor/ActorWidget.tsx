@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import ItemListDisplay from '../components/ItemListDisplay';
-import { ItemList } from '../types/type';
-import ListRoll from '../components/ListRolls';
+import ItemListDisplay from '../../components/ItemListDisplay';
+import { ItemList } from '../../types/type';
+import ListRoll from '../../components/ListRolls';
 import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
-} from '../utils/localStorageState';
+} from '../../utils/localStorageState';
 
 const LIST_ACTOR_STORAGE_KEY = 'listActor';
 

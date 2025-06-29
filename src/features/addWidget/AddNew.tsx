@@ -20,6 +20,7 @@ export const AddNew = () => {
       <option value='oracle'>Oracle</option>
       <option value='fate'>Destin</option>
       <option value='actor'>Acteur</option>
+      <option value='thread'>Intrigue</option>
       <option value='npcInteraction'>Interaction PNJ</option>
       <option value='scene'>Scène</option>
     </select>

@@ -32,6 +32,8 @@ const Dashboard: React.FC = () => {
         return <NpcInteractionWidget />;
       case 'scene':
         return <Scene />;
+      case 'thread':
+        return <ThreadWidget />;
       default:
         return null;
     }
