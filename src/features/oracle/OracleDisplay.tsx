@@ -17,6 +17,17 @@ type OracleProps = {
 const ORACLE_SHOW_DETAILS_STORAGE_KEY = "oracleShowDetails";
 
 const displayOracleContent = (oracle: Table) => {
+  if (
+    !oracle ||
+    !Array.isArray(oracle.content) ||
+    oracle.content.length === 0
+  ) {
+    return (
+      <div className="text-center text-gray-500 font-italic">
+        Aucun contenu à afficher pour cette table.
+      </div>
+    );
+  }
   return (
     <div className="overflow-y-auto max-h-[200px]">
       <tbody>
