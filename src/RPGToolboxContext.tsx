@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { createContext, PropsWithChildren, useContext } from 'react';
-import { Widget, WidgetType } from './types/type';
+import React, { useEffect } from "react";
+import { createContext, PropsWithChildren, useContext } from "react";
+import { Widget, WidgetType } from "./types/type";
 import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
-} from './utils/localStorageState';
+} from "./utils/localStorageState";
 
 type RPGToolboxState = {
   chaos: number;
@@ -17,12 +17,12 @@ type RPGToolboxState = {
   removeWidget: (id: string) => void;
 };
 
-const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
+const DASHBOARD_WIDGET_STORAGE_KEY = "widgets";
 const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
 export function RPGToolboxProvider({ children }: PropsWithChildren) {
   const [chaos, setChaos] = React.useState<number>(5);
-  const [fateAnswer, setFateAnswer] = React.useState<string>('-');
+  const [fateAnswer, setFateAnswer] = React.useState<string>("-");
   const [widgets, setWidgets] = React.useState<Widget[]>(
     loadFromLocalStorage(DASHBOARD_WIDGET_STORAGE_KEY) || []
   );
@@ -65,6 +65,6 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
 export function useRPGToolboxContext() {
   const rpgToolboxContext = useContext(RPGToolBoxContext);
   if (!rpgToolboxContext)
-    throw new Error('useRPGToolbox must be used in <RPGToolboxProvider>');
+    throw new Error("useRPGToolbox must be used in <RPGToolboxProvider>");
   return rpgToolboxContext;
 }
