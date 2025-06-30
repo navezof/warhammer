@@ -26,7 +26,7 @@ const NPCHandler = () => {
           onChange={setSelectedNPCRelationship}
           label="Quel relation as-tu avec ce PNJ ?"
         />
-        <p>
+        <span>
           Lance sur la table d'
           <TableInTooltip
             text={"Humeur"}
@@ -36,7 +36,7 @@ const NPCHandler = () => {
             table={relationshipTableMap[selectedNPCRelationship]}
           />
           pour savoir l'humeur du PNJ lors de cette conversation.
-        </p>
+        </span>
         <EnumSelector
           enumObject={NpcDisposition}
           value={selectedNPCDisposition}

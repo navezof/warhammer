@@ -63,9 +63,11 @@ const ItemListDisplay = ({
                 </td>
               </tr>
             ))}
-            <td className="px-2 py-1 border-b">
-              <Button onClick={handleAddCharacter}>+</Button>
-            </td>
+            <tr>
+              <td className="px-2 py-1 border-b">
+                <Button onClick={handleAddCharacter}>+</Button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
