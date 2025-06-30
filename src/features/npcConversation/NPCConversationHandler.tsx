@@ -7,6 +7,7 @@ import OracleDisplay from "../oracle/OracleDisplay";
 import { npcConversationFocusTable } from "./data/npcConversationFocusTable";
 import { npcBearingTable } from "./data/npcBeartingTable";
 import { npcDispositionTable } from "./data/npcDispositionTable";
+import { RollOnTableIcon } from "../../components/RollOnTableIcon";
 
 const NPCHandler = () => {
   const [selectedNPCRelationship, setSelectedNPCRelationship] =
@@ -25,8 +26,13 @@ const NPCHandler = () => {
           label="Quel relation as-tu avec ce PNJ ?"
         />
         <p>
-          Lance sur la table d'Humeur pour savoir l'humeur du PNJ lors de cette
-          conversation.
+          Lance sur la table d'Humeur{" "}
+          <span>
+            <RollOnTableIcon
+              table={relationshipTableMap[selectedNPCRelationship]}
+            />
+          </span>{" "}
+          pour savoir l'humeur du PNJ lors de cette conversation.
         </p>
         <OracleDisplay oracle={relationshipTableMap[selectedNPCRelationship]} />
         <EnumSelector
