@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { ageTable, npcQualities } from '../../data/oracleTable';
-import OracleDisplay from './OracleDisplay';
-import TableDropdown from '../../components/TableDropdown';
-import themeTable from '../../data/themeTable';
-import verbTable from '../../data/verbTable';
-import { Table } from '../../types/type';
+import React, { useEffect } from "react";
+import { ageTable, npcQualities } from "../../data/oracleTable";
+import OracleDisplay from "./OracleDisplay";
+import TableDropdown from "../../components/TableDropdown";
+import themeTable from "../../data/themeTable";
+import verbTable from "../../data/verbTable";
+import { Table } from "../../types/type";
 import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
-} from '../../utils/localStorageState';
+} from "../../utils/localStorageState";
 
 const tableOptions: Table[] = [ageTable, npcQualities, themeTable, verbTable];
 
@@ -17,7 +17,7 @@ type OracleWidgetProps = {
 };
 
 export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
-  const ORACLE_STORAGE_KEY_SUFFIX = 'ORACLE_STORAGE_KEY_SUFFIX';
+  const ORACLE_STORAGE_KEY_SUFFIX = "ORACLE_STORAGE_KEY_SUFFIX";
   const [selected, setSelected] = React.useState<Table | null>(
     loadFromLocalStorage(`${widgetId}_${ORACLE_STORAGE_KEY_SUFFIX}`) || null
   );
@@ -32,9 +32,9 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
   }, [selected]);
 
   return (
-    <div className='flex justify-center items-center bg-gray-50'>
-      <div className='p-1 mx-auto space-y-1 w-full'>
-        <div className='flex flex-row justify-center items-center p-1 space-x-2'>
+    <div className="flex justify-center items-center bg-gray-50 h-full">
+      <div className="p-1 mx-auto space-y-1 w-full">
+        <div className="flex flex-row justify-center items-center p-1 space-x-2">
           <TableDropdown
             tableOptions={tableOptions}
             selected={selected}

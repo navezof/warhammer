@@ -1,9 +1,10 @@
-import React, { PropsWithChildren } from 'react';
-import Button from '../../components/CustomButton';
+import React, { PropsWithChildren } from "react";
+import Button from "../../components/CustomButton";
 
 type WidgetItemProps = PropsWithChildren & {
   id: string;
   type: string;
+  className?: string;
   removeWidget: (id: string) => void;
 };
 
@@ -13,14 +14,15 @@ export const WidgetItem = ({
   children,
   id,
   type,
+  className = "",
   removeWidget,
 }: WidgetItemProps) => {
   return (
-    <div className='relative p-4 bg-gray-800 rounded-lg'>
-      <header className='text-lg font-bold text-white mb-2'>{type}</header>
-      <div className='pt-2'>{children}</div>
-      <div className='absolute top-2 right-2'>
-        <Button onClick={() => removeWidget(id)} className='!p-2'>
+    <div className={`relative ${className}`}>
+      <header className="text-lg font-bold text-white mb-2">{type}</header>
+      <div className="pt-2 flex-1 flex flex-col h-[90%]">{children}</div>
+      <div className="absolute top-2 right-2">
+        <Button onClick={() => removeWidget(id)} className="!p-2">
           X
         </Button>
       </div>
