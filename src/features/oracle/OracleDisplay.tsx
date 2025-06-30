@@ -30,18 +30,20 @@ const displayOracleContent = (oracle: Table) => {
   }
   return (
     <div className="overflow-y-auto max-h-[200px]">
-      <tbody>
-        {oracle.content.map((content, index) => (
-          <tr key={index}>
-            <td className="px-2 py-1 border-b border-r text-sm">
-              {content.split(";")[0]}
-            </td>
-            <td className="px-2 py-1 border-b text-sm">
-              {content.split(";")[1]}
-            </td>
-          </tr>
-        ))}
-      </tbody>
+      <table className="w-full">
+        <tbody>
+          {oracle.content.map((content, index) => (
+            <tr key={index}>
+              <td className="px-2 py-1 border-b border-r text-sm">
+                {content.split(";")[0]}
+              </td>
+              <td className="px-2 py-1 border-b text-sm">
+                {content.split(";")[1]}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
