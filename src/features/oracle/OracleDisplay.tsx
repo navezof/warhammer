@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { rollOnTable } from "../../utils/rolls";
 import { Table } from "../../types/type";
-import Button from "../../components/CustomButton";
-import Div from "../../components/CustomDiv";
 import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
+import { FaDice } from "react-icons/fa";
 
 type OracleProps = {
   oracle: Table;
@@ -47,7 +46,7 @@ const displayOracleContent = (oracle: Table) => {
 };
 
 const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
-  const [oracleAnswer, setOracleAnswer] = React.useState<string | null>("-");
+  const [oracleAnswer, setOracleAnswer] = React.useState<string | null>(null);
   const [showDetails, setShowDetails] = React.useState<boolean | null>(
     loadFromLocalStorage(ORACLE_SHOW_DETAILS_STORAGE_KEY) || false
   );
@@ -61,7 +60,7 @@ const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
   };
 
   useEffect(() => {
-    setOracleAnswer("-");
+    setOracleAnswer(null);
   }, [oracle]);
 
   useEffect(
@@ -71,20 +70,21 @@ const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
   );
 
   return (
-    <div className="flex flex-col items-center p-1 space-y-2 h-full w-full">
-      <Button size="sm" onClick={handleShowDetails}>
-        {showDetails ? "Hide" : "Show"}
-      </Button>
+    <div>
+      {" "}
       {showDetails && oracle.description && <p>{oracle.description}</p>}
       <div className="overflow-y-auto max-h-[100px]">
         {showDetails && displayOracleContent(oracle)}
       </div>
-      <Button onClick={handleClick}>Roll</Button>
-      {oracleAnswer && (
-        <div className="text-m font-bold text-center border rounded p-2 w-full bg-gray-50">
-          {oracleAnswer}
-        </div>
-      )}
+      <button onClick={handleClick}>
+        {oracleAnswer ? (
+          <div className="text-m font-bold text-center p-2 w-full bg-gray-50">
+            {oracleAnswer}
+          </div>
+        ) : (
+          <FaDice className="w-5 h-5 text-gray-700" />
+        )}
+      </button>
     </div>
   );
 };

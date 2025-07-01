@@ -9,6 +9,7 @@ import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
+import { TableInTooltip } from "../../components/TableInTooltip";
 
 const tableOptions: Table[] = [ageTable, npcQualities, themeTable, verbTable];
 
@@ -33,15 +34,24 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
 
   return (
     <div className="flex justify-center items-center bg-gray-50 h-full">
-      <div className="p-1 mx-auto space-y-1 w-full">
-        <div className="flex flex-row justify-center items-center p-1 space-x-2">
+      <div className="flex flex-col h-full p-1 mx-auto space-y-1 w-full">
+        <div className="flex flex-row justify-center p-1 space-x-2">
           <TableDropdown
             tableOptions={tableOptions}
             selected={selected}
             setSelected={setSelected}
           />
+          {selected && (
+            <TableInTooltip
+              text={selected.name}
+              table={selected}
+              useIcon={true}
+            />
+          )}
         </div>
-        <div>{selected && <OracleDisplay oracle={selected} />}</div>
+        <div className="flex justify-center items-center w-full h-full">
+          {selected && <OracleDisplay oracle={selected} />}
+        </div>
       </div>
     </div>
   );
