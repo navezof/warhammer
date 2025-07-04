@@ -6,6 +6,7 @@ import {
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 import { FaDice } from "react-icons/fa";
+import { RollOnAnswer } from "../../components/RollOnAnswer";
 
 type OracleProps = {
   oracle: Table;
@@ -76,15 +77,7 @@ const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
       <div className="overflow-y-auto max-h-[100px]">
         {showDetails && displayOracleContent(oracle)}
       </div>
-      <button onClick={handleClick}>
-        {oracleAnswer ? (
-          <div className="text-m font-bold text-center p-2 w-full bg-gray-50">
-            {oracleAnswer}
-          </div>
-        ) : (
-          <FaDice className="w-5 h-5 text-gray-700" />
-        )}
-      </button>
+      <RollOnAnswer answer={oracleAnswer} handleClick={handleClick} />
     </div>
   );
 };
