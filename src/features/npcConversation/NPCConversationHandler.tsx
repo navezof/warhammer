@@ -18,7 +18,7 @@ const NPCHandler = () => {
     React.useState<NpcDisposition>(NpcDisposition.Friendly);
 
   return (
-    <div className="flex flex-col justify-center items-right bg-gray-50 p-2 space-y-2 h-full">
+    <div className="items-right">
       <EnumSelector
         enumObject={NPCRelationship}
         value={selectedNPCRelationship}

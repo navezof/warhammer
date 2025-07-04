@@ -1,16 +1,20 @@
-import React from 'react';
-import { rollDie } from '../../utils/rolls';
-import Button from '../../components/CustomButton';
+import React from "react";
+import { rollDie } from "../../utils/rolls";
+import Button from "../../components/CustomButton";
+import { FaDice } from "react-icons/fa";
+import { RollOnAnswer } from "../../components/RollOnAnswer";
 
 type ChaosProps = {
   chaos: number;
 };
 
 const SceneAlterationDisplay = ({ chaos }: ChaosProps) => {
-  const [sceneAlteration, setSceneAlteration] = React.useState<string>('-');
+  const [sceneAlteration, setSceneAlteration] = React.useState<string | null>(
+    null
+  );
 
   const handleClick = () => {
-    const d10 = rollDie('1d10');
+    const d10 = rollDie("1d10");
     if (d10 > chaos) {
       setSceneAlteration(`(${d10}) La scène se déroule comme imaginé.`);
     } else if (d10 % 2 === 0) {
@@ -26,14 +30,9 @@ const SceneAlterationDisplay = ({ chaos }: ChaosProps) => {
 
   return (
     <>
-      <div className='flex flex-col justify-center items-center bg-gray-50 p-2 space-y-2'>
+      <div className="flex flex-col justify-center items-center p-2 space-y-2">
         <p>Comment se déroule la scène?</p>
-        <Button onClick={handleClick}>Tester la scène</Button>
-        {sceneAlteration && (
-          <p className='text-m font-bold text-center border rounded p-2 w-full bg-gray-50'>
-            {sceneAlteration}
-          </p>
-        )}
+        <RollOnAnswer answer={sceneAlteration} handleClick={handleClick} />
       </div>
     </>
   );

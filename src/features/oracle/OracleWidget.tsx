@@ -33,9 +33,9 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
   }, [selected]);
 
   return (
-    <div className="flex justify-center items-center bg-gray-50 h-full">
-      <div className="flex flex-col h-full p-1 mx-auto space-y-1 w-full">
-        <div className="flex flex-row justify-center p-1 space-x-2">
+    <div className="flex justify-center h-full">
+      <div className="flex flex-col h-full">
+        <div className="flex flex-row justify-center space-x-2">
           <TableDropdown
             tableOptions={tableOptions}
             selected={selected}

@@ -1,27 +1,23 @@
-import React from 'react';
-import sceneAdjustementTable from './data/sceneAdjustementTable';
-import { rollOnTable } from '../../utils/rolls';
-import Button from '../../components/CustomButton';
+import React from "react";
+import sceneAdjustementTable from "./data/sceneAdjustementTable";
+import { rollOnTable } from "../../utils/rolls";
+import Button from "../../components/CustomButton";
+import { RollOnAnswer } from "../../components/RollOnAnswer";
 
 const SceneAdjustement: React.FC = () => {
-  const [sceneAdjustement, setSceneAdjustement] = React.useState<string>('-');
+  const [sceneAdjustement, setSceneAdjustement] = React.useState<string | null>(
+    null
+  );
 
   const handleClick = () => {
     setSceneAdjustement(rollOnTable(sceneAdjustementTable));
   };
 
   return (
-    <>
-      <div className='flex flex-col justify-center items-center bg-gray-50 p-2 space-y-2'>
-        <p>Si la scène est modifié, tirer la nature de la modification</p>
-        <Button onClick={handleClick}>Modifier la scène</Button>
-        {sceneAdjustement && (
-          <p className='text-m font-bold text-center border rounded p-2 w-full bg-gray-50'>
-            {sceneAdjustement}
-          </p>
-        )}
-      </div>
-    </>
+    <div className="flex flex-col justify-center items-center p-2 space-y-2">
+      <p>Si la scène est modifié, tirer la nature de la modification</p>
+      <RollOnAnswer answer={sceneAdjustement} handleClick={handleClick} />
+    </div>
   );
 };
 

@@ -23,7 +23,7 @@ export const ThreadWidget = () => {
   }, [itemList]);
 
   return (
-    <div className="flex flex-col justify-center items-center bg-gray-50 p-2 space-y-2 h-full">
+    <div className="flex flex-col justify-center items-center p-2 space-y-2">
       <ItemListDisplay
         title={"Intrigue"}
         itemList={itemList}

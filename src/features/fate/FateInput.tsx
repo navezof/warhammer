@@ -15,7 +15,7 @@ const FateInput = () => {
   };
 
   return (
-    <div className="flex flex-col items-center p-1 space-y-2">
+    <div className="p-1">
       <div className="grid grid-cols-3 gap-2 w-full">
         <Button size="sm" onClick={() => handleClick(FateOdds.Certain)}>
           Certainement
@@ -48,11 +48,13 @@ const FateInput = () => {
           Impossible
         </Button>
       </div>
-      {fateAnswer && (
-        <p className="text-m font-bold text-center border rounded p-2 w-full bg-gray-50">
-          {fateAnswer}
-        </p>
-      )}
+      <div className="py-2 w-full">
+        {fateAnswer && (
+          <p className="text-m font-bold text-center border rounded p-2 w-full">
+            {fateAnswer}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
