@@ -1,32 +1,21 @@
-import React from 'react';
-import { ItemList } from '../types/type';
-import { randomNumber } from '../utils/utils';
-import Button from './CustomButton';
+import React from "react";
+import { ItemList } from "../types/type";
+import { randomNumber } from "../utils/utils";
+import { RollOnAnswer } from "./RollOnAnswer";
 
 type ListRollProps = {
   itemList: ItemList[];
 };
 
 const ListRoll = ({ itemList }: ListRollProps) => {
-  const [item, setItem] = React.useState<string>('-');
+  const [item, setItem] = React.useState<string | null>(null);
 
   const onHandleClick = () => {
     const number: number = randomNumber(0, itemList.length - 1);
-    setItem(itemList[number]?.value || 'No item found');
+    setItem(itemList[number]?.value || "No item found");
   };
 
-  return (
-    <>
-      <Button size='md' onClick={onHandleClick}>
-        Roll
-      </Button>
-      {item && (
-        <div className='text-m font-bold text-center border rounded p-2 w-full bg-gray-50'>
-          {item}
-        </div>
-      )}
-    </>
-  );
+  return <RollOnAnswer answer={item} handleClick={onHandleClick} />;
 };
 
 export default ListRoll;
