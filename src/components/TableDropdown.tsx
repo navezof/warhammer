@@ -1,12 +1,5 @@
-import React from 'react';
-import { ageTable, npcQualities } from '../data/oracleTable';
-import themeTable from '../data/themeTable';
-import verbTable from '../data/verbTable';
-import { Table } from '../types/type';
-import Div from './CustomDiv';
-import OracleDisplay from '../features/oracle/OracleDisplay';
-
-// const tableOptions: Table[] = [ageTable, npcQualities, themeTable, verbTable];
+import React from "react";
+import { Table } from "../types/type";
 
 type TableDropdownProps = {
   tableOptions: Table[];
@@ -21,8 +14,8 @@ function TableDropdown({
 }: TableDropdownProps) {
   return (
     <select
-      className='p-2 text-white bg-gray-800 rounded-md shadow-sm outline-none focus:ring-2 focus:ring-indigo-500'
-      value={selected?.name || ''}
+      className="p-2 text-white bg-gray-800 rounded-md shadow-sm outline-none focus:ring-2 focus:ring-indigo-500"
+      value={selected?.name || ""}
       onChange={(e) => {
         const option = tableOptions.find(
           (option) => option.name === e.target.value
@@ -30,7 +23,7 @@ function TableDropdown({
         setSelected(option || null);
       }}
     >
-      <option value=''>Select a table</option>
+      <option value="">Select a table</option>
       {tableOptions.map((option) => (
         <option key={option.name} value={option.name}>
           {option.name}

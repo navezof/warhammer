@@ -4,10 +4,7 @@ import { FateQuestionWidget } from "../fate/FateQuestionWidget";
 import { WidgetItem } from "./WidgetItem";
 import { Widget } from "../../types/type";
 import { storeItemsInLocalStorage } from "../../utils/localStorageState";
-import {
-  RPGToolboxProvider,
-  useRPGToolboxContext,
-} from "../../RPGToolboxContext";
+import { useRPGToolboxContext } from "../../RPGToolboxContext";
 import { AddNewWidget } from "../addWidget/AddNewWidget";
 import { NpcInteractionWidget } from "../npcConversation/NpcConversationWidget";
 import { ActorWidget } from "../actor/ActorWidget";
