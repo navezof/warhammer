@@ -51,7 +51,7 @@ const Dashboard: React.FC = () => {
             {widgets.map((widget: Widget) => (
               <WidgetItem
                 key={widget.id}
-                className="p-2 bg-gray-800 rounded-lg overflow-y-auto max-h-[400px] h-full w-full"
+                className="p-2 bg-gray-800 rounded-lg max-h-[400px] h-full w-full"
                 id={widget.id}
                 type={widget.type}
                 removeWidget={removeWidget}
