@@ -18,44 +18,45 @@ const NPCHandler = () => {
     React.useState<NpcDisposition>(NpcDisposition.Friendly);
 
   return (
-    <div className="flex justify-center items-center bg-gray-50 px-2 py-4">
+    <div className="flex flex-col justify-center items-right bg-gray-50 p-2 space-y-2 h-full">
+      <EnumSelector
+        enumObject={NPCRelationship}
+        value={selectedNPCRelationship}
+        onChange={setSelectedNPCRelationship}
+        label="Relation avec le PNJ ?"
+      />
       <div>
-        <EnumSelector
-          enumObject={NPCRelationship}
-          value={selectedNPCRelationship}
-          onChange={setSelectedNPCRelationship}
-          label="Quel relation as-tu avec ce PNJ ?"
+        <TableInTooltip
+          text={"Humeur"}
+          table={relationshipTableMap[selectedNPCRelationship]}
         />
-        <span>
-          Lance sur la table d'
-          <TableInTooltip
-            text={"Humeur"}
-            table={relationshipTableMap[selectedNPCRelationship]}
-          />
+        <span className="italic">
           <RollOnTableIcon
             table={relationshipTableMap[selectedNPCRelationship]}
           />
-          pour savoir l'humeur du PNJ lors de cette conversation.
-        </span>
-        <EnumSelector
-          enumObject={NpcDisposition}
-          value={selectedNPCDisposition}
-          onChange={setSelectedNPCDisposition}
-          label="Quel est l'attitude du PNJ lors de cette conversation?"
-        />
-        <span>
-          Si jamais tu préfère, tu peux lancer sur la table d'
-          <TableInTooltip text={"Attitude"} table={npcDispositionTable} />
-          <RollOnTableIcon table={npcDispositionTable} />
-        </span>
-        <span>
-          Lance sur la table d'
-          <TableInTooltip text={"Interet"} table={npcConversationFocusTable} />
-          <RollOnTableIcon table={npcConversationFocusTable} /> pour savoir sur
-          quel sujet le PNJ s'interesse particulièrement lors de cette
-          conversation.
-        </span>
+        </span>{" "}
       </div>
+      <span>
+        <TableInTooltip text={"Attitude"} table={npcDispositionTable} />
+        <span className="italic">
+          <RollOnTableIcon table={npcDispositionTable} />
+        </span>{" "}
+      </span>
+      <EnumSelector
+        enumObject={NpcDisposition}
+        value={selectedNPCDisposition}
+        onChange={setSelectedNPCDisposition}
+        label="Attitude du PNJ"
+      />
+      <span>
+        <TableInTooltip
+          text={"Sujet d'interet"}
+          table={npcConversationFocusTable}
+        />
+        <span className="italic">
+          <RollOnTableIcon table={npcConversationFocusTable} />
+        </span>{" "}
+      </span>
     </div>
   );
 };
