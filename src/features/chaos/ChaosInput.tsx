@@ -9,6 +9,7 @@ const ChaosInput = () => {
     if (change.includes('+')) {
       const number = parseInt(change.replace('+', ''));
       if (!isNaN(number)) {
+        if (chaos == 9) return;
         setChaos(chaos + 1);
         console.log(`Chaos increased by 1.`);
         return;
@@ -19,6 +20,7 @@ const ChaosInput = () => {
     if (change.includes('-')) {
       const number = parseInt(change.replace('-', ''));
       if (!isNaN(number)) {
+        if (chaos == 1) return;
         setChaos(chaos - 1);
         console.log(`Chaos increased by 1.`);
         return;
