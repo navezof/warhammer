@@ -13,7 +13,6 @@ import {
 import { combine } from '@atlaskit/pragmatic-drag-and-drop/combine';
 import Button from '../../components/CustomButton';
 import { css, type SerializedStyles } from '@emotion/react';
-import { token } from '@atlaskit/tokens';
 import { useRPGToolboxContext } from '../../RPGToolboxContext';
 
 type WidgetItemProps = PropsWithChildren & {
@@ -29,7 +28,7 @@ type State = 'idle' | 'dragging' | 'over';
 const itemStateStyles: { [Key in State]: undefined | SerializedStyles } = {
   idle: css({
     ':hover': {
-      boxShadow: token('elevation.shadow.overlay', 'none'),
+      boxShadow: 'elevation.shadow.overlay',
     },
   }),
   dragging: css({
