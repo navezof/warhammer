@@ -33,7 +33,7 @@ const itemStateStyles: { [Key in State]: undefined | SerializedStyles } = {
     },
   }),
   dragging: css({
-    filter: 'grayscale(0.8)',
+    filter: 'opacity(0.8)',
   }),
   over: css({
     transform: 'translateY(10px)',
