@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Table } from "../types/type";
-import { FaEye } from "react-icons/fa";
+import { RpgIcon } from "./RpgIcon";
 
 type TableInTooltipProps = {
   text: string;
@@ -37,7 +37,7 @@ export const TableInTooltip = ({
 
   function renderTitle() {
     if (useIcon) {
-      return <FaEye className="w-5 h-5 text-gray-700" />;
+      return <RpgIcon iconType="eye" />;
     }
     return <>{text}</>;
   }
@@ -50,7 +50,7 @@ export const TableInTooltip = ({
       {showTooltip && (
         <div
           ref={tooltipRef}
-          className="absolute left-10 z-10 w-64 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded shadow-lg p-2 w-full"
+          className="absolute left-10 z-10 w-64 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded shadow-lg p-2"
         >
           <table className="w-full text-sm">
             <tbody>

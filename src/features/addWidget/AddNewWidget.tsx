@@ -1,5 +1,4 @@
-import React from 'react';
-import { AddNew } from './AddNew';
+import { AddNew } from "./AddNew";
 
 export const AddNewWidget = () => {
   return (

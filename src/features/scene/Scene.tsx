@@ -1,4 +1,3 @@
-import React from "react";
 import SceneAdjustement from "./SceneAdjustement";
 import SceneAlterationDisplay from "./SceneAlterationDisplay";
 import { useChaos } from "../chaos/useChaos";

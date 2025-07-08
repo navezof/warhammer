@@ -1,13 +1,12 @@
-import React from 'react';
-import { useChaos } from './useChaos';
-import Button from '../../components/CustomButton';
+import { useChaos } from "./useChaos";
+import Button from "../../components/CustomButton";
 
 const ChaosInput = () => {
   const { chaos, setChaos } = useChaos();
 
   const handleClick = (change: string) => {
-    if (change.includes('+')) {
-      const number = parseInt(change.replace('+', ''));
+    if (change.includes("+")) {
+      const number = parseInt(change.replace("+", ""));
       if (!isNaN(number)) {
         if (chaos == 9) return;
         setChaos(chaos + 1);
@@ -17,8 +16,8 @@ const ChaosInput = () => {
       console.error(`Invalid chaos change: ${change}`);
       return;
     }
-    if (change.includes('-')) {
-      const number = parseInt(change.replace('-', ''));
+    if (change.includes("-")) {
+      const number = parseInt(change.replace("-", ""));
       if (!isNaN(number)) {
         if (chaos == 1) return;
         setChaos(chaos - 1);
@@ -39,25 +38,25 @@ const ChaosInput = () => {
   };
 
   return (
-    <div className='flex gap-4 justify-center items-center'>
+    <div className="flex gap-4 justify-center items-center">
       <Button
-        onClick={() => handleClick('-1')}
-        variant='secondary'
-        className='font-bold'
+        onClick={() => handleClick("-1")}
+        variant="secondary"
+        className="font-bold"
       >
         <span>-</span>
       </Button>
       <Button
-        onClick={() => handleClick('5')}
-        variant='secondary'
-        className='font-bold'
+        onClick={() => handleClick("5")}
+        variant="secondary"
+        className="font-bold"
       >
         Reset
       </Button>
       <Button
-        onClick={() => handleClick('+1')}
-        variant='secondary'
-        className='font-bold'
+        onClick={() => handleClick("+1")}
+        variant="secondary"
+        className="font-bold"
       >
         <span>+</span>
       </Button>

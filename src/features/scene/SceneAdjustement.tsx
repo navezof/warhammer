@@ -1,7 +1,6 @@
 import React from "react";
 import sceneAdjustementTable from "./data/sceneAdjustementTable";
 import { rollOnTable } from "../../utils/rolls";
-import Button from "../../components/CustomButton";
 import { RollOnAnswer } from "../../components/RollOnAnswer";
 
 const SceneAdjustement: React.FC = () => {

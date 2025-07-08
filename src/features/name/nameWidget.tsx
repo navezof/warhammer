@@ -7,7 +7,6 @@ import TableDropdown from "../../components/TableDropdown";
 import { namesTable } from "./data/name";
 import { Table } from "../../types/type";
 import { TableInTooltip } from "../../components/TableInTooltip";
-import { RollOnTableIcon } from "../../components/RollOnTableIcon";
 import { RollOnAnswer } from "../../components/RollOnAnswer";
 import { rollOnTable } from "../../utils/rolls";
 

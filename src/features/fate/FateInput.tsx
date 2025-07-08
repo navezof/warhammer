@@ -1,4 +1,3 @@
-import React from "react";
 import { FateOdds } from "./data/fateOdds";
 import { rollOnFateTable } from "./rollOnFateTable";
 import { useChaos } from "../chaos/useChaos";
