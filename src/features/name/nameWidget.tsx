@@ -47,6 +47,8 @@ export const NameWidget = ({ widgetId }: NameWidgetProps) => {
         selected,
         `${widgetId}_${NAME_STORAGE_KEY_SUFFIX}`
       );
+      setMaleNameAnswer(null);
+      setFemaleNameAnswer(null);
     }
   }, [selected]);
 
