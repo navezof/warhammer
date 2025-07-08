@@ -23,7 +23,7 @@ export const rollOnTable = (
       result = entry[column];
     }
   }
-  return `(${adjustedNumber}) ${result}`;
+  return `${result}`;
 };
 
 export const rollOnSubTable = (

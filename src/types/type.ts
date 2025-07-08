@@ -4,7 +4,8 @@ export type WidgetType =
   | 'actor'
   | 'thread'
   | 'npcInteraction'
-  | 'scene';
+  | 'scene'
+  | 'name';
 
 export interface Widget {
   id: string;

@@ -5,7 +5,6 @@ import {
   loadFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
-import { FaDice } from "react-icons/fa";
 import { RollOnAnswer } from "../../components/RollOnAnswer";
 
 type OracleProps = {
@@ -48,16 +47,12 @@ const displayOracleContent = (oracle: Table) => {
 
 const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
   const [oracleAnswer, setOracleAnswer] = React.useState<string | null>(null);
-  const [showDetails, setShowDetails] = React.useState<boolean | null>(
+  const [showDetails] = React.useState<boolean | null>(
     loadFromLocalStorage(ORACLE_SHOW_DETAILS_STORAGE_KEY) || false
   );
 
   const handleClick = () => {
     setOracleAnswer(rollOnTable(oracle, index, modifier));
-  };
-
-  const handleShowDetails = () => {
-    setShowDetails(!showDetails);
   };
 
   useEffect(() => {
