@@ -7,6 +7,7 @@ import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
 import Button from "../../components/CustomButton";
 import { css, type SerializedStyles } from "@emotion/react";
 import { useRPGToolboxContext } from "../../RPGToolboxContext";
+import { WidgetHeader } from "./WidgetHeader";
 
 type WidgetItemProps = PropsWithChildren & {
   src: string;
@@ -81,14 +82,9 @@ export const WidgetItem = ({
       className={`relative ${className}`}
       css={itemStateStyles[state]}
     >
-      <header className="text-md font-bold text-white mb-2">{type}</header>
+      <WidgetHeader id={id} type={type} removeWidget={removeWidget} />
       <div className="pt-2 flex-1 flex flex-col bg-gray-50 h-[90%] p-2 space-y-2">
         {children}
-      </div>
-      <div className="top-2 absolute right-2">
-        <Button onClick={() => removeWidget(id)} className="!p-2" size="sm">
-          X
-        </Button>
       </div>
     </div>
   );
