@@ -25,3 +25,5 @@ yarn-error.log*
 dist/index.html
 dist/assets/index-CAAkHZ4D.css
 dist/assets/index-Dmf378-R.js
+package-lock.json
+dist/index.html
