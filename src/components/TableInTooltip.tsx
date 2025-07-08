@@ -50,7 +50,7 @@ export const TableInTooltip = ({
       {showTooltip && (
         <div
           ref={tooltipRef}
-          className="absolute left-10 z-10 w-64 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded shadow-lg p-2"
+          className="absolute left-10 z-10 max-h-64 overflow-y-auto bg-white border border-gray-300 rounded shadow-lg p-2 w-full"
         >
           <table className="w-full text-sm">
             <tbody>
