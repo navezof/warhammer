@@ -72,10 +72,12 @@ export const NameWidget = ({ widgetId }: NameWidgetProps) => {
           <RollOnAnswer
             answer={maleNameAnswer}
             handleClick={handleClickOnMaleName}
+            icon="male"
           />
           <RollOnAnswer
             answer={femaleNameAnswer}
             handleClick={handleClickOnFemaleName}
+            icon="female"
           />
         </div>
       </div>

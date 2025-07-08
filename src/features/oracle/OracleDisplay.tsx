@@ -72,7 +72,11 @@ const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
       <div className="overflow-y-auto max-h-[100px]">
         {showDetails && displayOracleContent(oracle)}
       </div>
-      <RollOnAnswer answer={oracleAnswer} handleClick={handleClick} />
+      <RollOnAnswer
+        answer={oracleAnswer}
+        handleClick={handleClick}
+        icon="dice"
+      />
     </div>
   );
 };

@@ -16,7 +16,11 @@ const SceneAdjustement: React.FC = () => {
   return (
     <div className="flex flex-col justify-center items-center p-2 space-y-2">
       <p>Si la scène est modifié, tirer la nature de la modification</p>
-      <RollOnAnswer answer={sceneAdjustement} handleClick={handleClick} />
+      <RollOnAnswer
+        answer={sceneAdjustement}
+        handleClick={handleClick}
+        icon="dice"
+      />
     </div>
   );
 };

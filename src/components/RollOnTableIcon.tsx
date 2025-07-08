@@ -1,15 +1,21 @@
 import React from "react";
+import { RpgIcon, RpgIconType } from "./RpgIcon";
 import { Table } from "../types/type";
-import { FaDice } from "react-icons/fa";
 import { rollOnTable } from "../utils/rolls";
 
 type RollOnTableIconProps = {
   table: Table;
   column: number;
+  rpgIconType: RpgIconType;
 };
 
-export const RollOnTableIcon = ({ table }: RollOnTableIconProps) => {
+export const RollOnTableIcon = ({
+  table,
+  rpgIconType,
+}: RollOnTableIconProps) => {
   const [answer, setAnswer] = React.useState<string | null>(null);
+
+  const rpgIcon = RpgIcon;
 
   const handleClick = () => {
     setAnswer(rollOnTable(table));
@@ -22,7 +28,7 @@ export const RollOnTableIcon = ({ table }: RollOnTableIconProps) => {
         className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
         title="Roll on table"
       >
-        <FaDice className="w-5 h-5 text-gray-700" />
+        <RpgIcon iconType={"dice"} />
       </button>
       {answer && <p>({answer})</p>}
     </span>

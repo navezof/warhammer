@@ -1,12 +1,16 @@
-import React from "react";
-import { FaDice } from "react-icons/fa";
+import { RpgIcon, RpgIconType } from "./RpgIcon";
 
 type RollOnAnswerProps = {
   answer: string | null;
   handleClick: () => void;
+  icon?: RpgIconType;
 };
 
-export const RollOnAnswer = ({ handleClick, answer }: RollOnAnswerProps) => {
+export const RollOnAnswer = ({
+  handleClick,
+  answer,
+  icon = "question",
+}: RollOnAnswerProps) => {
   return (
     <button onClick={handleClick}>
       {answer ? (
@@ -14,7 +18,7 @@ export const RollOnAnswer = ({ handleClick, answer }: RollOnAnswerProps) => {
           {answer}
         </div>
       ) : (
-        <FaDice className="w-5 h-5 text-gray-700" />
+        <RpgIcon iconType={icon} />
       )}
     </button>
   );

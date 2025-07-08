@@ -1,7 +1,5 @@
 import React from "react";
 import { rollDie } from "../../utils/rolls";
-import Button from "../../components/CustomButton";
-import { FaDice } from "react-icons/fa";
 import { RollOnAnswer } from "../../components/RollOnAnswer";
 
 type ChaosProps = {
@@ -32,7 +30,11 @@ const SceneAlterationDisplay = ({ chaos }: ChaosProps) => {
     <>
       <div className="flex flex-col justify-center items-center p-2 space-y-2">
         <p>Comment se déroule la scène?</p>
-        <RollOnAnswer answer={sceneAlteration} handleClick={handleClick} />
+        <RollOnAnswer
+          answer={sceneAlteration}
+          handleClick={handleClick}
+          icon="dice"
+        />
       </div>
     </>
   );

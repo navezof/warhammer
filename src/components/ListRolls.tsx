@@ -15,7 +15,7 @@ const ListRoll = ({ itemList }: ListRollProps) => {
     setItem(itemList[number]?.value || "No item found");
   };
 
-  return <RollOnAnswer answer={item} handleClick={onHandleClick} />;
+  return <RollOnAnswer answer={item} handleClick={onHandleClick} icon="dice" />;
 };
 
 export default ListRoll;
