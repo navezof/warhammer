@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { OracleWidget } from '../oracle/OracleWidget';
-import { FateQuestionWidget } from '../fate/FateQuestionWidget';
-import { WidgetItem } from './WidgetItem';
-import { Widget } from '../../types/type';
-import { storeItemsInLocalStorage } from '../../utils/localStorageState';
-import { useRPGToolboxContext } from '../../RPGToolboxContext';
-import { AddNewWidget } from '../addWidget/AddNewWidget';
-import { NpcInteractionWidget } from '../npcConversation/NpcConversationWidget';
-import { ActorWidget } from '../actor/ActorWidget';
-import { Outlet } from 'react-router-dom';
-import { Scene } from '../scene/Scene';
-import { ThreadWidget } from '../thread/ThreadWidget';
-import { monitorForElements } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+import React, { useEffect, useState } from "react";
+import { OracleWidget } from "../oracle/OracleWidget";
+import { FateQuestionWidget } from "../fate/FateQuestionWidget";
+import { WidgetItem } from "./WidgetItem";
+import { Widget } from "../../types/type";
+import { storeItemsInLocalStorage } from "../../utils/localStorageState";
+import { useRPGToolboxContext } from "../../RPGToolboxContext";
+import { AddNewWidget } from "../addWidget/AddNewWidget";
+import { NpcInteractionWidget } from "../npcConversation/NpcConversationWidget";
+import { ActorWidget } from "../actor/ActorWidget";
+import { Outlet } from "react-router-dom";
+import { Scene } from "../scene/Scene";
+import { ThreadWidget } from "../thread/ThreadWidget";
+import { monitorForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
+import { NameWidget } from "../name/nameWidget";
 
-const DASHBOARD_WIDGET_STORAGE_KEY = 'widgets';
+const DASHBOARD_WIDGET_STORAGE_KEY = "widgets";
 
 const Dashboard: React.FC = () => {
   const { widgets, setWidgets, removeWidget, instanceId } =
@@ -21,18 +22,20 @@ const Dashboard: React.FC = () => {
 
   const renderWidget = (widget: Widget) => {
     switch (widget.type) {
-      case 'oracle':
+      case "oracle":
         return <OracleWidget widgetId={widget.id} />;
-      case 'fate':
+      case "fate":
         return <FateQuestionWidget />;
-      case 'actor':
+      case "actor":
         return <ActorWidget />;
-      case 'npcInteraction':
+      case "npcInteraction":
         return <NpcInteractionWidget />;
-      case 'scene':
+      case "scene":
         return <Scene />;
-      case 'thread':
+      case "thread":
         return <ThreadWidget />;
+      case "name":
+        return <NameWidget widgetId={widget.id} />;
       default:
         return null;
     }
@@ -51,16 +54,16 @@ const Dashboard: React.FC = () => {
       onDrop({ source, location }) {
         const destination = location.current.dropTargets[0];
         if (!destination) {
-          console.log('No destination');
+          console.log("No destination");
           return;
         }
         const destinationSrc = destination.data.src;
         const startSrc = source.data.src;
 
-        if (typeof destinationSrc !== 'string') {
+        if (typeof destinationSrc !== "string") {
           return;
         }
-        if (typeof startSrc !== 'string') {
+        if (typeof startSrc !== "string") {
           return;
         }
 
@@ -82,12 +85,12 @@ const Dashboard: React.FC = () => {
     <div>
       <main>
         <Outlet />
-        <div className='p-2'>
-          <div className='grid grid-cols-4 gap-2 auto-rows-[24rem]'>
+        <div className="p-2">
+          <div className="grid grid-cols-4 gap-2 auto-rows-[24rem]">
             {widgets.map((widget: Widget) => (
               <WidgetItem
                 key={widget.id}
-                className='p-2 bg-gray-800 rounded-lg h-full w-full'
+                className="p-2 bg-gray-800 rounded-lg h-full w-full"
                 id={widget.id}
                 type={widget.type}
                 removeWidget={removeWidget}

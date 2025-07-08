@@ -5,7 +5,7 @@ import { dispositionTableMap, NpcDisposition } from "./data/npcDisposition";
 import EnumRoll from "../../components/EnumRoll";
 import OracleDisplay from "../oracle/OracleDisplay";
 import { npcConversationFocusTable } from "./data/npcConversationFocusTable";
-import { npcBearingTable } from "./data/npcBeartingTable";
+import { npcBearingTable } from "./data/npcBearingTable";
 import { npcDispositionTable } from "./data/npcDispositionTable";
 import { RollOnTableIcon } from "../../components/RollOnTableIcon";
 import { TableInTooltip } from "../../components/TableInTooltip";

@@ -5,6 +5,7 @@ import { rollOnTable } from "../utils/rolls";
 
 type RollOnTableIconProps = {
   table: Table;
+  column: number;
 };
 
 export const RollOnTableIcon = ({ table }: RollOnTableIconProps) => {

@@ -1,5 +1,5 @@
 import { Table } from '../../../types/type';
-import { npcBearingTable } from './npcBeartingTable';
+import { npcBearingTable } from './npcBearingTable';
 
 export enum NpcDisposition {
   Scheming = 'Scheming',

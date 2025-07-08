@@ -1,4 +1,3 @@
-import React from "react";
 import ChaosDisplay from "../chaos/ChaosDisplay";
 import ChaosInput from "../chaos/ChaosInput";
 import FateInput from "./FateInput";
