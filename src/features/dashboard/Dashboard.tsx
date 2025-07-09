@@ -1,45 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { OracleWidget } from "../oracle/OracleWidget";
-import { FateQuestionWidget } from "../fate/FateQuestionWidget";
 import { WidgetItem } from "./WidgetItem";
 import { Widget } from "../../types/type";
 import { storeItemsInLocalStorage } from "../../utils/localStorageState";
 import { useRPGToolboxContext } from "../../RPGToolboxContext";
 import { AddNewWidget } from "../addWidget/AddNewWidget";
-import { NpcInteractionWidget } from "../npcConversation/NpcConversationWidget";
-import { ActorWidget } from "../actor/ActorWidget";
 import { Outlet } from "react-router-dom";
-import { Scene } from "../scene/Scene";
-import { ThreadWidget } from "../thread/ThreadWidget";
 import { monitorForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import { NameWidget } from "../name/nameWidget";
 
 const DASHBOARD_WIDGET_STORAGE_KEY = "widgets";
 
 const Dashboard: React.FC = () => {
   const { widgets, setWidgets, removeWidget, instanceId } =
     useRPGToolboxContext();
-
-  const renderWidget = (widget: Widget) => {
-    switch (widget.type) {
-      case "oracle":
-        return <OracleWidget widgetId={widget.id} />;
-      case "fate":
-        return <FateQuestionWidget />;
-      case "actor":
-        return <ActorWidget />;
-      case "npcInteraction":
-        return <NpcInteractionWidget />;
-      case "scene":
-        return <Scene />;
-      case "thread":
-        return <ThreadWidget />;
-      case "name":
-        return <NameWidget widgetId={widget.id} />;
-      default:
-        return null;
-    }
-  };
 
   useEffect(
     () => storeItemsInLocalStorage(widgets, DASHBOARD_WIDGET_STORAGE_KEY),
@@ -95,9 +67,8 @@ const Dashboard: React.FC = () => {
                 type={widget.type}
                 removeWidget={removeWidget}
                 src={widget.id}
-              >
-                {renderWidget(widget)}
-              </WidgetItem>
+                instanceId={instanceId}
+              ></WidgetItem>
             ))}
           </div>
           <AddNewWidget />

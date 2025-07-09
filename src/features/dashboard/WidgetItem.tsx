@@ -4,17 +4,24 @@ import {
   dropTargetForElements,
 } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
 import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
-import Button from "../../components/CustomButton";
 import { css, type SerializedStyles } from "@emotion/react";
-import { useRPGToolboxContext } from "../../RPGToolboxContext";
 import { WidgetHeader } from "./WidgetHeader";
+import { WidgetType } from "../../types/type";
+import { ActorWidget } from "../actor/ActorWidget";
+import { FateQuestionWidget } from "../fate/FateQuestionWidget";
+import { NameWidget } from "../name/nameWidget";
+import { NpcInteractionWidget } from "../npcConversation/NpcConversationWidget";
+import { OracleWidget } from "../oracle/OracleWidget";
+import { Scene } from "../scene/Scene";
+import { ThreadWidget } from "../thread/ThreadWidget";
 
-type WidgetItemProps = PropsWithChildren & {
+type WidgetItemComponentProps = PropsWithChildren & {
   src: string;
   id: string;
-  type: string;
+  type: WidgetType;
   className?: string;
   removeWidget: (id: string) => void;
+  instanceId: symbol;
 };
 
 type State = "idle" | "dragging" | "over";
@@ -35,20 +42,39 @@ const itemStateStyles: { [Key in State]: undefined | SerializedStyles } = {
   }),
 };
 
+const renderWidget = (type: WidgetType, id: string) => {
+  switch (type) {
+    case "oracle":
+      return <OracleWidget widgetId={id} />;
+    case "fate":
+      return <FateQuestionWidget />;
+    case "actor":
+      return <ActorWidget />;
+    case "npcInteraction":
+      return <NpcInteractionWidget />;
+    case "scene":
+      return <Scene />;
+    case "thread":
+      return <ThreadWidget />;
+    case "name":
+      return <NameWidget widgetId={id} />;
+    default:
+      return null;
+  }
+};
+
 // High Order Component: a component that wraps another children component
 // Allows to add additional functionality to a component without modifying its structure
-export const WidgetItem = ({
+const WidgetItemComponent = ({
   src,
-  children,
   id,
   type,
   className = "",
   removeWidget,
-}: WidgetItemProps) => {
+  instanceId,
+}: WidgetItemComponentProps) => {
   const ref = useRef(null);
   const [state, setState] = React.useState<State>("idle");
-
-  const { instanceId } = useRPGToolboxContext();
 
   useEffect(() => {
     const el = ref.current;
@@ -76,6 +102,7 @@ export const WidgetItem = ({
     );
   }, [instanceId, src]);
 
+  console.log(`Rendering ${type}:${id}`); // This would fire on every Dashboard render
   return (
     <div
       ref={ref}
@@ -84,8 +111,10 @@ export const WidgetItem = ({
     >
       <WidgetHeader id={id} type={type} removeWidget={removeWidget} />
       <div className="pt-2 flex-1 flex flex-col bg-gray-50 h-[90%] p-2 space-y-2">
-        {children}
+        {renderWidget(type, id)}
       </div>
     </div>
   );
 };
+
+export const WidgetItem = React.memo(WidgetItemComponent);
