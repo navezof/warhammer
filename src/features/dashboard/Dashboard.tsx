@@ -1,22 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { WidgetItem } from "./WidgetItem";
 import { Widget } from "../../types/type";
-import { storeItemsInLocalStorage } from "../../utils/localStorageState";
 import { useRPGToolboxContext } from "../../RPGToolboxContext";
 import { AddNewWidget } from "../addWidget/AddNewWidget";
-import { useWidgetDnD } from "../../components/useWidgetDnD";
-
-const DASHBOARD_WIDGET_STORAGE_KEY = "widgets";
+import { useWidgetDnD } from "./useWidgetDnD";
+import { useStoreItemsInLocalStorage } from "./useStoreItemsInLocalStorage";
 
 const Dashboard: React.FC = () => {
   const { widgets, setWidgets, removeWidget, instanceId } =
     useRPGToolboxContext();
 
-  useEffect(
-    () => storeItemsInLocalStorage(widgets, DASHBOARD_WIDGET_STORAGE_KEY),
-    [widgets]
-  );
-
+  useStoreItemsInLocalStorage({ widgets });
   useWidgetDnD({ instanceId, widgets, setWidgets });
 
   return (
