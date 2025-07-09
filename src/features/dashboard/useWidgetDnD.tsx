@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { monitorForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
-import { Widget } from "../types/type";
+import { Widget } from "../../types/type";
 
 type UseWidgetDnDProps = {
   instanceId: symbol;
