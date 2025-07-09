@@ -25,13 +25,10 @@ const Dashboard: React.FC = () => {
         <div className="grid grid-cols-4 gap-2 auto-rows-[24rem]">
           {widgets.map((widget: Widget) => (
             <WidgetItem
-              key={widget.id}
-              className="p-2 bg-gray-800 rounded-lg h-full w-full"
-              id={widget.id}
-              type={widget.type}
-              removeWidget={removeWidget}
-              src={widget.id}
               instanceId={instanceId}
+              className="p-2 bg-gray-800 rounded-lg h-full w-full"
+              widget={widget}
+              removeWidget={removeWidget}
             ></WidgetItem>
           ))}
         </div>

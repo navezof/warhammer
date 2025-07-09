@@ -6,7 +6,7 @@ import {
 import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
 import { css, type SerializedStyles } from "@emotion/react";
 import { WidgetHeader } from "./WidgetHeader";
-import { WidgetType } from "../../types/type";
+import { Widget, WidgetType } from "../../types/type";
 import { ActorWidget } from "../actor/ActorWidget";
 import { FateQuestionWidget } from "../fate/FateQuestionWidget";
 import { NameWidget } from "../name/nameWidget";
@@ -16,12 +16,10 @@ import { Scene } from "../scene/Scene";
 import { ThreadWidget } from "../thread/ThreadWidget";
 
 type WidgetItemComponentProps = PropsWithChildren & {
-  src: string;
-  id: string;
-  type: WidgetType;
-  className?: string;
-  removeWidget: (id: string) => void;
   instanceId: symbol;
+  className?: string;
+  widget: Widget;
+  removeWidget: (id: string) => void;
 };
 
 type State = "idle" | "dragging" | "over";
@@ -66,12 +64,10 @@ const renderWidget = (type: WidgetType, id: string) => {
 // High Order Component: a component that wraps another children component
 // Allows to add additional functionality to a component without modifying its structure
 const WidgetItemComponent = ({
-  src,
-  id,
-  type,
-  className = "",
-  removeWidget,
   instanceId,
+  className = "",
+  widget,
+  removeWidget,
 }: WidgetItemComponentProps) => {
   const ref = useRef(null);
   const [state, setState] = React.useState<State>("idle");
@@ -83,35 +79,43 @@ const WidgetItemComponent = ({
     return combine(
       draggable({
         element: el,
-        getInitialData: () => ({ type: "grid-item", src, instanceId }),
+        getInitialData: () => ({
+          type: "grid-item",
+          src: widget.id,
+          instanceId,
+        }),
         onDragStart: () => setState("dragging"),
         onDrop: () => setState("idle"),
       }),
       dropTargetForElements({
         element: el,
-        getData: () => ({ src }),
+        getData: () => ({ src: widget.id }),
         getIsSticky: () => true,
         canDrop: ({ source }) =>
           source.data.instanceId === instanceId &&
           source.data.type === "grid-item" &&
-          source.data.src !== src,
+          source.data.src !== widget.id,
         onDragEnter: () => setState("over"),
         onDragLeave: () => setState("idle"),
         onDrop: () => setState("idle"),
       })
     );
-  }, [instanceId, src]);
+  }, [instanceId, widget.id]);
 
-  console.log(`Rendering ${type}:${id}`); // This would fire on every Dashboard render
+  console.log(`Rendering ${widget.type}:${widget.id}`);
   return (
     <div
       ref={ref}
       className={`relative ${className}`}
       css={itemStateStyles[state]}
     >
-      <WidgetHeader id={id} type={type} removeWidget={removeWidget} />
+      <WidgetHeader
+        id={widget.id}
+        type={widget.type}
+        removeWidget={removeWidget}
+      />
       <div className="pt-2 flex-1 flex flex-col bg-gray-50 h-[90%] p-2 space-y-2">
-        {renderWidget(type, id)}
+        {renderWidget(widget.type, widget.id)}
       </div>
     </div>
   );
