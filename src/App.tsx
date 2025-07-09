@@ -3,7 +3,7 @@ import { ItemList } from "./types/type";
 import { Outlet } from "react-router-dom";
 import { RPGToolboxProvider } from "./RPGToolboxContext";
 import "./app.css";
-import { DashboardPage } from "./features/dashboard/DashboardPage";
+import Dashboard from "./features/dashboard/Dashboard";
 
 function App() {
   const [characterList, setCharacterList] = React.useState<ItemList[]>([]);
@@ -13,7 +13,7 @@ function App() {
       <div>
         <main>
           <Outlet context={{ characterList, setCharacterList }} />
-          <DashboardPage />
+          <Dashboard />
         </main>
       </div>
     </RPGToolboxProvider>
