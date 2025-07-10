@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { RPGToolboxProvider } from "./RPGToolboxContext";
 import "./app.css";
 import Dashboard from "./features/dashboard/Dashboard";
+import { DashboardHeader } from "./features/dashboard/DashboardHeader";
 
 function App() {
   const [characterList, setCharacterList] = React.useState<ItemList[]>([]);
@@ -13,6 +14,7 @@ function App() {
       <div>
         <main>
           <Outlet context={{ characterList, setCharacterList }} />
+          <DashboardHeader />
           <Dashboard />
         </main>
       </div>
