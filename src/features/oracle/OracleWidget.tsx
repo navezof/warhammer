@@ -6,7 +6,7 @@ import themeTable from "../../data/themeTable";
 import verbTable from "../../data/verbTable";
 import { Table } from "../../types/type";
 import {
-  loadFromLocalStorage,
+  loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 import { TableInTooltip } from "../../components/TableInTooltip";
@@ -20,7 +20,8 @@ type OracleWidgetProps = {
 export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
   const ORACLE_STORAGE_KEY_SUFFIX = "ORACLE_STORAGE_KEY_SUFFIX";
   const [selected, setSelected] = React.useState<Table | null>(
-    loadFromLocalStorage(`${widgetId}_${ORACLE_STORAGE_KEY_SUFFIX}`) || null
+    loadItemsFromLocalStorage(`${widgetId}_${ORACLE_STORAGE_KEY_SUFFIX}`) ||
+      null
   );
 
   useEffect(() => {

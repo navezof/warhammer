@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { rollOnTable } from "../../utils/rolls";
 import { Table } from "../../types/type";
 import {
-  loadFromLocalStorage,
+  loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 import { RollOnAnswer } from "../../components/RollOnAnswer";
@@ -48,7 +48,7 @@ const displayOracleContent = (oracle: Table) => {
 const OracleDisplay = ({ oracle, index = 1, modifier = 0 }: OracleProps) => {
   const [oracleAnswer, setOracleAnswer] = React.useState<string | null>(null);
   const [showDetails] = React.useState<boolean | null>(
-    loadFromLocalStorage(ORACLE_SHOW_DETAILS_STORAGE_KEY) || false
+    loadItemsFromLocalStorage(ORACLE_SHOW_DETAILS_STORAGE_KEY) || false
   );
 
   const handleClick = () => {

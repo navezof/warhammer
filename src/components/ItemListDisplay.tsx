@@ -1,4 +1,3 @@
-import React from "react";
 import { ItemList } from "../types/type";
 import Button from "./CustomButton";
 
@@ -14,7 +13,6 @@ const ItemListDisplay = ({
   setItemList,
 }: ItemListDisplayProps) => {
   const handleChange = (id: number, newValue: string) => {
-    // Check if the item with the given id already exists
     if (!itemList.some((item) => item.id === id)) {
       return;
     }

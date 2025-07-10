@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import {
-  loadFromLocalStorage,
+  loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 import TableDropdown from "../../components/TableDropdown";
@@ -24,7 +24,7 @@ export const NameWidget = ({ widgetId }: NameWidgetProps) => {
     null
   );
   const [selected, setSelected] = React.useState<Table | null>(
-    loadFromLocalStorage(`${widgetId}_${NAME_STORAGE_KEY_SUFFIX}`) || null
+    loadItemsFromLocalStorage(`${widgetId}_${NAME_STORAGE_KEY_SUFFIX}`) || null
   );
 
   const handleClickOnMaleName = () => {

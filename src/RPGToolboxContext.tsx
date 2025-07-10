@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import { createContext, PropsWithChildren, useContext } from "react";
 import { Widget, WidgetType } from "./types/type";
 import {
-  loadFromLocalStorage,
+  loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "./utils/localStorageState";
 
@@ -27,7 +27,7 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
   const [chaos, setChaos] = React.useState<number>(5);
   const [fateAnswer, setFateAnswer] = React.useState<string>("-");
   const [widgets, setWidgets] = React.useState<Widget[]>(
-    loadFromLocalStorage(DASHBOARD_WIDGET_STORAGE_KEY) || []
+    loadItemsFromLocalStorage(DASHBOARD_WIDGET_STORAGE_KEY) || []
   );
 
   const instanceId = React.useMemo(() => Symbol("instance-id"), []);

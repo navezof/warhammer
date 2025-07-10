@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  loadFromLocalStorage,
+  loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 import { RpgIcon } from "../../components/RpgIcon";
@@ -15,7 +15,7 @@ type WidgetHeaderProps = {
 
 export const WidgetHeader = ({ id, type, removeWidget }: WidgetHeaderProps) => {
   const [title, setTitle] = useState<string>(() => {
-    const data = loadFromLocalStorage(`${id}${TITLE_STORAGE_KEY}`);
+    const data = loadItemsFromLocalStorage(`${id}${TITLE_STORAGE_KEY}`);
     return Array.isArray(data) && data.length <= 0 ? type : data;
   });
 

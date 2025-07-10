@@ -12,7 +12,7 @@ export const storeItemsInLocalStorage = (
   }
 };
 
-export const loadFromLocalStorage = (ITEM_STORAGE_KEY: string) => {
+export const loadItemsFromLocalStorage = (ITEM_STORAGE_KEY: string) => {
   try {
     const storedItems = localStorage.getItem(ITEM_STORAGE_KEY);
     return storedItems ? JSON.parse(storedItems) : [];
