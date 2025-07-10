@@ -32,13 +32,13 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
 
   const instanceId = React.useMemo(() => Symbol("instance-id"), []);
 
-  const addNew = (type: WidgetType) => {
+  const addNew = useCallback((type: WidgetType) => {
     const newWidget: Widget = {
       id: crypto.randomUUID(),
       type,
     };
     setWidgets((prev: Widget[]) => [...prev, newWidget]);
-  };
+  }, []);
 
   const removeWidget = useCallback((id: string) => {
     setWidgets((prev: Widget[]) =>
