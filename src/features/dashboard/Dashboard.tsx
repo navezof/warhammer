@@ -13,11 +13,6 @@ const Dashboard: React.FC = () => {
   const { widgets, setWidgets, removeWidget, instanceId } =
     useRPGToolboxContext();
 
-  useEffect(
-    () => storeItemsInLocalStorage(widgets, DASHBOARD_WIDGET_STORAGE_KEY),
-    [widgets]
-  );
-
   useEffect(() => {
     return monitorForElements({
       canMonitor({ source }) {
