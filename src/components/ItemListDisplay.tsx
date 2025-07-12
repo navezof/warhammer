@@ -1,5 +1,6 @@
 import { ItemList } from "../types/type";
 import Button from "./CustomButton";
+import { RpgIcon } from "./RpgIcon";
 
 type ItemListDisplayProps = {
   title: string;
@@ -44,19 +45,16 @@ const ItemListDisplay = ({
             {itemList.map((item) => (
               <tr key={item.id}>
                 <td className="px-2 py-1 border-b text-sm">
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center space-x-2">
                     <input
                       type="text"
                       value={item.value}
                       onChange={(e) => handleChange(item.id, e.target.value)}
+                      className="w-full p-2"
                     />
-                    <Button
-                      variant="danger"
-                      size="sm"
-                      onClick={() => handleRemoveCharacter(item.id)}
-                    >
-                      X
-                    </Button>
+                    <button onClick={() => handleRemoveCharacter(item.id)}>
+                      <RpgIcon iconType="xmark" />
+                    </button>
                   </div>
                 </td>
               </tr>
