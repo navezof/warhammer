@@ -7,13 +7,13 @@ import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
 import { css, type SerializedStyles } from "@emotion/react";
 import { WidgetHeader } from "./WidgetHeader";
 import { Widget, WidgetType } from "../../types/type";
-import { ActorWidget } from "../actor/ActorWidget";
 import { FateQuestionWidget } from "../fate/FateQuestionWidget";
 import { NameWidget } from "../name/nameWidget";
 import { NpcInteractionWidget } from "../npcConversation/NpcConversationWidget";
 import { OracleWidget } from "../oracle/OracleWidget";
 import { Scene } from "../scene/Scene";
-import { ThreadWidget } from "../thread/ThreadWidget";
+import { ThreadWidget } from "../list/ThreadWidget";
+import { ActorWidget } from "../list/ActorWidget";
 import { NpcGeneratorWidget } from "../npcGenerator/NpcGeneratorWidget";
 
 type WidgetItemComponentProps = PropsWithChildren & {
@@ -49,7 +49,7 @@ const renderWidget = (type: WidgetType, id: string) => {
     case "fate":
       return <FateQuestionWidget />;
     case "actor":
-      return <ActorWidget />;
+      return <ActorWidget widgetId={id} />;
     case "npcInteraction":
       return <NpcInteractionWidget />;
     case "scene":

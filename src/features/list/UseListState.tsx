@@ -5,20 +5,22 @@ import {
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 
-const LIST_THREAD_STORAGE_KEY = "listThread";
+export const useListState = (
+  widgetId: string,
+  storageKeySuffix: string,
+  initialContent?: ItemList[]
+) => {
+  const storageKey = `${widgetId}_${storageKeySuffix}`;
+  const defaultContent = initialContent || [];
 
-export const useThreadState = (widgetId: string) => {
-  const storageKey = `${String(widgetId)}_${LIST_THREAD_STORAGE_KEY}`;
+  if (!Array.isArray(initialContent) || initialContent.length === 0)
+    initialContent = [];
+
   const [itemList, setItemList] = useState<ItemList[]>(() => {
     const storedItems = loadItemsFromLocalStorage(storageKey);
-    if (!storedItems || storedItems.length === 0) {
-      return [
-        { id: 1, value: "Thread 1" },
-        { id: 2, value: "Thread 2" },
-        { id: 3, value: "Thread 3" },
-      ];
-    }
-    return storedItems;
+    if (Array.isArray(storedItems) && storedItems.length > 0)
+      return storedItems;
+    return defaultContent;
   });
 
   useEffect(() => {
