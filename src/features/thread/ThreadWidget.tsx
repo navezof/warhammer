@@ -1,26 +1,13 @@
-import React, { useEffect } from "react";
 import ItemListDisplay from "../../components/ItemListDisplay";
-import { ItemList } from "../../types/type";
 import ListRoll from "../../components/ListRolls";
-import {
-  loadItemsFromLocalStorage,
-  storeItemsInLocalStorage,
-} from "../../utils/localStorageState";
+import { useThreadState } from "./UseThreadState";
 
-const LIST_THREAD_STORAGE_KEY = "listThread";
+type ThreadWidgetProps = {
+  widgetId: string;
+};
 
-export const ThreadWidget = () => {
-  const [itemList, setItemList] = React.useState<ItemList[]>(
-    loadItemsFromLocalStorage(LIST_THREAD_STORAGE_KEY) || [
-      { id: 1, value: "Thread 1" },
-      { id: 2, value: "Thread 2" },
-      { id: 3, value: "Thread 3" },
-    ]
-  );
-
-  useEffect(() => {
-    storeItemsInLocalStorage(itemList, LIST_THREAD_STORAGE_KEY);
-  }, [itemList]);
+export const ThreadWidget = ({ widgetId }: ThreadWidgetProps) => {
+  const [itemList, setItemList] = useThreadState(widgetId);
 
   return (
     <div className="flex flex-col justify-center items-center p-2 space-y-2">
