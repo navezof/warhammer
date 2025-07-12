@@ -1,6 +1,6 @@
 import { Table } from '../../../types/type';
 
-const NPCArchetypeTable: Table = {
+export const NPCArchetypeTable: Table = {
   name: 'Archetype Table',
   description: 'A list of archetypes for storytelling',
   dice: '1d100',

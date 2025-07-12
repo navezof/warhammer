@@ -1,6 +1,6 @@
 import { Table } from '../../../types/type';
 
-const NPCQualifierTable: Table = {
+export const NPCQualifierTable: Table = {
   name: 'NPC Qualifier Table',
   description: 'What is the NPC like?',
   dice: '1d100',
