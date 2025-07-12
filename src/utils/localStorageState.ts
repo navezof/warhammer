@@ -1,5 +1,5 @@
-export const storeItemsInLocalStorage = (
-  items: any,
+export const storeItemsInLocalStorage = <T>(
+  items: T,
   ITEM_STORAGE_KEY: string
 ) => {
   try {
