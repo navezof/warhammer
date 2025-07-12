@@ -10,13 +10,14 @@ import { TableInTooltip } from "../../components/TableInTooltip";
 import { RollOnAnswer } from "../../components/RollOnAnswer";
 import { rollOnTable } from "../../utils/rolls";
 
-const NAME_STORAGE_KEY_SUFFIX = "NAME_STORAGE_KEY_SUFFIX";
+const NAME_STORAGE_KEY_SUFFIX = "name";
 
 type NameWidgetProps = {
   widgetId: string;
 };
 
 export const NameWidget = ({ widgetId }: NameWidgetProps) => {
+  const storageKey = `${widgetId}_${NAME_STORAGE_KEY_SUFFIX}`;
   const [maleNameAnswer, setMaleNameAnswer] = React.useState<string | null>(
     null
   );
@@ -24,7 +25,7 @@ export const NameWidget = ({ widgetId }: NameWidgetProps) => {
     null
   );
   const [selected, setSelected] = React.useState<Table | null>(
-    loadItemsFromLocalStorage(`${widgetId}_${NAME_STORAGE_KEY_SUFFIX}`) || null
+    loadItemsFromLocalStorage(storageKey) || null
   );
 
   const handleClickOnMaleName = () => {
@@ -43,10 +44,7 @@ export const NameWidget = ({ widgetId }: NameWidgetProps) => {
 
   useEffect(() => {
     if (selected) {
-      storeItemsInLocalStorage(
-        selected,
-        `${widgetId}_${NAME_STORAGE_KEY_SUFFIX}`
-      );
+      storeItemsInLocalStorage(selected, storageKey);
       setMaleNameAnswer(null);
       setFemaleNameAnswer(null);
     }

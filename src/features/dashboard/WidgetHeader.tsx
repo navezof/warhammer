@@ -5,7 +5,7 @@ import {
 } from "../../utils/localStorageState";
 import { RpgIcon } from "../../components/RpgIcon";
 
-const TITLE_STORAGE_KEY = `_TITLE_STORAGE_KEY`;
+const TITLE_STORAGE_KEY = `widget_title`;
 
 type WidgetHeaderProps = {
   id: string;
@@ -14,13 +14,14 @@ type WidgetHeaderProps = {
 };
 
 export const WidgetHeader = ({ id, type, removeWidget }: WidgetHeaderProps) => {
+  const storageKey = `${id}_${TITLE_STORAGE_KEY}`;
   const [title, setTitle] = useState<string>(() => {
-    const data = loadItemsFromLocalStorage(`${id}${TITLE_STORAGE_KEY}`);
-    return Array.isArray(data) && data.length <= 0 ? type : data;
+    const data = loadItemsFromLocalStorage<string>(storageKey);
+    return data ?? type;
   });
 
   const handleTitleChange = (newValue: string) => {
-    storeItemsInLocalStorage(newValue, `${id}${TITLE_STORAGE_KEY}`);
+    storeItemsInLocalStorage(newValue, storageKey);
     setTitle(newValue);
   };
 

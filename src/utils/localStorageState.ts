@@ -1,5 +1,5 @@
-export const storeItemsInLocalStorage = (
-  items: any,
+export const storeItemsInLocalStorage = <T>(
+  items: T,
   ITEM_STORAGE_KEY: string
 ) => {
   try {
@@ -12,15 +12,18 @@ export const storeItemsInLocalStorage = (
   }
 };
 
-export const loadItemsFromLocalStorage = (ITEM_STORAGE_KEY: string) => {
+export const loadItemsFromLocalStorage = <T>(
+  ITEM_STORAGE_KEY: string
+): T | null => {
   try {
     const storedItems = localStorage.getItem(ITEM_STORAGE_KEY);
-    return storedItems ? JSON.parse(storedItems) : [];
+    if (storedItems === null) return null;
+    return JSON.parse(storedItems) as T;
   } catch (error) {
     console.error(
       `Error loading item with key ${ITEM_STORAGE_KEY} from local storage:`,
       error
     );
-    return [];
+    return null;
   }
 };
