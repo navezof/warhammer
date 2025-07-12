@@ -17,7 +17,6 @@ export const DashboardHeader = () => {
   };
 
   return (
-    //
     <div className="flex flew-col p-2 bg-gray-800 h-full w-full text-white font-bold text-lg justify-center items-center">
       <input
         type="text"
