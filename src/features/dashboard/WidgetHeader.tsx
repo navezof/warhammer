@@ -16,8 +16,8 @@ type WidgetHeaderProps = {
 export const WidgetHeader = ({ id, type, removeWidget }: WidgetHeaderProps) => {
   const storageKey = `${id}_${TITLE_STORAGE_KEY}`;
   const [title, setTitle] = useState<string>(() => {
-    const data = loadItemsFromLocalStorage(storageKey);
-    return Array.isArray(data) && data.length <= 0 ? type : data;
+    const data = loadItemsFromLocalStorage<string>(storageKey);
+    return data ?? type;
   });
 
   const handleTitleChange = (newValue: string) => {

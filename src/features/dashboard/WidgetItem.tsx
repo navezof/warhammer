@@ -17,7 +17,6 @@ import { ActorWidget } from "../list/ActorWidget";
 import { NpcGeneratorWidget } from "../npcGenerator/NpcGeneratorWidget";
 
 type WidgetItemComponentProps = PropsWithChildren & {
-  key: string;
   instanceId: symbol;
   className?: string;
   widget: Widget;

@@ -13,9 +13,6 @@ export const useListState = (
   const storageKey = `${widgetId}_${storageKeySuffix}`;
   const defaultContent = initialContent || [];
 
-  if (!Array.isArray(initialContent) || initialContent.length === 0)
-    initialContent = [];
-
   const [itemList, setItemList] = useState<ItemList[]>(() => {
     const storedItems = loadItemsFromLocalStorage(storageKey);
     if (Array.isArray(storedItems) && storedItems.length > 0)
