@@ -29,7 +29,7 @@ export const RollOnTableIcon = ({
       >
         <RpgIcon iconType={rpgIconType} />
       </button>
-      {answer && <p>({answer})</p>}
+      {answer && <span>({answer})</span>}
     </span>
   );
 };

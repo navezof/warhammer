@@ -47,7 +47,7 @@ const NPCHandler = () => {
       />
       <span>
         <TableInTooltip
-          text={"Sujet d'interet"}
+          text={"Sujet d'intérêt"}
           table={npcConversationFocusTable}
         />
         <span className='italic'>
