@@ -18,18 +18,15 @@ type OracleWidgetProps = {
 };
 
 export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
-  const ORACLE_STORAGE_KEY_SUFFIX = "ORACLE_STORAGE_KEY_SUFFIX";
+  const ORACLE_STORAGE_KEY_SUFFIX = "oracle";
+  const storageKey = `${widgetId}_${ORACLE_STORAGE_KEY_SUFFIX}`;
   const [selected, setSelected] = React.useState<Table | null>(
-    loadItemsFromLocalStorage(`${widgetId}_${ORACLE_STORAGE_KEY_SUFFIX}`) ||
-      null
+    loadItemsFromLocalStorage(storageKey) || null
   );
 
   useEffect(() => {
     if (selected) {
-      storeItemsInLocalStorage(
-        selected,
-        `${widgetId}_${ORACLE_STORAGE_KEY_SUFFIX}`
-      );
+      storeItemsInLocalStorage(selected, storageKey);
     }
   }, [selected]);
 
