@@ -26,8 +26,8 @@ const Dashboard: React.FC = () => {
               removeWidget={removeWidget}
             ></WidgetItem>
           ))}
+          <AddNewWidget />
         </div>
-        <AddNewWidget />
       </div>
     </div>
   );

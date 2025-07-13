@@ -1,38 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
-import CreatureDisplay from './features/creatureGenerator/CreatureDisplay';
-import NPCHandler from './features/npcConversation/NPCConversationHandler';
-import { FateQuestionWidget } from './features/fate/FateQuestionWidget';
-import { Scene } from './features/scene/Scene';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
+import CreatureDisplay from "./features/creatureGenerator/CreatureDisplay";
+import NPCHandler from "./features/npcConversation/NPCConversationHandler";
+import { FateQuestionWidget } from "./features/fate/FateQuestionWidget";
+import { SceneWidget } from "./features/scene/Scene";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
-        path: 'v1/fates',
+        path: "v1/fates",
         element: <FateQuestionWidget />,
       },
       {
-        path: 'creature',
+        path: "creature",
         element: <CreatureDisplay />,
       },
       {
-        path: 'npc',
+        path: "npc",
         element: <NPCHandler />,
       },
       {
-        path: 'scene',
-        element: <Scene />,
+        path: "scene",
+        element: <SceneWidget />,
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
