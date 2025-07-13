@@ -1,5 +1,6 @@
 import { useRPGToolboxContext } from "../../RPGToolboxContext";
 import { WidgetType } from "../../types/type";
+import { widgetList } from "./WidgetList";
 
 export const AddNewWidget = () => {
   const { addNew } = useRPGToolboxContext();
@@ -17,14 +18,11 @@ export const AddNewWidget = () => {
         <option value="" disabled hidden>
           Add a Widget...
         </option>
-        <option value="oracle">Oracle</option>
-        <option value="fate">Destin</option>
-        <option value="actor">Acteur</option>
-        <option value="thread">Intrigue</option>
-        <option value="npcInteraction">Interaction PNJ</option>
-        <option value="scene">Scène</option>
-        <option value="name">Noms</option>
-        <option value="npcGenerator">Crée un PNJ</option>
+        {widgetList.map((widget) => (
+          <option key={widget.type} value={widget.type}>
+            {widget.name}
+          </option>
+        ))}
       </select>
     </div>
   );

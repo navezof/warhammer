@@ -6,15 +6,8 @@ import {
 import { combine } from "@atlaskit/pragmatic-drag-and-drop/combine";
 import { css, type SerializedStyles } from "@emotion/react";
 import { WidgetHeader } from "./WidgetHeader";
-import { Widget, WidgetType } from "../../types/type";
-import { FateQuestionWidget } from "../fate/FateQuestionWidget";
-import { NameWidget } from "../name/nameWidget";
-import { NpcInteractionWidget } from "../npcConversation/NpcConversationWidget";
-import { OracleWidget } from "../oracle/OracleWidget";
-import { Scene } from "../scene/Scene";
-import { ThreadWidget } from "../list/ThreadWidget";
-import { ActorWidget } from "../list/ActorWidget";
-import { NpcGeneratorWidget } from "../npcGenerator/NpcGeneratorWidget";
+import { Widget } from "../../types/type";
+import { widgetMap } from "../addWidget/WidgetList";
 
 type WidgetItemComponentProps = PropsWithChildren & {
   instanceId: symbol;
@@ -41,31 +34,6 @@ const itemStateStyles: { [Key in State]: undefined | SerializedStyles } = {
   }),
 };
 
-const renderWidget = (type: WidgetType, id: string) => {
-  switch (type) {
-    case "oracle":
-      return <OracleWidget widgetId={id} />;
-    case "fate":
-      return <FateQuestionWidget />;
-    case "actor":
-      return <ActorWidget widgetId={id} />;
-    case "npcInteraction":
-      return <NpcInteractionWidget />;
-    case "scene":
-      return <Scene />;
-    case "thread":
-      return <ThreadWidget widgetId={id} />;
-    case "name":
-      return <NameWidget widgetId={id} />;
-    case "npcGenerator":
-      return <NpcGeneratorWidget />;
-    default:
-      return null;
-  }
-};
-
-// High Order Component: a component that wraps another children component
-// Allows to add additional functionality to a component without modifying its structure
 const WidgetItemComponent = ({
   instanceId,
   className = "",
@@ -74,6 +42,11 @@ const WidgetItemComponent = ({
 }: WidgetItemComponentProps) => {
   const ref = useRef(null);
   const [state, setState] = React.useState<State>("idle");
+
+  const widgetDefinition = widgetMap.get(widget.type);
+  if (!widgetDefinition)
+    return <div>Error: Widget type {widget.type} not found</div>;
+  const WidgetComponent = widgetDefinition.component;
 
   useEffect(() => {
     const el = ref.current;
@@ -117,7 +90,7 @@ const WidgetItemComponent = ({
         removeWidget={removeWidget}
       />
       <div className="pt-2 flex-1 flex flex-col bg-gray-50 h-[90%] p-2 space-y-2">
-        {renderWidget(widget.type, widget.id)}
+        <WidgetComponent widgetId={widget.id} />
       </div>
     </div>
   );
