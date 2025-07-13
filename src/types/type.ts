@@ -1,12 +1,12 @@
 export type WidgetType =
-  | 'fate'
-  | 'oracle'
-  | 'actor'
-  | 'thread'
-  | 'npcInteraction'
-  | 'scene'
-  | 'name'
-  | 'npcGenerator';
+  | "fate"
+  | "oracle"
+  | "actor"
+  | "thread"
+  | "npcInteraction"
+  | "scene"
+  | "name"
+  | "npcGenerator";
 
 export interface Widget {
   id: string;
@@ -20,7 +20,7 @@ export interface Trait {
 }
 
 export interface TraitConfig {
-  parameter: any;
+  parameter: string;
 }
 
 export interface TraitDefinition {

@@ -3,10 +3,10 @@ export const randomNumber = (min: number, max: number): number => {
 };
 
 export function convertCSVArrayToArray(csvArray: string[]): string[][] {
-  let newArray = [];
+  const newArray = [];
   for (let i = 0; i < csvArray.length; i += 1) {
     const row = csvArray[i];
-    const columns = row.split(';');
+    const columns = row.split(";");
     newArray.push(columns);
   }
   return newArray;
