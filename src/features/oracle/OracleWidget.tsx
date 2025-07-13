@@ -28,7 +28,7 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
     if (selected) {
       storeItemsInLocalStorage(selected, storageKey);
     }
-  }, [selected]);
+  }, [selected, storageKey]);
 
   return (
     <div className="flex justify-center h-full">

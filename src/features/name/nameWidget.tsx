@@ -48,7 +48,7 @@ export const NameWidget = ({ widgetId }: NameWidgetProps) => {
       setMaleNameAnswer(null);
       setFemaleNameAnswer(null);
     }
-  }, [selected]);
+  }, [selected, storageKey]);
 
   return (
     <div className="flex flex-col justify-center h-full">
