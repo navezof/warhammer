@@ -1,6 +1,8 @@
 import {
+  FaArrowDown,
   FaArrowLeft,
   FaArrowRight,
+  FaBars,
   FaDice,
   FaEye,
   FaMars,
@@ -22,8 +24,10 @@ export type RpgIconType =
   | "xmark"
   | "arrowRight"
   | "arrowLeft"
+  | "arrowDown"
   | "arrowRotateLeft"
-  | "penToSquare";
+  | "penToSquare"
+  | "bars";
 
 export interface RpgIconProps {
   iconType: RpgIconType;
@@ -89,8 +93,12 @@ export const RpgIcon = ({ iconType }: RpgIconProps) => {
       return arrowLeft();
     case "arrowRotateLeft":
       return arrowRotateLeft();
+    case "arrowDown":
+      return <FaArrowDown className="w-5 h-5 text-gray-300" />;
     case "penToSquare":
       return penToSquare();
+    case "bars":
+      return <FaBars className="w-5 h-5 text-gray-300" />;
     default:
       return questionIcon();
   }

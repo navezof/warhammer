@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RpgIcon } from "../../components/RpgIcon";
 import { useRPGToolboxContext } from "../../RPGToolboxContext";
 
@@ -9,7 +9,9 @@ type DashboardHeaderProps = {
 
 export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
   const {
+    dashboards,
     setDashboards,
+    setActiveDashboardId,
     hasPreviousDashboard,
     hasNextDashboard,
     nextDashboard,
@@ -18,6 +20,23 @@ export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
   } = useRPGToolboxContext();
 
   const [dashboardTitle, setDashboardTitle] = useState<string>(name);
+  const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   useEffect(() => {
     setDashboardTitle(name);
@@ -32,29 +51,80 @@ export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
     );
   };
 
-  return (
-    <div className="flex p-2 bg-gray-800 h-full w-full text-white font-bold text-lg justify-center items-center">
-      {hasPreviousDashboard() && (
-        <button
-          onClick={previousDashboard}
-          className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
-          title="Previous dashboard"
-        >
-          <RpgIcon iconType={"arrowLeft"} />
-        </button>
-      )}
+  const renderTitleInput = () => {
+    if (isDropdownOpen) return;
+    return (
       <input
         type="text"
         value={dashboardTitle}
         onChange={(e) => handleChangeDashboardTitle(e.target.value)}
       />
-      <button
-        onClick={deleteDashboard}
-        className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
-        title="Delete dashboard"
+    );
+  };
+
+  const renderDropdownMenu = () => {
+    if (!isDropdownOpen) return null;
+    return (
+      <div
+        ref={dropdownRef}
+        className="absolute top-full right-0 mt-2 w-56 bg-gray-700 rounded-md shadow-lg z-10 text-sm font-normal"
       >
-        <RpgIcon iconType={"xmark"} />
+        <div className="p-2">
+          <label
+            htmlFor="dashboard-select"
+            className="block text-xs font-medium text-gray-300"
+          >
+            Switch Dashboard
+          </label>
+          <select
+            id="dashboard-select"
+            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-600 bg-gray-800 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            value={id}
+            onChange={(e) => {
+              setActiveDashboardId(e.target.value);
+              setDropdownOpen(false);
+            }}
+          >
+            {dashboards.map((dashboard) => (
+              <option key={dashboard.id} value={dashboard.id}>
+                {dashboard.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="border-t border-gray-600" />
+        <div className="py-1">
+          <button
+            onClick={() => {
+              deleteDashboard();
+              setDropdownOpen(false);
+            }}
+            className="flex items-center w-full px-4 py-2 text-sm text-red-400 hover:bg-gray-600"
+            disabled={dashboards.length <= 1}
+          >
+            <RpgIcon iconType={"xmark"} />
+            <span className="ml-2">Delete Dashboard</span>
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderPreviousDashboardButton = () => {
+    if (!hasPreviousDashboard()) return;
+    return (
+      <button
+        onClick={previousDashboard}
+        className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
+        title="Previous dashboard"
+      >
+        <RpgIcon iconType={"arrowLeft"} />
       </button>
+    );
+  };
+
+  const renderNextDashboardButton = () => {
+    return (
       <button
         onClick={nextDashboard}
         className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
@@ -66,6 +136,26 @@ export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
           <RpgIcon iconType={"penToSquare"} />
         )}
       </button>
+    );
+  };
+
+  const renderDropdownMenuButton = () => {
+    return (
+      <div className="relative">
+        <button onClick={() => setDropdownOpen((prev) => !prev)}>
+          <RpgIcon iconType={"bars"} />
+        </button>
+        {renderDropdownMenu()}
+      </div>
+    );
+  };
+
+  return (
+    <div className="flex flew-row space-x-2 p-2 bg-gray-800 h-full w-full text-white font-bold text-lg justify-center items-center">
+      {renderPreviousDashboardButton()}
+      {renderTitleInput()}
+      {renderDropdownMenuButton()}
+      {renderNextDashboardButton()}
     </div>
   );
 };
