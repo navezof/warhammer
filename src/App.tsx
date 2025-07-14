@@ -1,23 +1,43 @@
 import React from "react";
-import { ItemList } from "./types/type";
 import { Outlet } from "react-router-dom";
-import { RPGToolboxProvider } from "./RPGToolboxContext";
+import { RPGToolboxProvider, useRPGToolboxContext } from "./RPGToolboxContext";
 import "./app.css";
 import Dashboard from "./features/dashboard/Dashboard";
 import { DashboardHeader } from "./features/dashboard/DashboardHeader";
 
-function App() {
-  const [characterList, setCharacterList] = React.useState<ItemList[]>([]);
+const AppContent: React.FC = () => {
+  const { dashboards, activeDashboardId } = useRPGToolboxContext();
+
+  const activeDashboard = dashboards.find(
+    (dashboard) => dashboard.id === activeDashboardId
+  );
 
   return (
+    <div>
+      <main>
+        <Outlet />
+        {activeDashboard && (
+          <>
+            <DashboardHeader
+              id={activeDashboard.id}
+              name={activeDashboard.name}
+            />
+            <Dashboard
+              key={activeDashboard.id}
+              id={activeDashboard.id}
+              initialWidgets={activeDashboard.widgets}
+            />
+          </>
+        )}
+      </main>
+    </div>
+  );
+};
+
+function App() {
+  return (
     <RPGToolboxProvider>
-      <div>
-        <main>
-          <Outlet context={{ characterList, setCharacterList }} />
-          <DashboardHeader />
-          <Dashboard />
-        </main>
-      </div>
+      <AppContent />
     </RPGToolboxProvider>
   );
 }

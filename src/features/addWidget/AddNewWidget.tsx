@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useRPGToolboxContext } from "../../RPGToolboxContext";
 import { WidgetType } from "../../types/type";
 import { widgetList } from "./WidgetList";
 
-export const AddNewWidget = () => {
-  const { addNew } = useRPGToolboxContext();
+type AddNewWidgetProps = {
+  addNew: (type: WidgetType) => void;
+};
+
+export const AddNewWidget = ({ addNew }: AddNewWidgetProps) => {
   const [selectedValue, setSelectedValue] = useState<string>("");
 
   return (

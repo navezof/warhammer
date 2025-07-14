@@ -1,5 +1,19 @@
-import { FaDice, FaEye, FaMars, FaQuestion, FaVenus } from "react-icons/fa";
-import { FaSquareXmark } from "react-icons/fa6";
+import {
+  FaArrowDown,
+  FaArrowLeft,
+  FaArrowRight,
+  FaBars,
+  FaDice,
+  FaEye,
+  FaMars,
+  FaQuestion,
+  FaVenus,
+} from "react-icons/fa";
+import {
+  FaArrowRotateLeft,
+  FaPenToSquare,
+  FaSquareXmark,
+} from "react-icons/fa6";
 
 export type RpgIconType =
   | "dice"
@@ -7,51 +21,45 @@ export type RpgIconType =
   | "question"
   | "male"
   | "female"
-  | "xmark";
+  | "xmark"
+  | "arrowRight"
+  | "arrowLeft"
+  | "arrowDown"
+  | "arrowRotateLeft"
+  | "penToSquare"
+  | "bars";
 
 export interface RpgIconProps {
   iconType: RpgIconType;
 }
 
 export const RpgIcon = ({ iconType }: RpgIconProps) => {
-  const diceIcon = () => {
-    return <FaDice className="w-5 h-5 text-gray-700" />;
-  };
-
-  const questionIcon = () => {
-    return <FaQuestion className="w-5 h-5 text-gray-700" />;
-  };
-
-  const eyeIcon = () => {
-    return <FaEye className="w-5 h-5 text-gray-700" />;
-  };
-
-  const femaleIcon = () => {
-    return <FaVenus className="w-5 h-5 text-gray-700" />;
-  };
-
-  const maleIcon = () => {
-    return <FaMars className="w-5 h-5 text-gray-700" />;
-  };
-
-  const xMarkIcon = () => {
-    return <FaSquareXmark className="w-5 h-5 text-red-600" />;
-  };
-
   switch (iconType) {
     case "dice":
-      return diceIcon();
+      return <FaDice className="w-5 h-5 text-gray-700" />;
     case "eye":
-      return eyeIcon();
+      return <FaEye className="w-5 h-5 text-gray-700" />;
     case "question":
-      return questionIcon();
+      return <FaQuestion className="w-5 h-5 text-gray-700" />;
     case "female":
-      return femaleIcon();
+      return <FaVenus className="w-5 h-5 text-gray-700" />;
     case "male":
-      return maleIcon();
+      return <FaMars className="w-5 h-5 text-gray-700" />;
     case "xmark":
-      return xMarkIcon();
+      return <FaSquareXmark className="w-5 h-5 text-red-600" />;
+    case "arrowRight":
+      return <FaArrowRight className="w-5 h-5 text-gray-300" />;
+    case "arrowLeft":
+      return <FaArrowLeft className="w-5 h-5 text-gray-300" />;
+    case "arrowRotateLeft":
+      return <FaArrowRotateLeft className="w-5 h-5 text-gray-300" />;
+    case "arrowDown":
+      return <FaArrowDown className="w-5 h-5 text-gray-300" />;
+    case "penToSquare":
+      return <FaPenToSquare className="w-5 h-5 text-gray-300" />;
+    case "bars":
+      return <FaBars className="w-5 h-5 text-gray-300" />;
     default:
-      return questionIcon();
+      return <FaQuestion className="w-5 h-5 text-gray-700" />;
   }
 };
