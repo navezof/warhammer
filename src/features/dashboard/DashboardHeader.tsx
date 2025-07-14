@@ -14,6 +14,7 @@ export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
     hasNextDashboard,
     nextDashboard,
     previousDashboard,
+    deleteDashboard,
   } = useRPGToolboxContext();
 
   const [dashboardTitle, setDashboardTitle] = useState<string>(name);
@@ -33,22 +34,27 @@ export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
 
   return (
     <div className="flex p-2 bg-gray-800 h-full w-full text-white font-bold text-lg justify-center items-center">
-      <button
-        onClick={previousDashboard}
-        className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
-        title="Previous dashboard"
-      >
-        {hasPreviousDashboard() ? (
+      {hasPreviousDashboard() && (
+        <button
+          onClick={previousDashboard}
+          className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
+          title="Previous dashboard"
+        >
           <RpgIcon iconType={"arrowLeft"} />
-        ) : (
-          <RpgIcon iconType={"arrowRotateLeft"} />
-        )}
-      </button>
+        </button>
+      )}
       <input
         type="text"
         value={dashboardTitle}
         onChange={(e) => handleChangeDashboardTitle(e.target.value)}
       />
+      <button
+        onClick={deleteDashboard}
+        className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
+        title="Delete dashboard"
+      >
+        <RpgIcon iconType={"xmark"} />
+      </button>
       <button
         onClick={nextDashboard}
         className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"

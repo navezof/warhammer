@@ -30,6 +30,8 @@ type RPGToolboxState = {
   hasPreviousDashboard: () => boolean;
   nextDashboard: () => void;
   previousDashboard: () => void;
+
+  deleteDashboard: () => void;
 };
 
 const DASHBOARDS_STORAGE_KEY = "dashboards";
@@ -97,6 +99,34 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
     }
   }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
 
+  const deleteDashboard = () => {
+    let newActiveDashboardId: string | null;
+
+    const currentIndex = dashboards.findIndex(
+      (dashboard) => dashboard.id === activeDashboardId
+    );
+
+    // Delete the current dashboard
+    // Make sure that all storage are being cleaned up
+    // Replace the active one with previous or last one.
+
+    if (dashboards[currentIndex + 1])
+      newActiveDashboardId = dashboards[currentIndex + 1].id;
+    else if (dashboards[currentIndex - 1])
+      newActiveDashboardId = dashboards[currentIndex - 1].id;
+    else {
+      const newDashboard: Dashboard = {
+        id: crypto.randomUUID(),
+        name: `Dashboard ${currentIndex + 1}`,
+        widgets: [],
+      };
+      newActiveDashboardId = newDashboard.id;
+      setDashboards((prev) => [...prev, newDashboard]);
+    }
+    setDashboards((prev) => prev.filter((d) => d.id !== activeDashboardId));
+    setActiveDashboardId(newActiveDashboardId);
+  };
+
   useEffect(() => {
     storeItemsInLocalStorage(dashboards, DASHBOARDS_STORAGE_KEY);
   }, [dashboards]);
@@ -121,6 +151,8 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
         hasPreviousDashboard,
         nextDashboard,
         previousDashboard,
+
+        deleteDashboard,
       }}
     >
       {children}
