@@ -18,7 +18,10 @@ const AppContent: React.FC = () => {
         <Outlet />
         {activeDashboard && (
           <>
-            <DashboardHeader name={activeDashboard.name} />
+            <DashboardHeader
+              id={activeDashboard.id}
+              name={activeDashboard.name}
+            />
             <Dashboard
               key={activeDashboard.id}
               id={activeDashboard.id}
