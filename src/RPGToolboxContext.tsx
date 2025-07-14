@@ -100,6 +100,8 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
   }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
 
   const deleteDashboard = useCallback(() => {
+    if (!activeDashboardId) return;
+
     let newActiveDashboardId: string | null;
 
     const currentIndex = dashboards.findIndex(

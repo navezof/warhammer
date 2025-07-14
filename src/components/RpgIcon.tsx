@@ -34,72 +34,32 @@ export interface RpgIconProps {
 }
 
 export const RpgIcon = ({ iconType }: RpgIconProps) => {
-  const diceIcon = () => {
-    return <FaDice className="w-5 h-5 text-gray-700" />;
-  };
-
-  const questionIcon = () => {
-    return <FaQuestion className="w-5 h-5 text-gray-700" />;
-  };
-
-  const eyeIcon = () => {
-    return <FaEye className="w-5 h-5 text-gray-700" />;
-  };
-
-  const femaleIcon = () => {
-    return <FaVenus className="w-5 h-5 text-gray-700" />;
-  };
-
-  const maleIcon = () => {
-    return <FaMars className="w-5 h-5 text-gray-700" />;
-  };
-
-  const xMarkIcon = () => {
-    return <FaSquareXmark className="w-5 h-5 text-red-600" />;
-  };
-
-  const arrowRight = () => {
-    return <FaArrowRight className="w-5 h-5 text-gray-300" />;
-  };
-
-  const arrowLeft = () => {
-    return <FaArrowLeft className="w-5 h-5 text-gray-300" />;
-  };
-
-  const arrowRotateLeft = () => {
-    return <FaArrowRotateLeft className="w-5 h-5 text-gray-300" />;
-  };
-
-  const penToSquare = () => {
-    return <FaPenToSquare className="w-5 h-5 text-gray-300" />;
-  };
-
   switch (iconType) {
     case "dice":
-      return diceIcon();
+      return <FaDice className="w-5 h-5 text-gray-700" />;
     case "eye":
-      return eyeIcon();
+      return <FaEye className="w-5 h-5 text-gray-700" />;
     case "question":
-      return questionIcon();
+      return <FaQuestion className="w-5 h-5 text-gray-700" />;
     case "female":
-      return femaleIcon();
+      return <FaVenus className="w-5 h-5 text-gray-700" />;
     case "male":
-      return maleIcon();
+      return <FaMars className="w-5 h-5 text-gray-700" />;
     case "xmark":
-      return xMarkIcon();
+      return <FaSquareXmark className="w-5 h-5 text-red-600" />;
     case "arrowRight":
-      return arrowRight();
+      return <FaArrowRight className="w-5 h-5 text-gray-300" />;
     case "arrowLeft":
-      return arrowLeft();
+      return <FaArrowLeft className="w-5 h-5 text-gray-300" />;
     case "arrowRotateLeft":
-      return arrowRotateLeft();
+      return <FaArrowRotateLeft className="w-5 h-5 text-gray-300" />;
     case "arrowDown":
       return <FaArrowDown className="w-5 h-5 text-gray-300" />;
     case "penToSquare":
-      return penToSquare();
+      return <FaPenToSquare className="w-5 h-5 text-gray-300" />;
     case "bars":
       return <FaBars className="w-5 h-5 text-gray-300" />;
     default:
-      return questionIcon();
+      return <FaQuestion className="w-5 h-5 text-gray-700" />;
   }
 };

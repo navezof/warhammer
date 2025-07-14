@@ -36,7 +36,7 @@ export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef]);
+  }, [dropdownRef, setDropdownOpen]);
 
   useEffect(() => {
     setDashboardTitle(name);
@@ -151,7 +151,7 @@ export const DashboardHeader = ({ id, name }: DashboardHeaderProps) => {
   };
 
   return (
-    <div className="flex flew-row space-x-2 p-2 bg-gray-800 h-full w-full text-white font-bold text-lg justify-center items-center">
+    <div className="flex flex-row space-x-2 p-2 bg-gray-800 h-full w-full text-white font-bold text-lg justify-center items-center">
       {renderPreviousDashboardButton()}
       {renderTitleInput()}
       {renderDropdownMenuButton()}
