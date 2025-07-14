@@ -8,12 +8,23 @@ import { useRPGToolboxContext } from "../../RPGToolboxContext";
 
 const DASHBOARD_HEADER_STORAGE_KEY = "dashboard-header";
 
-export const DashboardHeader = () => {
-  const { nextDashboard, previousDashboard } = useRPGToolboxContext();
+type DashboardHeaderProps = {
+  name: string;
+};
+
+export const DashboardHeader = ({ name }: DashboardHeaderProps) => {
+  const {
+    hasPreviousDashboard,
+    hasNextDashboard,
+    nextDashboard,
+    previousDashboard,
+  } = useRPGToolboxContext();
 
   const [dashboardTitle, setDashboardTitle] = useState<string>(
     loadItemsFromLocalStorage(DASHBOARD_HEADER_STORAGE_KEY) || "My Dashboard"
   );
+
+  console.log(dashboardTitle);
 
   const handleChangeDashboardTitle = (newValue: string) => {
     setDashboardTitle(newValue);
@@ -27,19 +38,27 @@ export const DashboardHeader = () => {
         className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
         title="Previous dashboard"
       >
-        <RpgIcon iconType={"arrowLeft"} />
+        {hasPreviousDashboard() ? (
+          <RpgIcon iconType={"arrowLeft"} />
+        ) : (
+          <RpgIcon iconType={"arrowRotateLeft"} />
+        )}
       </button>
       <input
         type="text"
-        value={dashboardTitle}
+        value={name}
         onChange={(e) => handleChangeDashboardTitle(e.target.value)}
       />
       <button
         onClick={nextDashboard}
         className="inline-flex items-center justify-center w-8 h-8 bg-gray-on"
-        title="Next dashboard"
+        title={hasNextDashboard() ? "Next dashboard" : "Create new dashboard"}
       >
-        <RpgIcon iconType={"arrowRight"} />
+        {hasNextDashboard() ? (
+          <RpgIcon iconType={"arrowRight"} />
+        ) : (
+          <RpgIcon iconType={"penToSquare"} />
+        )}
       </button>
     </div>
   );

@@ -26,6 +26,8 @@ type RPGToolboxState = {
   activeDashboardId: string | null;
   setActiveDashboardId: React.Dispatch<React.SetStateAction<string | null>>;
 
+  hasNextDashboard: () => boolean;
+  hasPreviousDashboard: () => boolean;
   nextDashboard: () => void;
   previousDashboard: () => void;
 };
@@ -50,6 +52,20 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
   const [activeDashboardId, setActiveDashboardId] = useState<string | null>(
     () => dashboards[0]?.id || null
   );
+
+  const hasNextDashboard = () => {
+    const currentIndex = dashboards.findIndex(
+      (dashboard) => dashboard.id === activeDashboardId
+    );
+    return currentIndex !== dashboards.length - 1;
+  };
+
+  const hasPreviousDashboard = () => {
+    const currentIndex = dashboards.findIndex(
+      (dashboard) => dashboard.id === activeDashboardId
+    );
+    return currentIndex > 0;
+  };
 
   const nextDashboard = useCallback(() => {
     const currentIndex = dashboards.findIndex(
@@ -101,6 +117,8 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
         activeDashboardId,
         setActiveDashboardId,
 
+        hasNextDashboard,
+        hasPreviousDashboard,
         nextDashboard,
         previousDashboard,
       }}

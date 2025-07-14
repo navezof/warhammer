@@ -7,7 +7,11 @@ import {
   FaQuestion,
   FaVenus,
 } from "react-icons/fa";
-import { FaSquareXmark } from "react-icons/fa6";
+import {
+  FaArrowRotateLeft,
+  FaPenToSquare,
+  FaSquareXmark,
+} from "react-icons/fa6";
 
 export type RpgIconType =
   | "dice"
@@ -17,7 +21,9 @@ export type RpgIconType =
   | "female"
   | "xmark"
   | "arrowRight"
-  | "arrowLeft";
+  | "arrowLeft"
+  | "arrowRotateLeft"
+  | "penToSquare";
 
 export interface RpgIconProps {
   iconType: RpgIconType;
@@ -56,6 +62,14 @@ export const RpgIcon = ({ iconType }: RpgIconProps) => {
     return <FaArrowLeft className="w-5 h-5 text-gray-300" />;
   };
 
+  const arrowRotateLeft = () => {
+    return <FaArrowRotateLeft className="w-5 h-5 text-gray-300" />;
+  };
+
+  const penToSQuare = () => {
+    return <FaPenToSquare className="w-5 h-5 text-gray-300" />;
+  };
+
   switch (iconType) {
     case "dice":
       return diceIcon();
@@ -73,6 +87,10 @@ export const RpgIcon = ({ iconType }: RpgIconProps) => {
       return arrowRight();
     case "arrowLeft":
       return arrowLeft();
+    case "arrowRotateLeft":
+      return arrowRotateLeft();
+    case "penToSquare":
+      return penToSQuare();
     default:
       return questionIcon();
   }
