@@ -1,67 +1,108 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createContext, PropsWithChildren, useContext } from "react";
-import { Widget, WidgetType } from "./types/type";
+import { Widget } from "./types/type";
 import {
   loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "./utils/localStorageState";
 
+export type Dashboard = {
+  id: string;
+  name: string;
+  widgets: Widget[];
+};
+
 type RPGToolboxState = {
+  instanceId: symbol;
+
   chaos: number;
   setChaos: (value: number) => void;
   fateAnswer: string;
   setFateAnswer: (value: string) => void;
 
-  widgets: Widget[];
-  setWidgets: React.Dispatch<React.SetStateAction<Widget[]>>;
-  addNew: (type: WidgetType) => void;
-  removeWidget: (id: string) => void;
+  dashboards: Dashboard[];
+  setDashboards: React.Dispatch<React.SetStateAction<Dashboard[]>>;
 
-  instanceId: symbol;
+  activeDashboardId: string | null;
+  setActiveDashboardId: React.Dispatch<React.SetStateAction<string | null>>;
+
+  nextDashboard: () => void;
+  previousDashboard: () => void;
 };
 
-const DASHBOARD_WIDGET_STORAGE_KEY = "widgets";
+const DASHBOARDS_STORAGE_KEY = "dashboards";
+
 const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
 export function RPGToolboxProvider({ children }: PropsWithChildren) {
-  const [chaos, setChaos] = React.useState<number>(5);
+  const [chaos, setChaos] = useState<number>(5);
   const [fateAnswer, setFateAnswer] = React.useState<string>("-");
-  const [widgets, setWidgets] = React.useState<Widget[]>(
-    loadItemsFromLocalStorage(DASHBOARD_WIDGET_STORAGE_KEY) || []
+
+  const [dashboards, setDashboards] = useState<Dashboard[]>(() => {
+    const storedDashboards = loadItemsFromLocalStorage<Dashboard[]>(
+      DASHBOARDS_STORAGE_KEY
+    );
+    return storedDashboards && storedDashboards.length > 0
+      ? storedDashboards
+      : [{ id: crypto.randomUUID(), name: "My Dashboard", widgets: [] }];
+  });
+
+  const [activeDashboardId, setActiveDashboardId] = useState<string | null>(
+    () => dashboards[0]?.id || null
   );
 
-  const instanceId = React.useMemo(() => Symbol("instance-id"), []);
-
-  const addNew = useCallback((type: WidgetType) => {
-    const newWidget: Widget = {
-      id: crypto.randomUUID(),
-      type,
-    };
-    setWidgets((prev: Widget[]) => [...prev, newWidget]);
-  }, []);
-
-  const removeWidget = useCallback((id: string) => {
-    setWidgets((prev: Widget[]) =>
-      prev.filter((widget: Widget) => widget.id !== id)
+  const nextDashboard = useCallback(() => {
+    const currentIndex = dashboards.findIndex(
+      (dashboard) => dashboard.id === activeDashboardId
     );
-  }, []);
+
+    if (currentIndex === dashboards.length - 1) {
+      const newDashboard: Dashboard = {
+        id: crypto.randomUUID(),
+        name: `Dashboard ${currentIndex + 1}`,
+        widgets: [],
+      };
+      setDashboards((prev) => [...prev, newDashboard]);
+      setActiveDashboardId(newDashboard.id);
+    } else {
+      setActiveDashboardId(dashboards[currentIndex + 1].id);
+    }
+  }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
+
+  const previousDashboard = useCallback(() => {
+    const currentIndex = dashboards.findIndex(
+      (dashboard) => dashboard.id === activeDashboardId
+    );
+
+    if (currentIndex === 0) {
+      setActiveDashboardId(dashboards[dashboards.length - 1].id);
+    } else {
+      setActiveDashboardId(dashboards[currentIndex - 1].id);
+    }
+  }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
 
   useEffect(() => {
-    storeItemsInLocalStorage(widgets, DASHBOARD_WIDGET_STORAGE_KEY);
-  }, [widgets]);
+    storeItemsInLocalStorage(dashboards, DASHBOARDS_STORAGE_KEY);
+  }, [dashboards]);
+
+  const instanceId = React.useMemo(() => Symbol("instance-id"), []);
 
   return (
     <RPGToolBoxContext.Provider
       value={{
+        instanceId,
         chaos,
         setChaos,
         fateAnswer,
         setFateAnswer,
-        widgets,
-        setWidgets,
-        addNew,
-        removeWidget,
-        instanceId,
+
+        dashboards,
+        setDashboards,
+        activeDashboardId,
+        setActiveDashboardId,
+
+        nextDashboard,
+        previousDashboard,
       }}
     >
       {children}
