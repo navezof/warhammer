@@ -99,16 +99,12 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
     }
   }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
 
-  const deleteDashboard = () => {
+  const deleteDashboard = useCallback(() => {
     let newActiveDashboardId: string | null;
 
     const currentIndex = dashboards.findIndex(
       (dashboard) => dashboard.id === activeDashboardId
     );
-
-    // Delete the current dashboard
-    // Make sure that all storage are being cleaned up
-    // Replace the active one with previous or last one.
 
     if (dashboards[currentIndex + 1])
       newActiveDashboardId = dashboards[currentIndex + 1].id;
@@ -120,12 +116,13 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
         name: `Dashboard ${currentIndex + 1}`,
         widgets: [],
       };
-      newActiveDashboardId = newDashboard.id;
-      setDashboards((prev) => [...prev, newDashboard]);
+      setActiveDashboardId(newDashboard.id);
+      setDashboards([newDashboard]);
+      return;
     }
     setDashboards((prev) => prev.filter((d) => d.id !== activeDashboardId));
     setActiveDashboardId(newActiveDashboardId);
-  };
+  }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
 
   useEffect(() => {
     storeItemsInLocalStorage(dashboards, DASHBOARDS_STORAGE_KEY);

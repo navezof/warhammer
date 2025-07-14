@@ -25,7 +25,6 @@ const AppContent: React.FC = () => {
             <Dashboard
               key={activeDashboard.id}
               id={activeDashboard.id}
-              name={activeDashboard.name}
               initialWidgets={activeDashboard.widgets}
             />
           </>

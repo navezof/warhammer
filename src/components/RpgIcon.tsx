@@ -66,7 +66,7 @@ export const RpgIcon = ({ iconType }: RpgIconProps) => {
     return <FaArrowRotateLeft className="w-5 h-5 text-gray-300" />;
   };
 
-  const penToSQuare = () => {
+  const penToSquare = () => {
     return <FaPenToSquare className="w-5 h-5 text-gray-300" />;
   };
 
@@ -90,7 +90,7 @@ export const RpgIcon = ({ iconType }: RpgIconProps) => {
     case "arrowRotateLeft":
       return arrowRotateLeft();
     case "penToSquare":
-      return penToSQuare();
+      return penToSquare();
     default:
       return questionIcon();
   }

@@ -7,7 +7,6 @@ import { useWidgetDnD } from "./useWidgetDnD";
 
 type DashboardProps = {
   id: string;
-  name: string;
   initialWidgets: Widget[];
 };
 
@@ -24,7 +23,7 @@ const Dashboard: React.FC<DashboardProps> = ({
         dashboard.id === dashboardId ? { ...dashboard, widgets } : dashboard
       )
     );
-  }, [widgets, dashboardId, setDashboards]);
+  }, [widgets, dashboardId]);
 
   const addNew = useCallback((type: WidgetType) => {
     const newWidget: Widget = {
