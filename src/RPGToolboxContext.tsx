@@ -30,6 +30,7 @@ type RPGToolboxState = {
 };
 
 const DASHBOARDS_STORAGE_KEY = "dashboards";
+const ACTIVE_DASHBOARD_ID_STORAGE_KEY = "activeDashboardId";
 
 const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
@@ -44,7 +45,14 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
   });
 
   const [activeDashboardId, setActiveDashboardId] = useState<string | null>(
-    () => dashboards[0]?.id || null
+    () => {
+      const storedId = loadItemsFromLocalStorage<string>(
+        ACTIVE_DASHBOARD_ID_STORAGE_KEY
+      );
+      if (storedId && dashboards.some((dashboard) => dashboard.id === storedId))
+        return storedId;
+      return dashboards[0]?.id || null;
+    }
   );
 
   const hasNextDashboard = () => {
@@ -116,11 +124,22 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
     }
     setDashboards((prev) => prev.filter((d) => d.id !== activeDashboardId));
     setActiveDashboardId(newActiveDashboardId);
+    storeItemsInLocalStorage(
+      newActiveDashboardId,
+      ACTIVE_DASHBOARD_ID_STORAGE_KEY
+    );
   }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
 
   useEffect(() => {
     storeItemsInLocalStorage(dashboards, DASHBOARDS_STORAGE_KEY);
   }, [dashboards]);
+
+  useEffect(() => {
+    storeItemsInLocalStorage(
+      activeDashboardId,
+      ACTIVE_DASHBOARD_ID_STORAGE_KEY
+    );
+  }, [activeDashboardId]);
 
   const instanceId = React.useMemo(() => Symbol("instance-id"), []);
 
