@@ -3,7 +3,7 @@ import { RpgIcon, RpgIconType } from "./RpgIcon";
 import { Table } from "../types/type";
 import { rollOnTable } from "../utils/rolls";
 
-export type RollOnTableIconProps = {
+export type RollOnTableWithIconProps = {
   table: Table;
   numberOfRoll?: number;
   column?: number;
@@ -11,21 +11,20 @@ export type RollOnTableIconProps = {
   title?: string;
 };
 
-export const RollOnTableIcon = ({
+export const RollOnTableWithIcon = ({
   table,
   numberOfRoll = 1,
   column = 1,
   iconType,
   title,
-}: RollOnTableIconProps) => {
+}: RollOnTableWithIconProps) => {
   const [answer, setAnswer] = React.useState<string | null>(null);
 
   const handleRollOnTable = (numberOfRoll: number) => {
-    let answer = "";
-    for (let i = 0; i < numberOfRoll; i++) {
-      answer += rollOnTable(table, column) + (i < numberOfRoll - 1 ? " " : "");
-    }
-    setAnswer(answer);
+    const rolls = Array.from({ length: numberOfRoll }, () =>
+      rollOnTable(table, column)
+    );
+    setAnswer(rolls.join(" "));
   };
 
   return (
