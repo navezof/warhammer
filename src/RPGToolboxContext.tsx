@@ -45,8 +45,14 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
   });
 
   const [activeDashboardId, setActiveDashboardId] = useState<string | null>(
-    loadItemsFromLocalStorage<string>(ACTIVE_DASHBOARD_ID_STORAGE_KEY) ||
-      dashboards[0]?.id
+    () => {
+      const storedId = loadItemsFromLocalStorage<string>(
+        ACTIVE_DASHBOARD_ID_STORAGE_KEY
+      );
+      if (storedId && dashboards.some((dashboard) => dashboard.id === storedId))
+        return storedId;
+      return dashboards[0]?.id || null;
+    }
   );
 
   const hasNextDashboard = () => {
@@ -118,6 +124,10 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
     }
     setDashboards((prev) => prev.filter((d) => d.id !== activeDashboardId));
     setActiveDashboardId(newActiveDashboardId);
+    storeItemsInLocalStorage(
+      newActiveDashboardId,
+      ACTIVE_DASHBOARD_ID_STORAGE_KEY
+    );
   }, [activeDashboardId, dashboards, setDashboards, setActiveDashboardId]);
 
   useEffect(() => {
