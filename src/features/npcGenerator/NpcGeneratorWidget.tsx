@@ -8,11 +8,30 @@ import { NPCQuirk } from "./data/NPCQuirk";
 export const NpcGeneratorWidget = () => {
   return (
     <div>
-      <RollOnTable title={"Archetype"} table={NPCArchetypeTable} />
-      <RollOnTable title={"Qualité"} table={NPCQualifierTable} />
-      <RollOnTable title={"Appearance"} table={NPCAppearance} />
-      <RollOnTable title={"Passé"} table={NPCLifeEvent} />
-      <RollOnTable title={"Trait Particulier"} table={NPCQuirk} />
+      <RollOnTable
+        title={"Archetype"}
+        table={NPCArchetypeTable}
+        numberOfRoll={2}
+        iconType="dice"
+      />
+      <RollOnTable
+        title={"Qualité"}
+        table={NPCQualifierTable}
+        iconType="dice"
+      />
+      <RollOnTable
+        title={"Appearance"}
+        table={NPCAppearance}
+        numberOfRoll={2}
+        iconType="dice"
+      />
+      <RollOnTable title={"Passé"} table={NPCLifeEvent} iconType="dice" />
+      <RollOnTable
+        title={"Trait Particulier"}
+        table={NPCQuirk}
+        numberOfRoll={2}
+        iconType="dice"
+      />
     </div>
   );
 };
