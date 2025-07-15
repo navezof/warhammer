@@ -15,11 +15,6 @@ export type Dashboard = {
 type RPGToolboxState = {
   instanceId: symbol;
 
-  chaos: number;
-  setChaos: (value: number) => void;
-  fateAnswer: string;
-  setFateAnswer: (value: string) => void;
-
   dashboards: Dashboard[];
   setDashboards: React.Dispatch<React.SetStateAction<Dashboard[]>>;
 
@@ -39,9 +34,6 @@ const DASHBOARDS_STORAGE_KEY = "dashboards";
 const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
 export function RPGToolboxProvider({ children }: PropsWithChildren) {
-  const [chaos, setChaos] = useState<number>(5);
-  const [fateAnswer, setFateAnswer] = React.useState<string>("-");
-
   const [dashboards, setDashboards] = useState<Dashboard[]>(() => {
     const storedDashboards = loadItemsFromLocalStorage<Dashboard[]>(
       DASHBOARDS_STORAGE_KEY
@@ -136,10 +128,6 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
     <RPGToolBoxContext.Provider
       value={{
         instanceId,
-        chaos,
-        setChaos,
-        fateAnswer,
-        setFateAnswer,
 
         dashboards,
         setDashboards,

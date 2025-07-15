@@ -1,8 +1,8 @@
-import { useChaos } from "./useChaos";
+type ChaosDisplayProps = {
+  chaos: number;
+};
 
-const ChaosDisplay = () => {
-  const { chaos } = useChaos();
-
+const ChaosDisplay = ({ chaos }: ChaosDisplayProps) => {
   return (
     <div className="flex flex-col items-center justify-center text-center p-1 space-y-1">
       {chaos && (

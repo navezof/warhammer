@@ -1,12 +1,14 @@
 import { FateOdds } from "./data/fateOdds";
 import { rollOnFateTable } from "./rollOnFateTable";
-import { useChaos } from "../chaos/useChaos";
-import { useFateAnswer } from "./useFateAnswer";
 import Button from "../../components/CustomButton";
+import { useState } from "react";
 
-const FateInput = () => {
-  const { chaos } = useChaos();
-  const { fateAnswer, setFateAnswer } = useFateAnswer();
+type FateInputProps = {
+  chaos: number;
+};
+
+const FateInput = ({ chaos }: FateInputProps) => {
+  const [fateAnswer, setFateAnswer] = useState<string | null>(null);
 
   const handleClick = (odds: FateOdds) => {
     const fate = rollOnFateTable(odds, chaos);

@@ -1,9 +1,11 @@
-import { useChaos } from "./useChaos";
 import Button from "../../components/CustomButton";
 
-const ChaosInput = () => {
-  const { chaos, setChaos } = useChaos();
+type ChaosInputProps = {
+  chaos: number;
+  setChaos: (value: number) => void;
+};
 
+const ChaosInput = ({ chaos, setChaos }: ChaosInputProps) => {
   const handleClick = (change: string) => {
     if (change.includes("+")) {
       const number = parseInt(change.replace("+", ""));
