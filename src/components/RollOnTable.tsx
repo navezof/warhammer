@@ -1,31 +1,17 @@
-import { Table } from '../types/type';
-import { RollOnTableIcon } from './RollOnTableIcon';
-import { RpgIconType } from './RpgIcon';
-import { TableInTooltip } from './TableInTooltip';
-
-type RollOnTableProps = {
-  title: string;
-  table: Table;
-  column?: number;
-  rpgIconType?: RpgIconType;
-};
+import { RollOnTableIcon, RollOnTableIconProps } from "./RollOnTableIcon";
+import { TableInTooltip } from "./TableInTooltip";
 
 export const RollOnTable = ({
-  title,
+  title = "Roll",
   table,
-  column,
-  rpgIconType,
-}: RollOnTableProps) => {
+  ...rest
+}: RollOnTableIconProps) => {
   return (
     <div>
-      <TableInTooltip text={title} table={table} />
-      <span className='italic'>
-        <RollOnTableIcon
-          table={table}
-          column={column}
-          rpgIconType={rpgIconType}
-        />
-      </span>{' '}
+      <TableInTooltip title={title} table={table} />
+      <span className="italic">
+        <RollOnTableIcon table={table} {...rest} />
+      </span>{" "}
     </div>
   );
 };

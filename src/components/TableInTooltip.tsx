@@ -3,13 +3,13 @@ import { Table } from "../types/type";
 import { RpgIcon } from "./RpgIcon";
 
 type TableInTooltipProps = {
-  text: string;
+  title: string;
   table: Table;
   useIcon?: boolean;
 };
 
 export const TableInTooltip = ({
-  text,
+  title,
   table,
   useIcon = false,
 }: TableInTooltipProps) => {
@@ -39,7 +39,7 @@ export const TableInTooltip = ({
     if (useIcon) {
       return <RpgIcon iconType="eye" />;
     }
-    return <>{text}</>;
+    return <>{title}</>;
   }
 
   return (
