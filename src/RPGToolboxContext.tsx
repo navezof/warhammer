@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { createContext, PropsWithChildren, useContext } from "react";
-import { Widget } from "./types/type";
+import { Table, Widget } from "./types/type";
 import {
   loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "./utils/localStorageState";
+import { DataLoader } from "./utils/dataLoader";
 
 export type Dashboard = {
   id: string;
@@ -14,6 +15,9 @@ export type Dashboard = {
 
 type RPGToolboxState = {
   instanceId: symbol;
+
+  tableData: Table[] | null;
+  setTableData: React.Dispatch<React.SetStateAction<Table[] | null>>;
 
   dashboards: Dashboard[];
   setDashboards: React.Dispatch<React.SetStateAction<Dashboard[]>>;
@@ -35,6 +39,16 @@ const ACTIVE_DASHBOARD_ID_STORAGE_KEY = "activeDashboardId";
 const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
 export function RPGToolboxProvider({ children }: PropsWithChildren) {
+  const dataLoader = useMemo(() => {
+    const loader = DataLoader();
+    loader.loadData();
+    return loader;
+  }, []);
+
+  const [tableData, setTableData] = useState<Table[] | null>(() =>
+    dataLoader.getAll()
+  );
+
   const [dashboards, setDashboards] = useState<Dashboard[]>(() => {
     const storedDashboards = loadItemsFromLocalStorage<Dashboard[]>(
       DASHBOARDS_STORAGE_KEY
@@ -147,6 +161,9 @@ export function RPGToolboxProvider({ children }: PropsWithChildren) {
     <RPGToolBoxContext.Provider
       value={{
         instanceId,
+
+        tableData,
+        setTableData,
 
         dashboards,
         setDashboards,
