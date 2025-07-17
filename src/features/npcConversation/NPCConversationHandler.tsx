@@ -24,7 +24,7 @@ const NPCHandler = () => {
       />
       <div>
         <TableInTooltip
-          text={"Humeur"}
+          title={"Humeur"}
           table={relationshipTableMap[selectedNPCRelationship]}
         />
         <span className="italic">
@@ -34,7 +34,7 @@ const NPCHandler = () => {
         </span>{" "}
       </div>
       <span>
-        <TableInTooltip text={"Attitude"} table={npcDispositionTable} />
+        <TableInTooltip title={"Attitude"} table={npcDispositionTable} />
         <span className="italic">
           <RollOnTableWithIcon table={npcDispositionTable} />
         </span>{" "}
@@ -47,7 +47,7 @@ const NPCHandler = () => {
       />
       <span>
         <TableInTooltip
-          text={"Sujet d'intérêt"}
+          title={"Sujet d'intérêt"}
           table={npcConversationFocusTable}
         />
         <span className="italic">
