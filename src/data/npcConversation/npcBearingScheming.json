@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearting Table - Scheming",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on scheming.",
+  "dice": "1d100",
+  "content": [
+    "1-10;intent",
+    "11-20;bargain",
+    "21-30;means",
+    "31-40;proposition",
+    "41-50;plan",
+    "51-60;compromise",
+    "61-70;agenda",
+    "71-80;arrangement",
+    "81-90;negotiation",
+    "91-100;plot"
+  ]
+}

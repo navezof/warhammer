@@ -1,0 +1,14 @@
+{
+  "name": "NPC Conversation Mood Table - Hostile",
+  "description": "A table to determine the mood of an NPC during a conversation, focusing on hostility and aggression.",
+  "dice": "1d100",
+  "content": [
+    "1-11;withdrawn",
+    "12-24;guarded",
+    "25-61;cautious",
+    "62-81;neutral",
+    "82-93;sociable",
+    "94-98;helpful",
+    "99-100;forthcoming"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "NPC Conversation Mood Table - Neutral",
+  "description": "A table to determine the mood of an NPC during a conversation, focusing on neutrality and indifference.",
+  "dice": "1d100",
+  "content": [
+    "1-5;withdrawn",
+    "6-15;guarded",
+    "16-30;cautious",
+    "31-60;neutral",
+    "61-85;sociable",
+    "86-95;helpful",
+    "96-100;forthcoming"
+  ]
+}

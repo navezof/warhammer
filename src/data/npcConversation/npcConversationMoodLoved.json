@@ -1,0 +1,14 @@
+{
+  "name": "NPC Conversation Mood Table - Loved",
+  "description": "A table to determine the mood of an NPC during a conversation, focusing on love and affection.",
+  "dice": "1d100",
+  "content": [
+    "1;withdrawn",
+    "2-6;guarded",
+    "7-16;cautious",
+    "17-31;neutral",
+    "32-70;sociable",
+    "71-85;helpful",
+    "86-100;forthcoming"
+  ]
+}

@@ -1,11 +1,10 @@
 import React from "react";
 import EnumSelector from "../../components/EnumSelector";
-import { NPCRelationship, relationshipTableMap } from "./data/npcRelationship";
-import { NpcDisposition } from "./data/npcDisposition";
-import { npcConversationFocusTable } from "./data/npcConversationFocusTable";
-import { npcDispositionTable } from "./data/npcDispositionTable";
+import { NPCRelationship, relationshipMap } from "./npcRelationshipMap";
+import { NpcDisposition } from "./npcDispositionMap";
 import { RollOnTableWithIcon } from "../../components/RollOnTableWithIcon";
 import { TableInTooltip } from "../../components/TableInTooltip";
+import { tableRepository } from "../../utils/tableRepository";
 
 const NPCHandler = () => {
   const [selectedNPCRelationship, setSelectedNPCRelationship] =
@@ -25,18 +24,23 @@ const NPCHandler = () => {
       <div>
         <TableInTooltip
           title={"Humeur"}
-          table={relationshipTableMap[selectedNPCRelationship]}
+          table={relationshipMap[selectedNPCRelationship]}
         />
         <span className="italic">
           <RollOnTableWithIcon
-            table={relationshipTableMap[selectedNPCRelationship]}
+            table={relationshipMap[selectedNPCRelationship]}
           />
         </span>{" "}
       </div>
       <span>
-        <TableInTooltip title={"Attitude"} table={npcDispositionTable} />
+        <TableInTooltip
+          title={"Attitude"}
+          table={tableRepository.get("NPC Disposition Table")}
+        />
         <span className="italic">
-          <RollOnTableWithIcon table={npcDispositionTable} />
+          <RollOnTableWithIcon
+            table={tableRepository.get("NPC Disposition Table")}
+          />
         </span>{" "}
       </span>
       <EnumSelector
@@ -48,10 +52,12 @@ const NPCHandler = () => {
       <span>
         <TableInTooltip
           title={"Sujet d'intérêt"}
-          table={npcConversationFocusTable}
+          table={tableRepository.get("NPC Conversation Focus Table")}
         />
         <span className="italic">
-          <RollOnTableWithIcon table={npcConversationFocusTable} />
+          <RollOnTableWithIcon
+            table={tableRepository.get("NPC Conversation Focus Table")}
+          />
         </span>{" "}
       </span>
     </div>
