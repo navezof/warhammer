@@ -7,7 +7,7 @@ import {
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 import { TableInTooltip } from "../../components/TableInTooltip";
-import { useRPGToolboxContext } from "../../RPGToolboxContext";
+import { tableRepository } from "../../utils/tableRepository";
 
 type OracleWidgetProps = {
   widgetId: string;
@@ -20,7 +20,9 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
     loadItemsFromLocalStorage(storageKey) || null
   );
 
-  const { tableData } = useRPGToolboxContext();
+  // const { tableData } = useRPGToolboxContext();
+
+  const tableData = tableRepository.getAll();
 
   useEffect(() => {
     if (selected) {

@@ -1,10 +1,8 @@
-import { Table } from "../../../types/type";
-
-export const NPCArchetypeTable: Table = {
-  name: "Archetype Table",
-  description: "A list of archetypes for storytelling",
-  dice: "1d100",
-  content: [
+{
+  "name": "Archetype Table",
+  "description": "A list of archetypes for storytelling",
+  "dice": "1d100",
+  "content": [
     "1;Acteur",
     "2;Alchimiste",
     "3;Apprenti",
@@ -104,8 +102,6 @@ export const NPCArchetypeTable: Table = {
     "97;Voleur",
     "98;Volonté",
     "99;Voyageur",
-    "100;Voyant",
-  ],
-};
-
-export default NPCArchetypeTable;
+    "100;Voyant"
+  ]
+}

@@ -4,7 +4,7 @@ import { Table } from "../types/type";
 import { rollOnTable } from "../utils/rolls";
 
 export type RollOnTableWithIconProps = {
-  table: Table;
+  table: Table | undefined;
   numberOfRoll?: number;
   column?: number;
   iconType?: RpgIconType;
@@ -21,6 +21,7 @@ export const RollOnTableWithIcon = ({
   const [answer, setAnswer] = React.useState<string | null>(null);
 
   const handleRollOnTable = (numberOfRoll: number) => {
+    if (!table) return;
     const rolls = Array.from({ length: numberOfRoll }, () =>
       rollOnTable(table, column)
     );

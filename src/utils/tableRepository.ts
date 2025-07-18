@@ -6,7 +6,7 @@ export interface TableRepository {
 }
 
 function createTableRepository(): TableRepository {
-  const modules = import.meta.glob("../data/*.json", { eager: true });
+  const modules = import.meta.glob("../data/**/*.json", { eager: true });
   const data: Record<string, Table> = {};
 
   try {
