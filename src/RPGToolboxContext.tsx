@@ -35,6 +35,10 @@ const ACTIVE_DASHBOARD_ID_STORAGE_KEY = "activeDashboardId";
 const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
 export function RPGToolboxProvider({ children }: PropsWithChildren) {
+  // const [tableData, setTableData] = useState<Table[] | null>(() =>
+  //   tableRepository.getAll()
+  // );
+
   const [dashboards, setDashboards] = useState<Dashboard[]>(() => {
     const storedDashboards = loadItemsFromLocalStorage<Dashboard[]>(
       DASHBOARDS_STORAGE_KEY

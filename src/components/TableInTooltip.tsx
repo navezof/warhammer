@@ -4,7 +4,7 @@ import { RpgIcon } from "./RpgIcon";
 
 type TableInTooltipProps = {
   title: string;
-  table: Table;
+  table: Table | undefined;
   useIcon?: boolean;
 };
 
@@ -54,15 +54,16 @@ export const TableInTooltip = ({
         >
           <table className="w-full text-sm">
             <tbody>
-              {table.content.map((row, idx) => (
-                <tr key={idx}>
-                  {row.split(";").map((cell, i) => (
-                    <td key={i} className="border-b px-2 py-1">
-                      {cell}
-                    </td>
-                  ))}
-                </tr>
-              ))}
+              {table &&
+                table.content.map((row, idx) => (
+                  <tr key={idx}>
+                    {row.split(";").map((cell, i) => (
+                      <td key={i} className="border-b px-2 py-1">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

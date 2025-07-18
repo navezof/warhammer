@@ -1,10 +1,8 @@
-import { Table } from "../../../types/type";
-
-export const NPCQualifierTable: Table = {
-  name: "NPC Qualifier Table",
-  description: "What is the NPC like?",
-  dice: "1d100",
-  content: [
+{
+  "name": "NPC Qualifier Table",
+  "description": "What is the NPC like?",
+  "dice": "1d100",
+  "content": [
     "1;Adorable, Mignon, Ravissant",
     "2;Affable, Agréable, Sociable",
     "3;Agressif, Provocateur, Belliqueux",
@@ -104,8 +102,6 @@ export const NPCQualifierTable: Table = {
     "97;Sincère, Authentique, Spontané",
     "98;Sociable, Mondain, Aimable",
     "99;Spirituel, Religieux, Mystique",
-    "100;Taciturne, Morose, Sombre",
-  ],
-};
-
-export default NPCQualifierTable;
+    "100;Taciturne, Morose, Sombre"
+  ]
+}

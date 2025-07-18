@@ -1,0 +1,13 @@
+{
+  "name": "Age Table",
+  "description": "A table to determine the age of a creature.",
+  "dice": "1d8",
+  "content": [
+    "1; Child",
+    "2; Adolescent",
+    "3-4; Adult",
+    "5-6; Middle-Aged",
+    "7; Elderly",
+    "8; Ancient"
+  ]
+}

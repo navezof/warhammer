@@ -1,0 +1,14 @@
+{
+  "name": "NPC Conversation Mood Table - Friendly",
+  "description": "A table to determine the mood of an NPC during a conversation, focusing on friendliness.",
+  "dice": "1d100",
+  "content": [
+    "1-2;withdrawn",
+    "3-8;guarded",
+    "9-20;cautious",
+    "21-40;neutral",
+    "41-76;sociable",
+    "77-89;helpful",
+    "90-100;forthcoming"
+  ]
+}

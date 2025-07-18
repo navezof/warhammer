@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearting Table - Insane",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on insanity.",
+  "dice": "1d100",
+  "content": [
+    "1-10;madness",
+    "11-20;fear",
+    "21-30;accident",
+    "31-40;chaos",
+    "41-50;idiocy",
+    "51-60;illusion",
+    "61-70;turmoil",
+    "71-80;confusion",
+    "81-90;façade",
+    "91-100;bewilderment"
+  ]
+}

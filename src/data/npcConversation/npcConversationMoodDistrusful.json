@@ -1,0 +1,14 @@
+{
+  "name": "NPC Conversation Mood Table - Distrustful",
+  "description": "A table to determine the mood of an NPC during a conversation, focusing on distrust and suspicion.",
+  "dice": "1d100",
+  "content": [
+    "1-7;withdrawn",
+    "8-18;guarded",
+    "19-46;cautious",
+    "47-76;neutral",
+    "77-90;sociable",
+    "91-97;helpful",
+    "98-100;forthcoming"
+  ]
+}

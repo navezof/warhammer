@@ -1,7 +1,7 @@
 import React from "react";
-import sceneAdjustementTable from "./data/sceneAdjustementTable";
 import { rollOnTable } from "../../utils/rolls";
 import { RollOnAnswer } from "../../components/RollOnAnswer";
+import { tableRepository } from "../../utils/tableRepository";
 
 const SceneAdjustement: React.FC = () => {
   const [sceneAdjustement, setSceneAdjustement] = React.useState<string | null>(
@@ -9,7 +9,9 @@ const SceneAdjustement: React.FC = () => {
   );
 
   const handleClick = () => {
-    setSceneAdjustement(rollOnTable(sceneAdjustementTable));
+    setSceneAdjustement(
+      rollOnTable(tableRepository.get("Scene Adjustement Table"))
+    );
   };
 
   return (

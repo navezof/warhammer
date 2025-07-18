@@ -1,13 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
-import { rollOnTable } from '../../utils/rolls';
-import randomEventFocusTable from './data/randomEventFocusTable';
+import React from "react";
+import { useState } from "react";
+import { rollOnTable } from "../../utils/rolls";
+import { tableRepository } from "../../utils/tableRepository";
 
 const RandomEventFocus = () => {
-  const [randomEventFocus, setRandomEventFocus] = useState<string>('-');
+  const [randomEventFocus, setRandomEventFocus] = useState<string>("-");
 
   const onHandleClick = () => {
-    setRandomEventFocus(rollOnTable(randomEventFocusTable, 1));
+    setRandomEventFocus(
+      rollOnTable(tableRepository.get("Random Event Focus"), 1)
+    );
   };
 
   return (

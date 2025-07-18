@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearting Table - Friendly",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on friendliness.",
+  "dice": "1d100",
+  "content": [
+    "1-10;alliance",
+    "11-20;comfort",
+    "21-30;gratitude",
+    "31-40;shelter",
+    "41-50;happiness",
+    "51-60;support",
+    "61-70;promise",
+    "71-80;delight",
+    "81-90;aid",
+    "91-100;celebration"
+  ]
+}

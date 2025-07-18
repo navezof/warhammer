@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearting Table - Knowing",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on knowledge.",
+  "dice": "1d100",
+  "content": [
+    "1-10;report",
+    "11-20;effects",
+    "21-30;examination",
+    "31-40;records",
+    "41-50;account",
+    "51-60;news",
+    "61-70;history",
+    "71-80;telling",
+    "81-90;discourse",
+    "91-100;speech"
+  ]
+}

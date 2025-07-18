@@ -1,0 +1,14 @@
+{
+  "name": "NPC Conversation Mood Table - Hated",
+  "description": "A table to determine the mood of an NPC during a conversation, focusing on hatred and animosity.",
+  "dice": "1d100",
+  "content": [
+    "1-15;withdrawn",
+    "16-30;guarded",
+    "31-69;cautious",
+    "70-84;neutral",
+    "85-94;sociable",
+    "95-99;helpful",
+    "100;forthcoming"
+  ]
+}

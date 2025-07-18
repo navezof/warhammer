@@ -1,10 +1,8 @@
-import { Table } from "../../../types/type";
-
-export const NPCAppearance: Table = {
-  name: "NPC Appearance",
-  description: "A list of striking appearance for a character",
-  dice: "1d50",
-  content: [
+{
+  "name": "NPC Appearance",
+  "description": "A list of striking appearance for a character",
+  "dice": "1d50",
+  "content": [
     "1;Elle est bien trop habillée pour l'occasion.",
     "2;Elle porte des habits mal coordonnés, elle n'a pas fait le moindre effort pour choisir une tenue approprié.",
     "3;Elle porte des habits qui brillent par leur couleur fantaisiste et tape-à l'œil.",
@@ -54,6 +52,6 @@ export const NPCAppearance: Table = {
     "47;Elle a une impressionnante chevelure (ou pilosité faciale) coiffé dans un style peu orthodoxe.",
     "48;Elle porte d'impressionnants tatouages sur le corps, la plupart du temps couvrant un membre entier, allant même jusqu'au visage.",
     "49;Elle adore l'esthétique macabre, portant un maquillage sombre, des accessoires représentant la mort et tout ce qui est interdit dans cette région.",
-    "50;Que ce soit dans les cheveux, sur les vêtements ou autour du cou, cette personne porte des dizaines d'accessoires, perles, bijoux, collier.",
-  ],
-};
+    "50;Que ce soit dans les cheveux, sur les vêtements ou autour du cou, cette personne porte des dizaines d'accessoires, perles, bijoux, collier."
+  ]
+}

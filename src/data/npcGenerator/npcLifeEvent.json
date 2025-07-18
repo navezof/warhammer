@@ -1,10 +1,8 @@
-import { Table } from "../../../types/type";
-
-export const NPCLifeEvent: Table = {
-  name: "Life Events",
-  description: "A list of events someone lived in their past",
-  dice: "1d50",
-  content: [
+{
+  "name": "Life Events",
+  "description": "A list of events someone lived in their past",
+  "dice": "1d50",
+  "content": [
     "1;Sa famille a le devoir de protéger un artefact ou un lieu légendaire depuis des générations",
     "2;Elle a hérité d'un objet ou d'un lieu de grande valeur, mais cela vient avec une conséquence néfaste (objet hanté, convoitise de personnes dangereuses).",
     "3;Possède enfoui dans son subconscient un savoir inestimable qui pourrait mener vers un artefact ou un lieu légendaire",
@@ -54,6 +52,6 @@ export const NPCLifeEvent: Table = {
     "47;Elle a un lien inexpliqué avec la nature, capable de comprendre ou lire le comportement animal et floral d'une façon quasi surnaturelle.",
     "48;Elle a survécu à une catastrophe naturelle aux proportions apocalyptique.",
     "49;Des membres de sa famille ou d'autre être chers ont été tués par des créatures sauvages.",
-    "50;Elle a vécu en bordure d'un endroit naturel sauvage, où sa communauté se battait en permanence pour leur survie.",
-  ],
-};
+    "50;Elle a vécu en bordure d'un endroit naturel sauvage, où sa communauté se battait en permanence pour leur survie."
+  ]
+}

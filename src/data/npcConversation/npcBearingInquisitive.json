@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearting Table - Inquisitive",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on inquisitiveness.",
+  "dice": "1d100",
+  "content": [
+    "1-10;questions",
+    "11-20;investigation",
+    "21-30;interest",
+    "31-40;demand",
+    "41-50;suspicion",
+    "51-60;request",
+    "61-70;curiosity",
+    "71-80;skepticism",
+    "81-90;command",
+    "91-100;petition"
+  ]
+}
