@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createContext, PropsWithChildren, useContext } from "react";
 import { Table, Widget } from "./types/type";
 import {
   loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "./utils/localStorageState";
-import { DataLoader } from "./utils/dataLoader";
+import { tableRepository } from "./utils/dataLoader";
 
 export type Dashboard = {
   id: string;
@@ -39,14 +39,8 @@ const ACTIVE_DASHBOARD_ID_STORAGE_KEY = "activeDashboardId";
 const RPGToolBoxContext = createContext<RPGToolboxState | null>(null);
 
 export function RPGToolboxProvider({ children }: PropsWithChildren) {
-  const dataLoader = useMemo(() => {
-    const loader = DataLoader();
-    loader.loadData();
-    return loader;
-  }, []);
-
   const [tableData, setTableData] = useState<Table[] | null>(() =>
-    dataLoader.getAll()
+    tableRepository.getAll()
   );
 
   const [dashboards, setDashboards] = useState<Dashboard[]>(() => {
