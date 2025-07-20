@@ -1,5 +1,5 @@
 {
-  "name": "NPC Bearting Table - Hostile",
+  "name": "NPC Bearing Table - Hostile",
   "description": "A table to determine the bearing of an NPC during a conversation, focusing on hostility.",
   "dice": "1d100",
   "content": [

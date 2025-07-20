@@ -14,7 +14,7 @@ export enum NpcDisposition {
 
 export const dispositionMap: Record<NpcDisposition, Table | undefined> = {
   [NpcDisposition.Scheming]: tableRepository.get(
-    "NPC Bearting Table - Scheming"
+    "NPC Bearing Table - Scheming"
   ),
   [NpcDisposition.Insane]: tableRepository.get("NPC Bearing Table - Insane"),
   [NpcDisposition.Friendly]: tableRepository.get(

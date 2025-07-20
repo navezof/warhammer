@@ -1,5 +1,5 @@
 {
-  "name": "NPC Bearting Table - Insane",
+  "name": "NPC Bearing Table - Insane",
   "description": "A table to determine the bearing of an NPC during a conversation, focusing on insanity.",
   "dice": "1d100",
   "content": [

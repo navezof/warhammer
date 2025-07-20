@@ -20,8 +20,6 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
     loadItemsFromLocalStorage(storageKey) || null
   );
 
-  // const { tableData } = useRPGToolboxContext();
-
   const tableData = tableRepository.getAll();
 
   useEffect(() => {

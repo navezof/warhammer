@@ -1,5 +1,5 @@
 {
-  "name": "NPC Bearting Table - Inquisitive",
+  "name": "NPC Bearing Table - Inquisitive",
   "description": "A table to determine the bearing of an NPC during a conversation, focusing on inquisitiveness.",
   "dice": "1d100",
   "content": [

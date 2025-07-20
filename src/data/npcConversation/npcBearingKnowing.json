@@ -1,5 +1,5 @@
 {
-  "name": "NPC Bearting Table - Knowing",
+  "name": "NPC Bearing Table - Knowing",
   "description": "A table to determine the bearing of an NPC during a conversation, focusing on knowledge.",
   "dice": "1d100",
   "content": [

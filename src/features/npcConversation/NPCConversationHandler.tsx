@@ -13,17 +13,23 @@ const NPCHandler = () => {
   const [selectedNPCDisposition, setSelectedNPCDisposition] =
     React.useState<NpcDisposition>(NpcDisposition.Friendly);
 
+  const labelRelationship = "Relation avec le PNJ ?";
+  const titleMood = "Humeur";
+  const titleAttitude = "Attitude";
+  const labelNpcAttitude = "Attitude du PNJ";
+  const titleInterest = "Sujet d'intérêt";
+
   return (
     <div className="items-right">
       <EnumSelector
         enumObject={NPCRelationship}
         value={selectedNPCRelationship}
         onChange={setSelectedNPCRelationship}
-        label="Relation avec le PNJ ?"
+        label={labelRelationship}
       />
       <div>
         <TableInTooltip
-          title={"Humeur"}
+          title={titleMood}
           table={relationshipMap[selectedNPCRelationship]}
         />
         <span className="italic">
@@ -34,7 +40,7 @@ const NPCHandler = () => {
       </div>
       <span>
         <TableInTooltip
-          title={"Attitude"}
+          title={titleAttitude}
           table={tableRepository.get("NPC Disposition Table")}
         />
         <span className="italic">
@@ -47,11 +53,11 @@ const NPCHandler = () => {
         enumObject={NpcDisposition}
         value={selectedNPCDisposition}
         onChange={setSelectedNPCDisposition}
-        label="Attitude du PNJ"
+        label={labelNpcAttitude}
       />
       <span>
         <TableInTooltip
-          title={"Sujet d'intérêt"}
+          title={titleInterest}
           table={tableRepository.get("NPC Conversation Focus Table")}
         />
         <span className="italic">

@@ -7,8 +7,7 @@ export const rollOnTable = (
   modifier: number = 0
 ): string => {
   if (!table) {
-    console.log("Table not found");
-    return "Table not found";
+    throw new Error("Table not found");
   }
   let result = "";
   const randomNumber = rollDie(table.dice);
