@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
-import { ageTable, npcQualities } from "../../data/oracleTable";
 import OracleDisplay from "./OracleDisplay";
 import TableDropdown from "../../components/TableDropdown";
-import themeTable from "../../data/themeTable";
-import verbTable from "../../data/verbTable";
 import { Table } from "../../types/type";
 import {
   loadItemsFromLocalStorage,
   storeItemsInLocalStorage,
 } from "../../utils/localStorageState";
 import { TableInTooltip } from "../../components/TableInTooltip";
-
-const tableOptions: Table[] = [ageTable, npcQualities, themeTable, verbTable];
+import { tableRepository } from "../../utils/tableRepository";
 
 type OracleWidgetProps = {
   widgetId: string;
@@ -24,6 +20,8 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
     loadItemsFromLocalStorage(storageKey) || null
   );
 
+  const tableData = tableRepository.getAll();
+
   useEffect(() => {
     if (selected) {
       storeItemsInLocalStorage(selected, storageKey);
@@ -34,14 +32,16 @@ export const OracleWidget = ({ widgetId }: OracleWidgetProps) => {
     <div className="flex justify-center h-full">
       <div className="flex flex-col h-full">
         <div className="flex flex-row justify-center space-x-2">
-          <TableDropdown
-            tableOptions={tableOptions}
-            selected={selected}
-            setSelected={setSelected}
-          />
+          {tableData && (
+            <TableDropdown
+              tableOptions={tableData}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          )}
           {selected && (
             <TableInTooltip
-              text={selected.name}
+              title={selected.name}
               table={selected}
               useIcon={true}
             />

@@ -1,19 +1,22 @@
-import { Table } from '../types/type';
-import { convertCSVArrayToArray } from './utils';
+import { Table } from "../types/type";
+import { convertCSVArrayToArray } from "./utils";
 
 export const rollOnTable = (
-  table: Table,
+  table: Table | undefined,
   column: number = 1,
   modifier: number = 0
 ): string => {
-  let result = '';
+  if (!table) {
+    throw new Error("Table not found");
+  }
+  let result = "";
   const randomNumber = rollDie(table.dice);
   const adjustedNumber = randomNumber + modifier;
   const content = convertCSVArrayToArray(table.content);
   for (let i = 0; i < table.content.length; i += 1) {
     const entry = content[i];
-    if (entry[0].includes('-')) {
-      const range = entry[0].split('-');
+    if (entry[0].includes("-")) {
+      const range = entry[0].split("-");
       const lowEnd = parseInt(range[0], 10);
       const highEnd = parseInt(range[1], 10);
       if (adjustedNumber >= lowEnd && adjustedNumber <= highEnd) {
@@ -37,7 +40,7 @@ export const rollOnSubTable = (
 };
 
 export function rollDie(expression: string): number {
-  const parts = expression.split('d');
+  const parts = expression.split("d");
   const numberOfDice = parseInt(parts[0], 10);
   const sides = parseInt(parts[1], 10);
 

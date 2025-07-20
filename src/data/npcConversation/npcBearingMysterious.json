@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearing Table - Mysterious",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on mystery.",
+  "dice": "1d100",
+  "content": [
+    "1-10;rumor",
+    "11-20;uncertainty",
+    "21-30;secrets",
+    "31-40;misdirection",
+    "41-50;whispers",
+    "51-60;lies",
+    "61-70;shadows",
+    "71-80;enigma",
+    "81-90;obscurity",
+    "91-100;conundrum"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearing Table - Prejudiced",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on prejudice.",
+  "dice": "1d100",
+  "content": [
+    "1-10;reputation",
+    "11-20;doubt",
+    "21-30;bias",
+    "31-40;dislike",
+    "41-50;partiality",
+    "51-60;belief",
+    "61-70;view",
+    "71-80;discrimination",
+    "81-90;assessment",
+    "91-100;difference"
+  ]
+}

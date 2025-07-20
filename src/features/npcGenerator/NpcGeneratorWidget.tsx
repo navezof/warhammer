@@ -1,34 +1,34 @@
 import { RollOnTable } from "../../components/RollOnTable";
-import { NPCAppearance } from "./data/NPCAppearance";
-import { NPCArchetypeTable } from "./data/NPCArchetype";
-import { NPCLifeEvent } from "./data/NPCLifeEvent";
-import { NPCQualifierTable } from "./data/NPCQualifier";
-import { NPCQuirk } from "./data/NPCQuirk";
+import { tableRepository } from "../../utils/tableRepository";
 
 export const NpcGeneratorWidget = () => {
   return (
     <div>
       <RollOnTable
         title={"Archetype"}
-        table={NPCArchetypeTable}
+        table={tableRepository.get("Archetype Table")}
         numberOfRoll={2}
         iconType="dice"
       />
       <RollOnTable
         title={"Qualité"}
-        table={NPCQualifierTable}
+        table={tableRepository.get("NPC Qualifier Table")}
         iconType="dice"
       />
       <RollOnTable
         title={"Appearance"}
-        table={NPCAppearance}
+        table={tableRepository.get("NPC Appearance")}
         numberOfRoll={2}
         iconType="dice"
       />
-      <RollOnTable title={"Passé"} table={NPCLifeEvent} iconType="dice" />
+      <RollOnTable
+        title={"Passé"}
+        table={tableRepository.get("Life Events")}
+        iconType="dice"
+      />
       <RollOnTable
         title={"Trait Particulier"}
-        table={NPCQuirk}
+        table={tableRepository.get("NPC Quirk")}
         numberOfRoll={2}
         iconType="dice"
       />

@@ -1,10 +1,8 @@
-import { Table } from "../../../types/type";
-
-export const NPCQuirk: Table = {
-  name: "NPC Quirk",
-  description: "A list of quirks for storytelling",
-  dice: "1d50",
-  content: [
+{
+  "name": "NPC Quirk",
+  "description": "A list of quirks for storytelling",
+  "dice": "1d50",
+  "content": [
     "1;Sa voix est cassée et à peine audible, craquant sur chaque syllabe.",
     "2;Elle a un vocabulaire raffiné et une élocution qui aurait sa place lors de diner de haute société.",
     "3;Elle a un rire très particulier, que ce soit un aboiement tonitruant, un ricanement désagréable, ou tout autre.",
@@ -54,6 +52,6 @@ export const NPCQuirk: Table = {
     "47;Elle utilise beaucoup d'argot ou d'un dialecte, langage difficilement compréhensible, elle n'a pas l'air de s'en rendre compte.",
     "48;Elle utilise une voix qui est involontairement séductrice et envoutante.",
     "49;Elle s'automutile, cela peut être discret ou très visible, mais cela n'affecte pas son fonctionnement habituel.",
-    "50;Elle joue constamment avec un petit objet qu'elle manipule distraitement.",
-  ],
-};
+    "50;Elle joue constamment avec un petit objet qu'elle manipule distraitement."
+  ]
+}

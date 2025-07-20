@@ -1,0 +1,17 @@
+{
+  "name": "NPC Bearing Table - Hostile",
+  "description": "A table to determine the bearing of an NPC during a conversation, focusing on hostility.",
+  "dice": "1d100",
+  "content": [
+    "1-10;death",
+    "11-20;capture",
+    "21-30;judgment",
+    "31-40;combat",
+    "41-50;surrender",
+    "51-60;rage",
+    "61-70;resentment",
+    "71-80;submission",
+    "81-90;injury",
+    "91-100;destruction"
+  ]
+}
