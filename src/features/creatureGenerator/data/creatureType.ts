@@ -22,7 +22,7 @@ export const creatureTypeDefinition: CreatureTypeDefinition[] = [
       {
         trait: armour,
         traitConfig: {
-          parameter: 1,
+          parameter: "1",
         },
         optional: false,
       },

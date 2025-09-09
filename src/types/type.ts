@@ -6,7 +6,8 @@ export type WidgetType =
   | "npcInteraction"
   | "scene"
   | "name"
-  | "npcGenerator";
+  | "npcGenerator"
+  | "creatureCard";
 
 export interface Widget {
   id: string;

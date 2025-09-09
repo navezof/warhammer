@@ -60,7 +60,7 @@ export const NameWidget = ({ widgetId }: NameWidgetProps) => {
         />
         {selected && (
           <TableInTooltip
-            text={selected.name}
+            title={selected.name}
             table={selected}
             useIcon={true}
           />

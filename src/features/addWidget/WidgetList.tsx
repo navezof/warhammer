@@ -1,4 +1,5 @@
 import { WidgetType } from "../../types/type";
+import CreatureDisplay from "../creatureGenerator/CreatureDisplay";
 import { FateQuestionWidget } from "../fate/FateQuestionWidget";
 import { ActorWidget } from "../list/ActorWidget";
 import { ThreadWidget } from "../list/ThreadWidget";
@@ -67,6 +68,12 @@ export const widgetList: readonly WidgetDefinition[] = [
     name: "Generateur de NPC",
     description: "",
     component: NpcGeneratorWidget,
+  },
+  {
+    type: "creatureCard",
+    name: "Creature",
+    description: "",
+    component: CreatureDisplay,
   },
 ];
 

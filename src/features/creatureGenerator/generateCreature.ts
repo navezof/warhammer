@@ -38,8 +38,8 @@ export function generateCreature(creatureType?: string): Creature {
   const creatureTemplate = creatureType
     ? creatureTypeDefinition.find((t) => t.type === creatureType)
     : creatureTypeDefinition[
-        randomNumber(0, creatureTypeDefinition.length - 1)
-      ];
+    randomNumber(0, creatureTypeDefinition.length - 1)
+    ];
 
   if (!creatureTemplate) {
     throw new Error('Creature type not found');
