@@ -4,6 +4,7 @@ import { generateCreature } from "./generateCreature";
 import { creatureTypes } from "./data/creatureType";
 import TableDropdown from "../../components/TableDropdown";
 import { RpgIcon } from "../../components/RpgIcon";
+import { CreatureTraits } from "./CreatureTraits";
 
 const CreatureDisplay: React.FC = () => {
   const [selectedType, setSelectedType] = React.useState<string | undefined>();
@@ -47,12 +48,7 @@ const CreatureDisplay: React.FC = () => {
           {creature.characteristics.toughness} | W{" "}
           {creature.characteristics.wounds}
         </p>
-        <p>
-          Traits:{" "}
-          {creature.traits
-            ? creature.traits.map((t) => t.name).join(", ")
-            : "None"}
-        </p>
+        <CreatureTraits creatureTraits={creature.traits} />
       </div>
     );
   };

@@ -1,5 +1,5 @@
 import { CreatureTypeDefinition } from '../../../types/type';
-import { armour, hardy } from './creatureTraits';
+import { armour, hardy, painless } from './creatureTraits';
 
 export const creatureTypeDefinition: CreatureTypeDefinition[] = [
   {
@@ -52,7 +52,7 @@ export const creatureTypeDefinition: CreatureTypeDefinition[] = [
       {
         trait: armour,
         traitConfig: {
-          parameter: 3,
+          parameter: "3",
         },
         optional: false,
       },
@@ -61,6 +61,12 @@ export const creatureTypeDefinition: CreatureTypeDefinition[] = [
         optional: false,
       },
     ],
+    optionalTraits: [
+      {
+        trait: painless,
+        optional: true,
+      }
+    ]
   },
 ];
 

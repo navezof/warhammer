@@ -2,11 +2,17 @@ import { creatureTypeDefinition } from './data/creatureType';
 import { Creature, CreatureTypeDefinition } from '../../types/type';
 import { rollDie } from '../../utils/rolls';
 import { randomNumber } from '../../utils/utils';
+import { create } from 'domain';
 
 function generateTraits(
   creature: Creature,
   creatureTemplate: CreatureTypeDefinition
 ): Creature {
+  generateBaseTraits(creature, creatureTemplate);
+  return creature;
+}
+
+function generateBaseTraits(creature: Creature, creatureTemplate: CreatureTypeDefinition) {
   const { baseTraits } = creatureTemplate;
   if (!baseTraits) {
     return creature;
@@ -27,7 +33,6 @@ function generateTraits(
       });
     }
   }
-  return creature;
 }
 
 function generateCharacteristic(base: number): number {

@@ -14,28 +14,6 @@ export interface Widget {
   type: WidgetType;
 }
 
-export interface Trait {
-  name: string;
-  description: string;
-  apply?: (creature: Creature, config?: TraitConfig) => Creature;
-}
-
-export interface TraitConfig {
-  parameter: string;
-}
-
-export interface TraitDefinition {
-  trait: Trait;
-  traitConfig?: TraitConfig;
-  optional: boolean;
-}
-
-export interface AppliedTrait {
-  name: string;
-  description: string;
-  config: TraitConfig | undefined;
-}
-
 export interface Creature {
   name: string;
   type: string;
@@ -74,6 +52,7 @@ export interface CreatureTypeDefinition {
     wounds: number;
   };
   baseTraits?: TraitDefinition[];
+  optionalTraits?: TraitDefinition[];
 }
 
 export interface Table {

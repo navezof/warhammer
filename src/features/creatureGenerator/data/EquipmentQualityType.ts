@@ -1,0 +1,1 @@
+export type EquipmentQualityType = 'Common' | 'Uncommon' | 'Rare' | 'Unique';
